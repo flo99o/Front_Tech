@@ -1,0 +1,23 @@
+:root {
+--color-primary: #ffffff;
+--color-secondary: #0563bb;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+} 
+  
+html {
+  font-size: 62.5%; }
+
+body {
+    font-family: ;
+}

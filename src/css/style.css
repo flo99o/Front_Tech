@@ -1,14 +1,13 @@
-.global_container{
-    border: red 2px solid ;
-    height: 25rem;
-}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
 
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit; }
 
-.global_container--homepage{
-    display: grid;
-    grid-template-areas: 
-    "hero"
-    "job"
-    "comment"
-    "footer";
-}
+html {
+  font-size: 62.5%; }
