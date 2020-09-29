@@ -4,6 +4,13 @@
 }
 
 
-.testttjkrnkf {
- border: 2px solid 4rem;
+.global_container--homepage{
+    display: grid;
+    grid-template-areas: 
+    "hero"
+    "job"
+    "comment"
+    "footer"
+    ;
+
 }

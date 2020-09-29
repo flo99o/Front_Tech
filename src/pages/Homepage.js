@@ -1,9 +1,16 @@
 import React from 'react'
+import Comment from '../components/Comment'
+import Footer from '../components/Footer'
+import Hero from '../components/Hero'
+import Job from '../components/Job'
 
  const Homepage = () => {
     return (
         <div className="global_container global_container--homepage">
-            <h1 className=""></h1>
+            <Hero/>
+            <Job/>
+            <Comment/>
+            <Footer/>
         </div>
     )
 }
