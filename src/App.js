@@ -13,7 +13,6 @@ const App = () => {
 
   return (
     <div className="global_container">
-
     <Router>
       <Switch>
         <Route exact path="/" component={Homepage} />
