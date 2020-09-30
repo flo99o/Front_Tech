@@ -12,8 +12,8 @@ const Hero = () => {
         <p className="heading-primary--sub">More then X job listed here.</p>
       </div>
       <NavBar />
-      <FilterBar />
     </section>
+      
   );
 };
 

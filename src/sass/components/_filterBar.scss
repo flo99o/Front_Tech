@@ -1,0 +1,39 @@
+.filterBar {
+    height: 20rem;
+    position: relative;
+}
+
+.job-search {
+    color: red;
+  
+      &__form {
+          padding: 1rem ;
+          background-color: white;
+      }
+  
+      &__filter {
+          display: flex;
+          flex-direction: column;
+          padding: 2rem;
+          background-color: inherit;
+          position: absolute;
+          z-index: 1;
+          bottom: 0;
+          left:50%;
+          transform:
+          translateX(-50%);
+          box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+          
+}
+  
+      & select {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          border: 1px solid var(--color-secondary-title);
+          margin-bottom: 2rem;
+          padding: 1rem 2rem;
+          background-color: inherit;
+      }
+
+    }
