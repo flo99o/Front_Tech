@@ -1,13 +1,76 @@
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit; }
-
-a, a:hover, a:focus, a:active {
-  text-decoration: none;
-  color: inherit; }
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap");
+:root {
+  --color-primary: #ffffff;
+  --color-secondary-title: #45505b;
+  --color-secondary-text: #272829;
+  --color-tertiary: #0563bb; }
 
 html {
   font-size: 62.5%; }
+
+body {
+  color: var(--color-secondary-text); }
+
+section {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto; }
+
+h1, h2, h6 {
+  color: var(--color-secondary-title); }
+
+.heading-primary {
+  text-align: center; }
+  .heading-primary--main {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2.4rem;
+    text-align: center; }
+  .heading-primary--sub {
+    font-size: 1.4rem;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    line-height: 1.75; }
+
+.heading-secondary {
+  font-size: 2.4rem; }
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  padding: 0 2.3rem; }
+
+.logo {
+  margin-right: auto; }
+
+.hero {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-top: 66%;
+  background: url(../assets/background-hero.jpg);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover; }
+  .hero::before {
+    z-index: -1;
+    content: "";
+    background: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0; }
+
+.heading-primary {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  white-space: nowrap; }

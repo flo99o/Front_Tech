@@ -1,0 +1,30 @@
+.hero {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding-top: 66%;
+    background: url(../assets/background-hero.jpg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    &::before {
+        z-index: -1;
+        content: "";
+        background: rgba(255, 255, 255, 0.8);
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+}
+
+.heading-primary {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    white-space: nowrap;
+}

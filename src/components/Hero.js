@@ -1,28 +1,20 @@
-import React from 'react'
-import FilterBar from './FilterBar'
-import NavBar from './Navbar'
+import React from "react";
+import FilterBar from "./FilterBar";
+import Header from "./Header";
+import NavBar from "./Navbar";
 
- const  Hero = () => {
-    return (
-        <div className="hero">
-            <header>
-                <div className="logo">
-                    Tech Work
-                </div>
-                <div className="connexion">
-                    <a href="" className="login">Login</a>
-                    <span>or</span>
-                    <a href="" className="signup">Sign up</a>
-                </div>
-                <div className="heading-primary">
-                    <h1 className="heading-primary--main">Find Your Next Job</h1>
-                    <p className="heading-primary--sub">More then X job listed here.</p>
-                </div>
-            </header>
-            <NavBar/>
-            <FilterBar/>
-        </div>
-    )
-}
+const Hero = () => {
+  return (
+    <section className="hero">
+        <Header/>
+      <div className="heading-primary">
+        <h1 className="heading-primary--main">Find Your Next Job</h1>
+        <p className="heading-primary--sub">More then X job listed here.</p>
+      </div>
+      <NavBar />
+      <FilterBar />
+    </section>
+  );
+};
 
-export default Hero
+export default Hero;

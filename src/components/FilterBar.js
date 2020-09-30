@@ -2,7 +2,7 @@ import React from "react";
 
 const FilterBar = () => {
   return (
-    <section className="filterBar">
+    <div className="filterBar">
       <div className="job-search">
         <form action="" className="job-search__form">
           <div className="job-search__filter">
@@ -25,7 +25,7 @@ const FilterBar = () => {
           </div>
         </form>
       </div>
-    </section>
+    </div>
   );
 };
 

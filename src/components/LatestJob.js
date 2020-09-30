@@ -2,7 +2,7 @@ import React from 'react'
 
 const LatestJob = () => {
     return (
-        <section className="container-latestJob">
+        <section className="latestJob">
             <div className="heading-secondary">
                 <h2 className="heading-secondary--main">Latest jobs</h2>
                 <p className="heading-secondary--sub"></p>
