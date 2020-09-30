@@ -14,8 +14,10 @@ import NavBar from './Navbar'
                     <span>or</span>
                     <a href="" className="signup">Sign up</a>
                 </div>
-                <h1 className="title">Find Your Next Job</h1>
-                <h2 className="subtitle">More then X job listed here.</h2>
+                <div className="heading-primary">
+                    <h1 className="heading-primary--main">Find Your Next Job</h1>
+                    <p className="heading-primary--sub">More then X job listed here.</p>
+                </div>
             </header>
             <NavBar/>
             <FilterBar/>
