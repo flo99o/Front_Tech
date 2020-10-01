@@ -2,7 +2,7 @@
     position: relative;
     z-index: 1;
     width: 100%;
-    padding-top: 66%;
+    padding-top: 88%;
     background: url(../assets/background_image/background-hero.jpg);
     background-repeat: no-repeat;
     background-position: right;
@@ -28,3 +28,11 @@
 
     white-space: nowrap;
 }
+
+#logo-menu {
+position: absolute;
+top: 0;
+right: 2.4rem;
+display: flex;
+margin-top: 2.5rem;
+} 

@@ -114,7 +114,7 @@ h1, h2, h6 {
 .job-search__filter {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 88%;
   padding: 2.8rem;
   background-color: inherit;
   position: absolute;
@@ -145,7 +145,7 @@ h1, h2, h6 {
   position: relative;
   z-index: 1;
   width: 100%;
-  padding-top: 66%;
+  padding-top: 88%;
   background: url(../assets/background_image/background-hero.jpg);
   background-repeat: no-repeat;
   background-position: right;
@@ -167,6 +167,13 @@ h1, h2, h6 {
   transform: translate(-50%, -50%);
   text-align: center;
   white-space: nowrap; }
+
+#logo-menu {
+  position: absolute;
+  top: 0;
+  right: 2.4rem;
+  display: flex;
+  margin-top: 2.5rem; }
 
 .latestJob {
   padding-top: 6rem;
@@ -235,7 +242,8 @@ header {
   white-space: nowrap;
   font-size: 2rem;
   font-family: 'Montserrat', sans-serif;
-  font-size: 24px; }
+  font-size: 24px;
+  margin-right: auto; }
   .logo--footer {
     margin-bottom: 2.5rem; }
 
@@ -247,3 +255,45 @@ footer {
   footer h6 {
     margin: 1.8rem 0 1.5rem 0;
     font-size: 19px; }
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: var(--color-primary);
+  z-index: 99;
+  position: fixed;
+  width: 80%;
+  border-right: 2px solid var(--color-border); }
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    width: 100%; }
+  nav li {
+    display: flex;
+    background-color: #f2f3f5;
+    color: #6c757d;
+    padding: 1.5rem 1rem;
+    width: 90%;
+    border-radius: 4rem;
+    -webkit-border-radius: 4rem;
+    -moz-border-radius: 4rem;
+    -ms-border-radius: 4rem;
+    -o-border-radius: 4rem;
+    margin-bottom: 1.2rem; }
+    nav li.active {
+      color: var(--color-primary);
+      background-color: var(--color-tertiary); }
+    nav li img {
+      height: 2rem; }
+    nav li p {
+      padding-left: 1.5rem; }

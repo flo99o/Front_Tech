@@ -5,7 +5,6 @@ const Header = () => {
     return (
         <header>
         <div className="logo">Tech Work</div>
-        
         {/* <div className="connexion">
           <a href="" className="login">
             Login
