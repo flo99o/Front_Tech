@@ -1,39 +1,44 @@
 .filterBar {
-    height: 20rem;
-    position: relative;
+  height: 20rem;
+  position: relative;
 }
 
 .job-search {
-    color: red;
   
-      &__form {
-          padding: 1rem ;
-          background-color: white;
-      }
+  &__form {
+    padding: 1rem;
+    background-color: white;
+  }
   
-      &__filter {
-          display: flex;
-          flex-direction: column;
-          padding: 2rem;
-          background-color: inherit;
-          position: absolute;
-          z-index: 1;
-          bottom: 0;
-          left:50%;
-          transform:
-          translateX(-50%);
-          box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
-          
+  &__filter {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 2.8rem;
+    background-color: inherit;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+    
+  }
+  &__btn {
+    appearance: none;
+    padding: 1rem 3rem;
+    background-color: var(--color-tertiary);
+    color: var(--color-primary);
+    border: 1px solid var(--color-tertiary);
+  }
+  & select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: var(--color-secondary-placeholder);
+    border: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+    padding: 1.3rem 2rem;
+    background-color: inherit;
+  }
 }
-  
-      & select {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          border: 1px solid var(--color-secondary-title);
-          margin-bottom: 2rem;
-          padding: 1rem 2rem;
-          background-color: inherit;
-      }
-
-    }

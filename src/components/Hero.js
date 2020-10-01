@@ -9,7 +9,7 @@ const Hero = () => {
         <Header/>
       <div className="heading-primary">
         <h1 className="heading-primary--main">Find Your Next Job</h1>
-        <p className="heading-primary--sub">More then X job listed here.</p>
+        <p className="heading-primary--sub">More then X jobs listed here.</p>
       </div>
       <NavBar />
     </section>

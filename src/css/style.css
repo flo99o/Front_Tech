@@ -1,22 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap");
 :root {
   --color-primary: #ffffff;
+  --color-secondary-adress: #6b6b6b;
   --color-secondary-title: #45505b;
   --color-secondary-text: #272829;
-  --color-tertiary: #0563bb; }
+  --color-secondary-placeholder:#454545;
+  --color-tertiary: #0563bb;
+  --color-border: #ededee;
+  --color-fulltime: #28a745; }
 
 html {
   font-size: 62.5%; }
 
 body {
-  color: var(--color-secondary-text); }
+  color: var(--color-secondary-text);
+  font-size: 14px; }
 
 section {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 7rem;
+  padding-right: 7rem;
   width: 100%;
   margin-left: auto;
   margin-right: auto; }
+
+h2 {
+  margin-bottom: 2rem; }
+
+h6 {
+  margin-bottom: .5rem;
+  font-family: 'Montserrat', sans-serif; }
+
+a {
+  cursor: pointer; }
 
 h1, h2, h6 {
   color: var(--color-secondary-title); }
@@ -35,36 +50,49 @@ h1, h2, h6 {
     line-height: 1.75; }
 
 .heading-secondary {
-  font-size: 2.4rem; }
+  margin-bottom: 4rem;
+  text-align: center; }
+  .heading-secondary--main {
+    font-size: 2.4rem;
+    font-family: 'Montserrat', sans-serif; }
 
 .filterBar {
   height: 20rem;
   position: relative; }
 
-.job-search {
-  color: red; }
-  .job-search__form {
-    padding: 1rem;
-    background-color: white; }
-  .job-search__filter {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    background-color: inherit;
-    position: absolute;
-    z-index: 1;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.15); }
-  .job-search select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: 1px solid var(--color-secondary-title);
-    margin-bottom: 2rem;
-    padding: 1rem 2rem;
-    background-color: inherit; }
+.job-search__form {
+  padding: 1rem;
+  background-color: white; }
+
+.job-search__filter {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding: 2.8rem;
+  background-color: inherit;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.15); }
+
+.job-search__btn {
+  appearance: none;
+  padding: 1rem 3rem;
+  background-color: var(--color-tertiary);
+  color: var(--color-primary);
+  border: 1px solid var(--color-tertiary); }
+
+.job-search select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: var(--color-secondary-placeholder);
+  border: 1px solid var(--color-border);
+  margin-bottom: 2rem;
+  padding: 1.3rem 2rem;
+  background-color: inherit; }
 
 .hero {
   position: relative;
@@ -93,13 +121,70 @@ h1, h2, h6 {
   text-align: center;
   white-space: nowrap; }
 
+.latestJob {
+  padding-top: 6rem;
+  font-family: "Open Sans", sans-serif; }
+
+.job-list {
+  display: flex;
+  flex-direction: column; }
+  .job-list__item {
+    padding: 2rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-wrap: wrap; }
+  .job-list__photo {
+    flex: 0 0 50%;
+    width: auto;
+    max-width: 100%;
+    margin-right: 0; }
+    .job-list__photo img {
+      height: 7rem;
+      width: 7rem;
+      max-width: 100%; }
+  .job-list__contract {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 50%;
+    text-align: right;
+    width: auto;
+    max-width: 100%; }
+    .job-list__contract span {
+      display: block; }
+    .job-list__contract .salary {
+      font-family: "Open Sans", sans-serif;
+      margin-bottom: .8rem; }
+    .job-list__contract .type {
+      display: flex;
+      align-self: end;
+      padding: .5rem .8rem;
+      text-transform: capitalize;
+      color: var(--color-primary);
+      max-width: max-content;
+      background-color: var(--color-fulltime); }
+  .job-list__info {
+    margin-top: 1rem;
+    flex: 0 0 100%; }
+    .job-list__info ul {
+      line-height: 1.75; }
+
+.compagny__name {
+  color: var(--color-tertiary) !important;
+  font-weight: bolder; }
+
+.compagny__place {
+  color: var(--color-secondary-adress); }
+
 header {
   position: absolute;
   top: 0;
-  left: 0;
   display: flex;
   width: 100%;
-  padding: 0 2.3rem; }
+  margin-top: 2.5rem; }
 
 .logo {
+  white-space: nowrap;
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
   margin-right: auto; }
