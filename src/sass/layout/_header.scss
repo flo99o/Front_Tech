@@ -1,16 +1,18 @@
 header {
     position: absolute;
     top: 0;
+    left: 2.4rem;
 
     display: flex;
-    width: 100%;
     margin-top: 2.5rem;
-
 }
 
 .logo {
     white-space: nowrap;
     font-size: 2rem;
     font-family: 'Montserrat', sans-serif; 
-    margin-right: auto;
+    font-size: 24px;
+    &--footer {
+        margin-bottom: 2.5rem;
+    }
 }
