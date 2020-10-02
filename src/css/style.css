@@ -121,6 +121,10 @@ h1, h2, h6 {
     font-size: 2.4rem;
     font-family: 'Montserrat', sans-serif; }
 
+.category {
+  display: flex;
+  justify-content: space-between; }
+
 .comment {
   position: relative;
   z-index: 1;
@@ -165,7 +169,7 @@ h1, h2, h6 {
     font-size: 1.9rem; }
 
 .filterBar {
-  height: 20rem;
+  height: 24rem;
   position: relative; }
 
 .job-search__form {
@@ -416,10 +420,6 @@ nav {
   .user h2, .ad h2, .compagny h2 {
     margin-bottom: 0;
     text-align: center; }
-
-.category {
-  display: flex;
-  justify-content: space-between; }
 
 .list {
   margin-top: 2.5rem;

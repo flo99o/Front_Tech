@@ -3,6 +3,7 @@ import React from "react";
 import Hero from "../components/Hero";
 //photo
 import user from "../assets/user_profile/man.jpg"
+import Category from "../components/Category";
 
 const ProfilePage = () => {
   return (
@@ -11,10 +12,7 @@ const ProfilePage = () => {
       <div className="container">
         <div className="inner--profilePage">
           <div className="user">
-            <div className="category">
-              <h2 className="heading-secondary--main">Les utilisateurs </h2>
-              <span className="droplist">&#x2304;</span>
-            </div>
+          <Category name={"Les utilisateurs"}/>
             <div className="list">
               <table>
                 <thead>
@@ -36,12 +34,10 @@ const ProfilePage = () => {
                 </tbody>
               </table>
             </div>
-          </div>         
+          </div> 
+
           <div className="ad">
-              <div className="category">
-              <h2 className="heading-secondary--main">Les offres</h2>
-            <span className="droplist">&#x2304;</span>
-              </div>
+              <Category name={"Les offres"} />
             <div className="list">
               <table>
                 <thead>
@@ -61,11 +57,9 @@ const ProfilePage = () => {
               </table>
             </div>
           </div>
+          
           <div className="compagny">
-              <div className="category">
-              <h2 className="heading-secondary--main">Les compagnies</h2>
-            <span className="droplist">&#x2304;</span>
-              </div>
+             <Category name={"Les compagnies"}/>
             
             <div className="list">
               <ul>
