@@ -20,13 +20,12 @@
 }
 
 .heading-primary {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-
+    @include centerAbsolute(50%);
     white-space: nowrap;
+    &--down {
+        @include centerAbsolute(64%)
+    }
+
 }
 
 #logo-menu {

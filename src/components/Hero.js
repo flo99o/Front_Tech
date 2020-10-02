@@ -9,7 +9,6 @@ const Hero = (props) => {
         <img id="logo-menu" src="https://img.icons8.com/metro/26/000000/menu.png"/>
         <Header/>
       <div className="heading-primary">
-        {}
         <h1 className="heading-primary--main">{props.title}</h1>
         <p className="heading-primary--sub">More then X jobs listed here.</p>
       </div>

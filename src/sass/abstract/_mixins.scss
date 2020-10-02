@@ -5,3 +5,11 @@
     justify-content: center;
     text-align: center;
 }
+
+@mixin centerAbsolute ($top) {
+    position: absolute;
+    top: $top;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}

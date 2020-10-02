@@ -97,6 +97,17 @@ th {
   flex-direction: column;
   justify-content: center; }
 
+.profilePhoto {
+  height: 9rem;
+  width: 9rem;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 4px solid white;
+  box-sizing: content-box; }
+
 h1, h2, h6 {
   color: var(--color-secondary-title); }
 
@@ -215,6 +226,12 @@ h1, h2, h6 {
   transform: translate(-50%, -50%);
   text-align: center;
   white-space: nowrap; }
+  .heading-primary--down {
+    position: absolute;
+    top: 64%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
 
 #logo-menu {
   position: absolute;
