@@ -110,3 +110,9 @@ th{
   color: var(--color-tertiary);
   text-transform: uppercase;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

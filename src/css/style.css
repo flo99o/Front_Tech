@@ -92,6 +92,11 @@ th {
   color: var(--color-tertiary);
   text-transform: uppercase; }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
 h1, h2, h6 {
   color: var(--color-secondary-title); }
 

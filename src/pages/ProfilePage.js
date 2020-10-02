@@ -75,6 +75,7 @@ const ProfilePage = () => {
             </div>
           </div>
         </div>
+        <button className="btn">Créer une nouvelle offre</button>
       </div>
     </div>
   );
