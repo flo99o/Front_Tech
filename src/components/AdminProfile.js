@@ -1,13 +1,19 @@
-import React from 'react'
+import React from "react";
 // components
 import Category from "../components/Category";
+import HeroProfile from "./HeroProfile";
+// photo
+import user from "../assets/user_profile/man.jpg"
+
 const AdminProfile = () => {
-    
-    return (
-        <>
-        <div className="inner--profilePage">
+
+  return (
+      <>
+      <HeroProfile photo={user} userType={'Yo les admins'}/>
+    <div className="container">
+      <div className="inner--profilePage">
         <div className="user">
-        <Category name={"Les utilisateurs"}/>
+          <Category name={"Les utilisateurs"} />
           <div className="list">
             <table>
               <thead>
@@ -29,10 +35,10 @@ const AdminProfile = () => {
               </tbody>
             </table>
           </div>
-        </div> 
+        </div>
 
         <div className="ad">
-            <Category name={"Les offres"} />
+          <Category name={"Les offres"} />
           <div className="list">
             <table>
               <thead>
@@ -52,10 +58,10 @@ const AdminProfile = () => {
             </table>
           </div>
         </div>
-        
+
         <div className="compagny">
-           <Category name={"Les compagnies"}/>
-          
+          <Category name={"Les compagnies"} />
+
           <div className="list">
             <ul>
               <li>LCL</li>
@@ -65,8 +71,9 @@ const AdminProfile = () => {
         </div>
       </div>
       <button className="btn">Créer une nouvelle offre</button>
-      </>
-    )
-}
+    </div>
+        </>
+  );
+};
 
-export default AdminProfile
+export default AdminProfile;

@@ -429,12 +429,12 @@ nav {
     nav li p {
       padding-left: 1.5rem; }
 
-.user, .ad, .compagny {
+.user, .ad, .compagny, .details, .application {
   padding: 2rem 1.5rem;
   border-bottom: 2px solid var(--color-border);
   display: flex;
   flex-direction: column; }
-  .user h2, .ad h2, .compagny h2 {
+  .user h2, .ad h2, .compagny h2, .details h2, .application h2 {
     margin-bottom: 0;
     text-align: center; }
 

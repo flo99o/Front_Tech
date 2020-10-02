@@ -2,7 +2,7 @@ import React from "react";
 //components
 import Header from "../components/Header"
 
-const HeroProfile = (props) => {
+const HeroProfile = ({photo, userType}) => {
     
   return (
     <section className="hero">
@@ -12,8 +12,8 @@ const HeroProfile = (props) => {
       />
       <Header />
       <div className="heading-primary heading-primary--down">
-          <img className="profilePhoto" src={props.photo} alt=""/>
-  <h1 className="heading-primary--main">{props.userType}</h1>
+          <img className="profilePhoto" src={photo} alt=""/>
+  <h1 className="heading-primary--main">{userType}</h1>
       </div>
       
 
