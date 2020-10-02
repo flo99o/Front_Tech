@@ -37,6 +37,34 @@ a {
 span {
   display: block; }
 
+.btn {
+  background-color: var(--color-tertiary);
+  color: var(--color-primary);
+  padding: 1rem 3rem;
+  appearance: none;
+  border: 1px solid var(--color-tertiary);
+  font-weight: bold;
+  text-transform: capitalize; }
+  .btn--transparent {
+    background-color: transparent;
+    border: 1px solid currentColor; }
+  .btn--round {
+    border-radius: 3rem;
+    -webkit-border-radius: 3rem;
+    -moz-border-radius: 3rem;
+    -ms-border-radius: 3rem;
+    -o-border-radius: 3rem; }
+
+select, input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: var(--color-secondary-placeholder);
+  border: 1px solid var(--color-border);
+  margin-bottom: 2rem;
+  padding: 1.3rem 2rem;
+  background-color: inherit; }
+
 h1, h2, h6 {
   color: var(--color-secondary-title); }
 
@@ -46,7 +74,8 @@ h1, h2, h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 2.4rem;
-    text-align: center; }
+    text-align: center;
+    line-height: 1.75; }
   .heading-primary--sub {
     font-size: 1.4rem;
     font-family: "Open Sans", sans-serif;
@@ -123,23 +152,6 @@ h1, h2, h6 {
   left: 50%;
   transform: translateX(-50%);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.15); }
-
-.job-search__btn {
-  appearance: none;
-  padding: 1rem 3rem;
-  background-color: var(--color-tertiary);
-  color: var(--color-primary);
-  border: 1px solid var(--color-tertiary); }
-
-.job-search select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  color: var(--color-secondary-placeholder);
-  border: 1px solid var(--color-border);
-  margin-bottom: 2rem;
-  padding: 1.3rem 2rem;
-  background-color: inherit; }
 
 .hero {
   position: relative;
@@ -257,6 +269,7 @@ footer {
     font-size: 19px; }
 
 nav {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -301,16 +314,38 @@ nav {
 .container--connexion {
   height: 100vh; }
 
-.signIn, .signUp {
+.signIn,
+.signUp, .create-account, .welcome-back {
   height: 50vh;
-  display: flex; }
+  display: flex;
+  justify-content: center; }
 
-.signUp {
-  background-color: var(--color-tertiary); }
-
-.inner-box {
+.signIn__form, .create-account__form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 5rem; }
+  text-align: center; }
+
+.signIn a, .create-account a {
+  margin: 2rem 0 3rem; }
+
+.signIn h1, .create-account h1 {
+  margin-bottom: 3rem; }
+
+.signUp, .welcome-back {
+  background-color: var(--color-tertiary);
+  color: var(--color-primary) !important; }
+  .signUp p, .welcome-back p {
+    letter-spacing: 0.5px;
+    margin: 2rem 0 3rem; }
+  .signUp h1, .welcome-back h1 {
+    color: inherit; }
+
+.inner-box {
+  padding: 0 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; }

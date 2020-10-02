@@ -1,22 +1,39 @@
 .container--connexion {
-    height: 100vh;
+  height: 100vh;
 }
 
-.signIn, .signUp {
-    height: 50vh;
-    display: flex;
+.signIn,
+.signUp, .create-account, .welcome-back {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
 }
 
-.signUp {
-    background-color: var(--color-tertiary);
+.signIn, .create-account {
+  &__form {
+    @include flexAllCenter;
+  }
+  & a {
+    margin: 2rem 0 3rem;
+  }
+  & h1 {
+      margin-bottom: 3rem;
+  }
+}
+
+.signUp, .welcome-back {
+  background-color: var(--color-tertiary);
+  color: var(--color-primary) !important;
+  & p {
+    letter-spacing: 0.5px;
+    margin: 2rem 0 3rem;
+  }
+  & h1 {
+      color: inherit;
+  }
 }
 
 .inner-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 5rem;
-}   
-
- 
+  padding: 0 5rem;
+  @include flexAllCenter;
+}

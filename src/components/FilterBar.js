@@ -21,7 +21,7 @@ const FilterBar = () => {
               <option value="BNP">BNP</option>
               <option value="Développeur Front-end">Développeur Front-end</option>
             </select>
-            <input className="job-search__btn" type="submit" value="Rechercher"/>
+            <input className="job-search__btn btn" type="submit" value="Rechercher"/>
           </div>
         </form>
       </div>

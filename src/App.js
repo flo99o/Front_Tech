@@ -16,7 +16,7 @@ const App = () => {
     <div className="global_container">
     <Router>
       <Switch>
-        {/* <Route exact path="/" component={Homepage} /> */}
+        <Route exact path="/" component={Homepage} />
         <Route exact path="/connexion" component={Connexion} />
       </Switch>
     </Router>

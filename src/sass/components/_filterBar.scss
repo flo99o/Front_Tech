@@ -24,21 +24,5 @@
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
     
   }
-  &__btn {
-    appearance: none;
-    padding: 1rem 3rem;
-    background-color: var(--color-tertiary);
-    color: var(--color-primary);
-    border: 1px solid var(--color-tertiary);
-  }
-  & select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    color: var(--color-secondary-placeholder);
-    border: 1px solid var(--color-border);
-    margin-bottom: 2rem;
-    padding: 1.3rem 2rem;
-    background-color: inherit;
-  }
-}
+ 
+ }
