@@ -1,11 +1,13 @@
 import React from "react";
-
+//components
 import Hero from "../components/Hero";
+//photo
+import user from "../assets/user_profile/man.jpg"
 
 const ProfilePage = () => {
   return (
     <div className="profilePage">
-      <Hero title={"Yo les Admins"} />
+      <Hero title={"Yo les Admins"} photo={user}/>
       <div className="container">
         <div className="inner--profilePage">
           <div className="user">
