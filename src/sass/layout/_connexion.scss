@@ -2,8 +2,13 @@
   height: 100vh;
 }
 
+.box {
+    position: relative;
+}
+
+
 .signIn,
-.signUp, .create-account, .welcome-back {
+.hello-friend, .create-account, .welcome-back {
   height: 50vh;
   display: flex;
   justify-content: center;
@@ -21,7 +26,7 @@
   }
 }
 
-.signUp, .welcome-back {
+.hello-friend, .welcome-back {
   background-color: var(--color-tertiary);
   color: var(--color-primary) !important;
   & p {
@@ -37,3 +42,5 @@
   padding: 0 5rem;
   @include flexAllCenter;
 }
+
+
