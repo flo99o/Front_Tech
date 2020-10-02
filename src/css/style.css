@@ -5,6 +5,7 @@
   --color-secondary-title: #45505b;
   --color-secondary-text: #272829;
   --color-secondary-placeholder:#454545;
+  --color-secondary-button:#6c757d;
   --color-tertiary: #0563bb;
   --color-border: #ededee;
   --color-fulltime: #28a745; }
@@ -17,9 +18,9 @@ body {
   font-size: 14px;
   font-family: "Open Sans", sans-serif; }
 
-section, footer {
-  padding-left: 3rem;
-  padding-right: 3rem;
+section, footer, .container {
+  padding-left: 4rem;
+  padding-right: 4rem;
   width: 100%;
   margin-left: auto;
   margin-right: auto; }
@@ -29,7 +30,9 @@ h2 {
 
 h6 {
   margin-bottom: .5rem;
-  font-family: 'Montserrat', sans-serif; }
+  line-height: 1.2;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: capitalize; }
 
 a {
   cursor: pointer; }
@@ -43,12 +46,16 @@ span {
   padding: 1rem 3rem;
   appearance: none;
   border: 1px solid var(--color-tertiary);
-  font-weight: bold;
   text-transform: capitalize; }
   .btn--transparent {
     background-color: transparent;
     border: 1px solid currentColor; }
+  .btn--grey {
+    background-color: transparent;
+    color: var(--color-secondary-button);
+    border: 1px solid currentColor; }
   .btn--round {
+    font-weight: bold;
     border-radius: 3rem;
     -webkit-border-radius: 3rem;
     -moz-border-radius: 3rem;
@@ -187,11 +194,6 @@ h1, h2, h6 {
   display: flex;
   margin-top: 2.5rem; }
 
-.latestJob {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  font-family: "Open Sans", sans-serif; }
-
 .job-list {
   display: flex;
   flex-direction: column; }
@@ -242,6 +244,42 @@ h1, h2, h6 {
 
 .compagny__place {
   color: var(--color-secondary-adress); }
+
+.jobPage__content {
+  display: flex;
+  flex-direction: column; }
+
+.jobPage__description {
+  line-height: 1.75; }
+  .jobPage__description h6 {
+    margin-top: 3rem;
+    margin-bottom: 1rem; }
+
+.jobPage__prerequisite {
+  line-height: 1.75; }
+  .jobPage__prerequisite li {
+    list-style: disc; }
+  .jobPage__prerequisite h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem; }
+
+.side-bar {
+  margin-top: 5rem; }
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  border: 1px solid #EDEDED;
+  margin-bottom: 3rem;
+  text-transform: capitalize; }
+  .inner button:first-of-type {
+    margin-bottom: 2rem; }
+
+.latestJob {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  font-family: "Open Sans", sans-serif; }
 
 header {
   position: absolute;

@@ -1,5 +1,5 @@
 @import "abstract/function";
-@import "abstract/variables";
+@import "abstract/variables"; 
 @import "abstract/mixins";
 
 @import "base/base";
@@ -9,6 +9,8 @@
 @import "components/comment";
 @import "components/filterBar";
 @import "components/hero";
+@import "components/jobList";
+@import "components/jobPage";
 @import "components/latestJob";
 
 @import "layout/header";
