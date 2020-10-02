@@ -1,0 +1,36 @@
+.user, .ad, .compagny {
+   padding: 2rem 1.5rem;
+   border-bottom: 2px solid var(--color-border);
+   display: flex;
+   flex-direction: column;
+   & h2 {
+       margin-bottom: 0;
+       text-align: center;
+   }
+}
+
+.category {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list {
+    margin-top: 2.5rem;
+    display: none;
+    font-weight: bold;
+    line-height: 1.75;
+    ul li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.inner--profilePage {
+    padding: 3rem 0;
+}
+
+.compagny > div:nth-child(2) {
+    justify-content: flex-start;
+   }
+   

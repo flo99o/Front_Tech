@@ -38,16 +38,6 @@
             margin-bottom: .8rem;
         }
 
-        & .type {
-            display: flex;
-            align-self: end;
-            padding: .5rem .8rem;
-            text-transform: capitalize;
-            color: var(--color-primary);
-            max-width: max-content;
-            background-color: var(--color-fulltime);
-        }
-
     }
     &__info {
         margin-top: 1rem;

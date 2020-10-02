@@ -45,7 +45,7 @@ a {
 }
 
 span {
-  display: block;
+  display: inline-block;
 }
 
 .btn {
@@ -85,4 +85,28 @@ select, input {
   margin-bottom: 2rem;
   padding: 1.3rem 2rem;
   background-color: inherit;
+}
+
+.type {
+  display: flex;
+            align-self: end;
+            padding: .5rem .8rem;
+            text-transform: capitalize;
+            color: var(--color-primary);
+            max-width: max-content;
+            background-color: var(--color-fulltime);
+}
+
+// Table properties
+table {
+  width: 100%;
+}
+tr,thead {
+  text-align: center;
+}
+
+th{
+  min-width: 72px;
+  color: var(--color-tertiary);
+  text-transform: uppercase;
 }

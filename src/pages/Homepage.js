@@ -13,7 +13,6 @@ import NavBar from '../components/Navbar'
             <FilterBar />
             <LatestJob/>
             <Comment/>
-            <Footer/>
         </div>
     )
 }

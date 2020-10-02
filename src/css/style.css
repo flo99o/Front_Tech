@@ -38,7 +38,7 @@ a {
   cursor: pointer; }
 
 span {
-  display: block; }
+  display: inline-block; }
 
 .btn {
   background-color: var(--color-tertiary);
@@ -71,6 +71,26 @@ select, input {
   margin-bottom: 2rem;
   padding: 1.3rem 2rem;
   background-color: inherit; }
+
+.type {
+  display: flex;
+  align-self: end;
+  padding: .5rem .8rem;
+  text-transform: capitalize;
+  color: var(--color-primary);
+  max-width: max-content;
+  background-color: var(--color-fulltime); }
+
+table {
+  width: 100%; }
+
+tr, thead {
+  text-align: center; }
+
+th {
+  min-width: 72px;
+  color: var(--color-tertiary);
+  text-transform: uppercase; }
 
 h1, h2, h6 {
   color: var(--color-secondary-title); }
@@ -224,14 +244,6 @@ h1, h2, h6 {
     .job-list__contract .salary {
       font-family: "Open Sans", sans-serif;
       margin-bottom: .8rem; }
-    .job-list__contract .type {
-      display: flex;
-      align-self: end;
-      padding: .5rem .8rem;
-      text-transform: capitalize;
-      color: var(--color-primary);
-      max-width: max-content;
-      background-color: var(--color-fulltime); }
   .job-list__info {
     margin-top: 1rem;
     flex: 0 0 100%; }
@@ -280,6 +292,48 @@ h1, h2, h6 {
   padding-top: 6rem;
   padding-bottom: 6rem;
   font-family: "Open Sans", sans-serif; }
+
+.container--connexion {
+  height: 100vh; }
+
+.box {
+  position: relative; }
+
+.signIn,
+.hello-friend, .create-account, .welcome-back {
+  height: 50vh;
+  display: flex;
+  justify-content: center; }
+
+.signIn__form, .create-account__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; }
+
+.signIn a, .create-account a {
+  margin: 2rem 0 3rem; }
+
+.signIn h1, .create-account h1 {
+  margin-bottom: 3rem; }
+
+.hello-friend, .welcome-back {
+  background-color: var(--color-tertiary);
+  color: var(--color-primary) !important; }
+  .hello-friend p, .welcome-back p {
+    letter-spacing: 0.5px;
+    margin: 2rem 0 3rem; }
+  .hello-friend h1, .welcome-back h1 {
+    color: inherit; }
+
+.inner-box {
+  padding: 0 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; }
 
 header {
   position: absolute;
@@ -349,44 +403,31 @@ nav {
     nav li p {
       padding-left: 1.5rem; }
 
-.container--connexion {
-  height: 100vh; }
-
-.box {
-  position: relative; }
-
-.signIn,
-.hello-friend, .create-account, .welcome-back {
-  height: 50vh;
+.user, .ad, .compagny {
+  padding: 2rem 1.5rem;
+  border-bottom: 2px solid var(--color-border);
   display: flex;
-  justify-content: center; }
+  flex-direction: column; }
+  .user h2, .ad h2, .compagny h2 {
+    margin-bottom: 0;
+    text-align: center; }
 
-.signIn__form, .create-account__form {
+.category {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center; }
+  justify-content: space-between; }
 
-.signIn a, .create-account a {
-  margin: 2rem 0 3rem; }
+.list {
+  margin-top: 2.5rem;
+  display: none;
+  font-weight: bold;
+  line-height: 1.75; }
+  .list ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
 
-.signIn h1, .create-account h1 {
-  margin-bottom: 3rem; }
+.inner--profilePage {
+  padding: 3rem 0; }
 
-.hello-friend, .welcome-back {
-  background-color: var(--color-tertiary);
-  color: var(--color-primary) !important; }
-  .hello-friend p, .welcome-back p {
-    letter-spacing: 0.5px;
-    margin: 2rem 0 3rem; }
-  .hello-friend h1, .welcome-back h1 {
-    color: inherit; }
-
-.inner-box {
-  padding: 0 5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center; }
+.compagny > div:nth-child(2) {
+  justify-content: flex-start; }
