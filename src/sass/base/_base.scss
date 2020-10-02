@@ -4,6 +4,7 @@
 --color-secondary-title: #45505b;
 --color-secondary-text: #272829;
 --color-secondary-placeholder:#454545;
+--color-secondary-button:#6c757d;
 --color-tertiary: #0563bb;
 --color-border: #ededee;
 --color-fulltime: #28a745;
@@ -20,9 +21,9 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-section,footer {
-  padding-left: 3rem;
-  padding-right: 3rem;
+section, footer, .container {
+  padding-left: 4rem;
+  padding-right: 4rem;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -34,7 +35,9 @@ h2 {
 
 h6 {
   margin-bottom: .5rem;
-  font-family:'Montserrat', sans-serif; ;
+  line-height: 1.2;
+  font-family:'Montserrat', sans-serif;
+  text-transform: capitalize;
 }
 
 a {
@@ -51,13 +54,18 @@ span {
   padding: 1rem 3rem;
   appearance: none;
   border: 1px solid var(--color-tertiary);
-  font-weight: bold;
   text-transform: capitalize;
   &--transparent{
     background-color: transparent;
     border: 1px solid currentColor;
   }
+  &--grey{
+    background-color: transparent;
+    color:var(--color-secondary-button);
+    border: 1px solid currentColor;
+  }
   &--round {
+    font-weight: bold;
     border-radius: 3rem;
     -webkit-border-radius: 3rem;
     -moz-border-radius: 3rem;
