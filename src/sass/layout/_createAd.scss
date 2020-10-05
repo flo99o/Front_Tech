@@ -1,0 +1,16 @@
+.createAd-form {
+    &__inner{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    }
+    &__block {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.4rem;
+        line-height: 2;
+        font-weight: bold;
+        color: var(--color-tertiary);
+    }
+    
+}

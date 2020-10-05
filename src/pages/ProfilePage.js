@@ -6,14 +6,16 @@ import UserProfile from'../components/UserProfile'
 //photo
 
 import AdminProfile from "../components/AdminProfile";
+import CompagnyProfile from "../components/CompagnyProfile";
 
-const ProfilePage = (p) => {
+const ProfilePage = () => {
   return (
     <div className="profilePage">
      
       
         <AdminProfile />
         <UserProfile />
+        <CompagnyProfile />
       
     </div>
   );

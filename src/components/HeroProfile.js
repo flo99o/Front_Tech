@@ -13,7 +13,7 @@ const HeroProfile = ({photo, userType}) => {
       <Header />
       <div className="heading-primary heading-primary--down">
           <img className="profilePhoto" src={photo} alt=""/>
-  <h1 className="heading-primary--main">{userType}</h1>
+        <h1 className="heading-primary--main">{userType}</h1>
       </div>
       
 

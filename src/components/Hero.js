@@ -3,14 +3,14 @@ import React from "react";
 import Header from "./Header";
 
 
-const Hero = (props) => {
+const Hero = ({title, subtitle}) => {
   return (
     <section className="hero">
         <img id="logo-menu" src="https://img.icons8.com/metro/26/000000/menu.png"/>
         <Header/>
       <div className="heading-primary">
-        <h1 className="heading-primary--main">{props.title}</h1>
-        <p className="heading-primary--sub">More then X jobs listed here.</p>
+        <h1 className="heading-primary--main">{title}</h1>
+  <p className="heading-primary--sub">{subtitle}</p>
       </div>
     </section>
       
@@ -18,7 +18,8 @@ const Hero = (props) => {
 };
 
 Hero.defaultProps = {
-  title: 'Find Your Next Job'
+  title: 'Trouver votre prochain job',
+  subtitle : 'parmis nos X jobs.'
 }
 
 export default Hero;
