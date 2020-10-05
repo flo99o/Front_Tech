@@ -67,6 +67,7 @@ const CreateAd = () => {
                 max="10000"
                 value="1500"
               />
+              
             </p>
             <p className="createAd-form__block">
               <label for="deadline">Date limite de candidature</label>
