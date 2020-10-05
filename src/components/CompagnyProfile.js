@@ -1,6 +1,7 @@
 import React from 'react'
 //components
 import HeroProfile from './HeroProfile'
+import Button from './Button'
 //assets
 import logo from '../assets/logo_entreprise/lcl.png'
 import Category from './Category'
@@ -33,7 +34,7 @@ const CompagnyProfile = () => {
           </div>
          
                     </div>
-                    <button className="btn">Créer une nouvelle offre</button>
+                    <Button className={"btn"} value={"Créer une nouvelle offre"}/>
                 </div>
             </div>
         </>

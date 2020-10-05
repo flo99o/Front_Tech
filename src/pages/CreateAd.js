@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../components/Button";
 import Hero from "../components/Hero";
 
 const CreateAd = () => {
@@ -71,6 +72,7 @@ const CreateAd = () => {
               <label for="deadline">Date limite de candidature</label>
               <input type="date" name="deadline" id="deadline" />
             </p>
+          <Button className={"btn"} value={"Créer l'offre"} />
           </div>
         </form>
       </div>

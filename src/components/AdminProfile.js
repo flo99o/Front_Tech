@@ -4,6 +4,7 @@ import Category from "../components/Category";
 import HeroProfile from "./HeroProfile";
 // photo
 import user from "../assets/user_profile/man.jpg"
+import Button from "./Button";
 
 const AdminProfile = () => {
 
@@ -70,7 +71,7 @@ const AdminProfile = () => {
           </div>
         </div>
       </div>
-      <button className="btn">Créer une nouvelle offre</button>
+      <Button className={"btn"} value={"Créer une nouvelle offre"}/>
     </div>
         </>
   );

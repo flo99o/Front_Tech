@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../components/Button";
 import Hero from "../components/Hero";
 import JobList from "../components/JobList";
 
@@ -42,6 +43,8 @@ const JobPage = () => {
               <div className="inner">
                 <button className="btn btn--grey">save job</button>
                 <button className="btn">Candidater</button>
+                <Button className={"btn btn--grey"} value={"Sauvegarder l'offre"} />
+                <Button className={"btn"} value={"Postuler"} />
               </div>
             </div>
           </div>
