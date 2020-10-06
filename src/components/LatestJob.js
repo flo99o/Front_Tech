@@ -3,7 +3,11 @@ import JobList from './JobList'
 
 
 
+
 const LatestJob = () => {
+
+    // Store latestJob from BDD
+
     return (
         <section className="latestJob">
             <div className="heading-secondary">
