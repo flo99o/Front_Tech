@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-//photo
-import lcl from "../assets/logo_entreprise/lcl.png";
+
 
 const JobList = () => {
   const [getLatestJob, setGetLatestJob] = useState([]);

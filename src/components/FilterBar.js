@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const FilterBar = () => {
+const [getValuesFilter, setGetValuesFilter] = useState([]
+  )
+  
+  useEffect(() => {
+    const getValuesFilter = async () => {
+      const url = `http://localhost:5000/users/getValuesFilter`;
+      const result = await axios.get(url);
+      setGetValuesFilter(result.data);
+    };
+    getValuesFilter();
+  }, []);
+
   return (
     <section className="filterBar">
       <div className="job-search">
@@ -8,18 +21,21 @@ const FilterBar = () => {
           <div className="job-search__filter">
             <select name="job" id="job-select">
               <option value="" selected disabled hidden>Métier</option>
-              <option value="Designer">Designer</option>
-              <option value="Développeur Front-end">Développeur Front-end</option>
+              {getValuesFilter.map(item => (
+                <option value={item.title}>{item.title}</option>
+              ))}
             </select>
             <select name="location" id="location-select">
               <option value="" selected disabled hidden>Lieu</option>
-              <option value="75000">Paris</option>
-              <option value="94000">Ivry-sur-seine</option>
+              {getValuesFilter.map(item => (
+                <option value={item.ville}>{item.ville}</option>
+              ))}
             </select>
             <select name="compagn" id="compagny-select">
               <option value="" selected disabled hidden>Entreprise</option>
-              <option value="BNP">BNP</option>
-              <option value="Développeur Front-end">Développeur Front-end</option>
+              {getValuesFilter.map(item => (
+                <option value={item.compagny_name}>{item.compagny_name}</option>
+              ))}
             </select>
             <input className="job-search__btn btn" type="submit" value="Rechercher"/>
           </div>
