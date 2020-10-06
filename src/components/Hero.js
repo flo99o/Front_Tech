@@ -18,7 +18,7 @@ const Hero = ({title, subtitle}) => {
 };
 
 Hero.defaultProps = {
-  title: 'Trouver votre prochain job',
+  title: 'Find your next job',
   subtitle : 'parmis nos X jobs.'
 }
 

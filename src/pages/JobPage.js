@@ -41,9 +41,7 @@ const JobPage = () => {
           <div className="side-bar">
             <div className="widget">
               <div className="inner">
-                <button className="btn btn--grey">save job</button>
-                <button className="btn">Candidater</button>
-                <Button className={"btn btn--grey"} value={"Sauvegarder l'offre"} />
+                <Button className={"btn btn--grey"} value={"Sauvegarder"} />
                 <Button className={"btn"} value={"Postuler"} />
               </div>
             </div>
