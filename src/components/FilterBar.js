@@ -21,20 +21,20 @@ const [getValuesFilter, setGetValuesFilter] = useState([]
           <div className="job-search__filter">
             <select name="job" id="job-select">
               <option value="" selected disabled hidden>Métier</option>
-              {getValuesFilter.map(item => (
-                <option value={item.title}>{item.title}</option>
+              {getValuesFilter.map((item, index) => (
+                <option key={index} value={item.title}>{item.title}</option>
               ))}
             </select>
             <select name="location" id="location-select">
               <option value="" selected disabled hidden>Lieu</option>
-              {getValuesFilter.map(item => (
-                <option value={item.ville}>{item.ville}</option>
+              {getValuesFilter.map((item, index)  => (
+                <option key={index} value={item.ville}>{item.ville}</option>
               ))}
             </select>
             <select name="compagn" id="compagny-select">
               <option value="" selected disabled hidden>Entreprise</option>
-              {getValuesFilter.map(item => (
-                <option value={item.compagny_name}>{item.compagny_name}</option>
+              {getValuesFilter.map((item, index)  => (
+                <option key={index} value={item.compagny_name}>{item.compagny_name}</option>
               ))}
             </select>
             <input className="job-search__btn btn" type="submit" value="Rechercher"/>

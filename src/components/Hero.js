@@ -6,7 +6,7 @@ import Header from "./Header";
 const Hero = ({title, subtitle}) => {
   return (
     <section className="hero">
-        <img id="logo-menu" src="https://img.icons8.com/metro/26/000000/menu.png"/>
+        <img id="logo-menu" src="https://img.icons8.com/metro/26/000000/menu.png" alt="menu logo" />
         <Header/>
       <div className="heading-primary">
         <h1 className="heading-primary--main">{title}</h1>

@@ -18,7 +18,7 @@ const JobPage = (props) => {
       setDescriptionJob(result.data);
     };
     getDescriptionJob();
-  }, []);
+  }, [id]);
 
   const titleJob = descriptionJob.map((item) => item.title);
 

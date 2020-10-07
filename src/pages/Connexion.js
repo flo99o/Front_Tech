@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const UserPage = () => {
   return (
@@ -12,7 +12,7 @@ const UserPage = () => {
                 {/* <span>or use your account</span> */}
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
-                <a href="#">Forgot your password?</a>
+                {/* <a href="">Forgot your password?</a> */}
                 <button className="btn btn--round">Sign In</button>
               </form>
             </div>
