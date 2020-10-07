@@ -1,52 +1,58 @@
-import React from "react";
-import Button from "../components/Button";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import DescriptionJob from "../components/DescriptionJob";
 import Hero from "../components/Hero";
-import JobList from "../components/JobList";
+import JobContent from "../components/JobContent";
 
-const JobPage = () => {
-  const title = "Full Stack développeur";
+const JobPage = (props) => {
+  // Get params' id
+  const id = props.match.params.id;
+
+  //stock datas for DB
+  const [descriptionJob, setDescriptionJob] = useState([{}]);
+
+  useEffect(() => {
+    const getDescriptionJob = async () => {
+      const url = `http://localhost:5000/users/GetOffer/${id}`;
+      const result = await axios.get(url);
+      setDescriptionJob(result.data);
+    };
+    getDescriptionJob();
+  }, []);
+
+  const titleJob = descriptionJob.map((item) => item.title);
+
   return (
     <div className="jobPage">
-      <Hero title={title} />
+      <Hero title={titleJob} />
       <div className="container">
-        <JobList />
-        <div className="jobpage__content">
-          <div className="jobPage__description">
-            <h6>Job description</h6>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-              veritatis labore eos nihil consectetur fugiat harum adipisci.
-              Fugiat velit molestias quidem ipsa, tempora nisi autem delectus
-              repellat? Perferendis, saepe praesentium.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-              deleniti perspiciatis voluptatem quisquam itaque modi quasi
-              cupiditate sequi fuga aliquam laboriosam vero voluptates, nostrum
-              nemo? Recusandae provident aliquam fuga eveniet.
-            </p>
-          </div>
-          <div className="jobPage__prerequisite">
-            <h6>Pré Requis</h6>
-            <ul>
-              <li>Expérience de plus de 2 ans</li>
-              <li>Maitrise React et Nodejs</li>
-              <li>Autonome et proactive</li>
-              <li>Appétence pour le design</li>
-              <li>Sait travailler sous la pression</li>
-              <li>Bac +3</li>
-              <li>Peut fournir des référence</li>
-            </ul>
-          </div>
-          <div className="side-bar">
-            <div className="widget">
-              <div className="inner">
-                <Button className={"btn btn--grey"} value={"Sauvegarder"} />
-                <Button className={"btn"} value={"Postuler"} />
-              </div>
-            </div>
-          </div>
-        </div>
+        {descriptionJob.map((item) => (
+          <DescriptionJob
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            image={item.image}
+            wage={item.wage}
+            type={item.type}
+            compagny_name={item.compagny_name}
+            ville={item.ville}
+          />
+        ))}
+        {descriptionJob.map((item) => (
+          <JobContent
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            image={item.image}
+            wage={item.wage}
+            type={item.type}
+            compagny_name={item.compagny_name}
+            ville={item.ville}
+            description_compagny={item.description_compagny}
+            description_position={item.description_position}
+            prerequisite={item.prerequisite}
+          />
+        ))}
       </div>
     </div>
   );

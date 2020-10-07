@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import DescriptionJob from "./DescriptionJob";
 
 
 const JobList = () => {
@@ -14,27 +15,22 @@ const JobList = () => {
     getLatestJob();
   }, []);
 
-  console.log(getLatestJob);
 
   return (
     <div className="job-list">
      
           {getLatestJob.map(item => (
-             <a key={item.id} href="" className="job-list__item">
-             <div className="job-list__photo">
-               <img src={item.image} />
-             </div>
-             <div className="job-list__contract">  <span className="salary">{item.wage}€</span>
-          <span className="type">{item.type}</span>
-        </div>
-        <div className="job-list__info">
-          <h6 className="name-job">{item.title}</h6>
-          <ul className="compagny__info">
-            <li className="compagny__name">{item.compagny_name}</li>
-            <li className="compagny__place">{item.ville}</li>
-          </ul>
-        </div>
-      </a>
+             <DescriptionJob
+              key={item.id}
+              id={item.id}
+              image={item.image}
+              wage={item.wage}
+              type={item.type}
+              title={item.title}
+              compagny_name={item.compagny_name}
+              ville={item.ville}
+             />
+            
           ))}
         
     </div>
