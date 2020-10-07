@@ -1,16 +1,16 @@
 import React from "react";
+// photo
+import user from "../assets/user_profile/man.jpg"
 // components
 import Category from "../components/Category";
 import HeroProfile from "./HeroProfile";
-// photo
-import user from "../assets/user_profile/man.jpg"
 import Button from "./Button";
 
 const AdminProfile = () => {
 
   return (
       <>
-      <HeroProfile photo={user} userType={'Yo les admins'}/>
+    <HeroProfile photo={user} userType={'Yo les admins'}/>
     <div className="container">
       <div className="inner--profilePage">
         <div className="user">
@@ -62,7 +62,6 @@ const AdminProfile = () => {
 
         <div className="compagny">
           <Category name={"Les compagnies"} />
-
           <div className="list">
             <ul>
               <li>LCL</li>

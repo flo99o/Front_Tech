@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom'
+//components
 import Button from "../components/Button";
 
 const JobContent = (props) => {
@@ -21,7 +23,11 @@ const JobContent = (props) => {
         <div className="widget">
           <div className="inner">
             <Button className={"btn btn--grey"} value={"Sauvegarder"} />
-            <Button className={"btn"} value={"Postuler"} />
+            <Link to={"/apply"} className="btn" >Postuler
+            
+            
+
+            </Link>
           </div>
         </div>
       </div>
