@@ -70,7 +70,7 @@ const AdminProfile = () => {
                 <tr>
                   <td>{offer.title}</td>
                   <td>{offer.compagny_name}</td>
-                  <td>{offer.type}</td>
+                  <td>{offer.contract}</td>
                 </tr>
                 ))}
               </tbody>

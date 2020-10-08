@@ -20,7 +20,7 @@ const JobPage = (props) => {
     getDescriptionJob();
   }, [id]);
 
-  const titleJob = descriptionJob.map((item) => item.title);
+  const titleJob = descriptionJob.map((item) => item.job_name);
 
   return (
     <div className="jobPage">
@@ -30,24 +30,24 @@ const JobPage = (props) => {
           <DescriptionJob
             key={item.id}
             id={item.id}
-            title={item.title}
-            image={item.image}
+            job_name={item.job_name}
+            logo={item.logo}
             wage={item.wage}
-            type={item.type}
+            contract={item.contract}
             compagny_name={item.compagny_name}
-            ville={item.ville}
+            location={item.location}
           />
         ))}
         {descriptionJob.map((item) => (
           <JobContent
             key={item.id}
             id={item.id}
-            title={item.title}
-            image={item.image}
+            job_name={item.job_name}
+            logo={item.logo}
             wage={item.wage}
-            type={item.type}
+            contract={item.contract}
             compagny_name={item.compagny_name}
-            ville={item.ville}
+            location={item.location}
             description_compagny={item.description_compagny}
             description_position={item.description_position}
             prerequisite={item.prerequisite}

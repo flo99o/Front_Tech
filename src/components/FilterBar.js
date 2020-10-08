@@ -22,13 +22,13 @@ const [getValuesFilter, setGetValuesFilter] = useState([]
             <select name="job" id="job-select">
               <option value="" selected disabled hidden>Métier</option>
               {getValuesFilter.map((item, index) => (
-                <option key={index} value={item.title}>{item.title}</option>
+                <option key={index} value={item.job_name}>{item.job_name}</option>
               ))}
             </select>
             <select name="location" id="location-select">
               <option value="" selected disabled hidden>Lieu</option>
               {getValuesFilter.map((item, index)  => (
-                <option key={index} value={item.ville}>{item.ville}</option>
+                <option key={index} value={item.location}>{item.location}</option>
               ))}
             </select>
             <select name="compagn" id="compagny-select">

@@ -6,6 +6,7 @@ import DescriptionJob from "./DescriptionJob";
 const JobList = (props) => {
   //stock datas from DB
   const [getLatestJob, setGetLatestJob] = useState([]);
+  console.log('getLatestJob:', getLatestJob)
 
   useEffect(() => {
     const getLatestJob = async () => {
@@ -16,18 +17,20 @@ const JobList = (props) => {
     getLatestJob();
   }, []);
 
+  
+
   return (
     <div className="job-list">
       {getLatestJob.map((item) => (
         <DescriptionJob
-          key={item.id}
-          idJob={item.id}
-          image={item.image}
+          key={item.idOffers}
+          idJob={item.idOffers}
+          logo={item.logo}
           wage={item.wage}
-          type={item.type}
-          title={item.title}
+          contract={item.contract}
+          job_name={item.job_name}
           compagny_name={item.compagny_name}
-          ville={item.ville}
+          location={item.location}
         />
       ))}
     </div>

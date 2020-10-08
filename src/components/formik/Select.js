@@ -10,7 +10,7 @@ const Select = (props) => {
         <div className="createAd-form__block">
             <label htmlFor={name}>{label}</label>
             <Field as="select" id={name} name={name} {...rest}>
-                {
+                {     
                     options.map(option => {
                         return (
                             <option key={option.value} value={option.value} selected={option.selected} hidden={option.hidden} disabled={option.disabled}>
