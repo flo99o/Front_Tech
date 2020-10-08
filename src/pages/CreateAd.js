@@ -1,97 +1,114 @@
-import React, { useState } from "react";
+import React from "react";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
 //components
-import Button from "../components/Button";
+import FormikControl from "../components/formik/FormikControl";
 import Hero from "../components/Hero";
-//Editor
-import CKEditor from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import Button from "../components/Button"
 
-const CreateAd = () => {
-  const [addData, setVal] = useState("");
-  const [addedData, showData] = useState(0);
-
-  const handlechange = (e) => {
-      console.log(e.target.value);
-  }
+const CreatedAd = () => {
+  const dropdownOptionsJob = [
+    {
+      key: "Choissisez un métier",
+      value: "",
+      selected: true,
+      hidden: true,
+      disabled: true,
+    },
+    { key: "Développeur frontend", value: "Développeur frontend" },
+    { key: "Développeur backend", value: "Développeur backend" },
+    { key: "Designer", value: "Designer" },
+  ];
+  const initialValues = {
+    job_name: "",
+    name: "",
+    desc_compagny: "",
+    desc_position: "",
+    supervisor: "",
+    wage: "",
+    limit_date: null,
+  };
+  const validationSchema = Yup.object({
+    job_name: Yup.string().required("Obligatoire !"),
+    name: Yup.string().required("Obligatoire!"),
+    desc_compagny: Yup.string().required("Obligatoire !"),
+    desc_position: Yup.string().required("Obligatoire !"),
+    supervisor: Yup.string().required("Obligatoire"),
+    //wage: Yup.number().required('Obligatoire'),
+    limit_date: Yup.date().required("Obligatoire").nullable(),
+  });
+  const onSubmit = (values) => {
+    console.log("Form data: ", values);
+    console.log("Saved data: ", JSON.parse(JSON.stringify(values)));
+  };
   return (
     <div className="createAd">
       <Hero title={"Créer une offre"} subtitle={""} />
       <div className="form-box">
-        <form action="" className="createAd-form">
-          <div className="createAd-form__inner">
-            <p className="createAd-form__block">
-              <label for="title">Titre de l'annonce</label>
-              <input
-                type="text"
-                name="title"
-                id="title"
-                placeholder="Donner un titre à votre annonce"
-              />
-            </p>
-            <p className="createAd-form__block">
-              <label for="name-compagny">Nom de l'entreprise</label>
-              <input
-                type="text"
-                name="name-compagny"
-                id="name-compagny"
-                placeholder="Tape le nom de l'entreprise"
-              />
-            </p>
-            <p className="createAd-form__block">
-              <label for="description">Description de l'entreprise</label>
-              <textarea
-                name="compagny"
-                id="description"
-                placeholder="Ecrivez une courte description de votre entreprise"
-                onChange={handlechange}
-              />
-            </p>
-            <p className="createAd-form__block">
-              <label for="position">Description du poste</label>
-              <textarea
-                name="position"
-                id="position"
-                placeholder="Ecrivez une description du poste"
-              />
-            </p>
-            <p className="createAd-form__block">
-              <label for="profile">Profil recherché</label>
-              <textarea
-                name="profile"
-                id="profile"
-                placeholder="Décrivez les prérequis pour le poste"
-              ></textarea>
-            </p>
-            <p className="createAd-form__block">
-              <label for="supervisor">Responsable</label>
-              <input
-                type="text"
-                id="supervisor"
-                name="supervisor"
-                placeholder="Le nom de la personne à contacter"
-              />
-            </p>
-            <p className="createAd-form__block">
-              <label for="wage">Salaire :</label>
-              <input
-                type="range"
-                id="wage"
-                name="wage"
-                min="0"
-                max="10000"
-                value="1500"
-              />
-            </p>
-            <p className="createAd-form__block">
-              <label for="deadline">Date limite de candidature</label>
-              <input type="date" name="deadline" id="deadline" />
-            </p>
-            <Button className={"btn"} value={"Créer l'offre"} />
-          </div>
-        </form>
+
+      
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        {(formik) => (
+          <Form className="createAd-form">
+              <div className="createAd-form__inner">
+
+              
+            <FormikControl
+              control="select"
+              label="Métier"
+              name="job_name"
+              options={dropdownOptionsJob}
+            />
+            <FormikControl
+              control="input"
+              type="text"
+              label="Nom de l'entreprise"
+              name="name"
+              placeholder="Entrez le nom de votre Entreprise"
+            />
+            <FormikControl
+              control="textarea"
+              label="Description de l'entreprise"
+              name="desc_compagny"
+              placeholder="Ecrivez une courte description de votre entreprise"
+            />
+            <FormikControl
+              control="textarea"
+              label="Description du poste"
+              name="desc_position"
+              placeholder="Décrivez le poste"
+            />
+            <FormikControl
+              control="input"
+              label="Nom du responsable"
+              name="supervisor"
+              placeholder="Nom de la personne en charge du recrutement"
+            />
+            <FormikControl
+              control="input"
+              type="range"
+              label="Salaire (par mois)"
+              name="wage"
+              min="500"
+              max="8000"
+            />
+            <FormikControl
+              control="date"
+              label="date limite de candidature"
+              name="limit_date"
+            />
+             <Button type="submit" className={"btn"} value={"Créer l'offre"} />
+            </div>
+          </Form>
+        )}
+      </Formik>
       </div>
     </div>
   );
 };
 
-export default CreateAd;
+export default CreatedAd;

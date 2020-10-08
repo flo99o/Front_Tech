@@ -8,7 +8,7 @@ import TextError from "./TextError";
 const DatePicker = (props) => {
     const { label, name,...rest} = props
     return(
-<div>
+<div className="createAd-form__block">
     <label htmlFor={name}>{label}</label>
     <Field name={name}>
       {({ form, field }) => {

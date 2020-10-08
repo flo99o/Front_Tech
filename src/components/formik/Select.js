@@ -7,7 +7,7 @@ import TextError from './TextError'
 const Select = (props) => {
     const {label, name, options, ...rest} = props
     return (
-        <div>
+        <div className="createAd-form__block">
             <label htmlFor={name}>{label}</label>
             <Field as="select" id={name} name={name} {...rest}>
                 {

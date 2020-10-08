@@ -13,7 +13,6 @@ import Footer from './components/Footer'
 import ProfilePage from './pages/ProfilePage'
 import CreateAd from './pages/CreateAd'
 import ApplicationForm from './pages/ApplicationForm'
-import FormikContainer from './components/formik/FormikContainer'
 
 const App = () => {
 
@@ -29,7 +28,6 @@ const App = () => {
         <Route exact path="/apply" component={ApplicationForm} />
       </Switch>
     </Router>
-    <FormikContainer />
     <Footer/>
     </div>
   )
