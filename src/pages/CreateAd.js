@@ -1,14 +1,20 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import axios from 'axios'
+import axios from "axios";
 //components
 import FormikControl from "../components/formik/FormikControl";
 import Hero from "../components/Hero";
 import Button from "../components/Button";
-import { useState } from "react";
+
 
 const CreatedAd = () => {
+
+  const compagny_name = "LCL"
+
+ 
+  ///////////////////////////////// FORMIK variables
+
   //for job_name select element
   const dropdownOptionsJob = [
     {
@@ -38,31 +44,24 @@ const CreatedAd = () => {
   ];
   const initialValues = {
     job_name: "",
-    compagny_name: "",
-    desc_compagny: "",
     desc_position: "",
-    supervisor: "",
     location: "",
     wage: "",
     contract: "",
-    logo:""
+    prerequisite:"",
   };
   const validationSchema = Yup.object({
     job_name: Yup.string().required("Obligatoire !"),
-    compagny_name: Yup.string().required("Obligatoire!"),
-    desc_compagny: Yup.string().required("Obligatoire !"),
     desc_position: Yup.string().required("Obligatoire !"),
-    supervisor: Yup.string().required("Obligatoire !"),
     //wage: Yup.string().required('Obligatoire !'),
     location: Yup.string().required("Obligatoire !"),
     contract: Yup.string().required("Obligatoire !"),
   });
-  const onSubmit = async (values, onSubmitProps) =>  {
-    const url = 'http://localhost:5000/admin/offers'
-    await axios.post(url,values)
-    //onSubmitProps.resetForm()
+  const onSubmit = async (values, onSubmitProps) => {
+    const url = "http://localhost:5000/compagny/createad";
+    await axios.post(url, {...values, compagny_name});
+    onSubmitProps.resetForm()
   };
-  
 
   return (
     <div className="createAd">
@@ -83,31 +82,18 @@ const CreatedAd = () => {
                   name="job_name"
                   options={dropdownOptionsJob}
                 />
-                <FormikControl
-                  control="input"
-                  type="text"
-                  label="Nom de l'entreprise"
-                  name="compagny_name"
-                  placeholder="Entrez le nom de votre Entreprise"
-                />
-                <FormikControl
-                  control="textarea"
-                  label="Description de l'entreprise"
-                  name="desc_compagny"
-                  placeholder="Ecrivez une courte description de votre entreprise"
-                />
-                <FormikControl
-                  control="input"
-                  type="text"
-                  label="Logo de l'entreprise"
-                  name="logo"
-                  placeholder="saisissez l'url de l'adresse du logo "
-                />
+              
                 <FormikControl
                   control="textarea"
                   label="Description du poste"
                   name="desc_position"
                   placeholder="Décrivez le poste"
+                />
+                 <FormikControl
+                  control="textarea"
+                  label="Pré-requis"
+                  name="prerequisite"
+                  placeholder="Quels sont les pré-requis pour le poste"
                 />
                 <FormikControl
                   control="select"
@@ -117,17 +103,12 @@ const CreatedAd = () => {
                 />
                 <FormikControl
                   control="input"
-                  label="Nom du responsable"
-                  name="supervisor"
-                  placeholder="Nom de la personne en charge du recrutement"
-                />
-                <FormikControl
-                  control="input"
                   type="range"
                   label="Salaire (par mois)"
                   name="wage"
                   min="500"
                   max="8000"
+                  step="100"
                 />
                 <FormikControl
                   control="input"

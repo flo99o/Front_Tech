@@ -12,7 +12,7 @@ const DescriptionJob = (props) => {
 
   useEffect(() => {
     const getFurtherDetails = async () => {
-      const url = `http://localhost:5000/users/GetOffer/${idJob}`;
+      const url = `http://localhost:5000/users/getOffer/${idJob}`;
       const result = await axios.get(url);
       setFurtherDetails(result.data);
     };

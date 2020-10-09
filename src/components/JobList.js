@@ -5,26 +5,26 @@ import DescriptionJob from "./DescriptionJob";
 
 const JobList = (props) => {
   //stock datas from DB
-  const [getLatestJob, setGetLatestJob] = useState([]);
-  console.log('getLatestJob:', getLatestJob)
+  const [offers, setOffers] = useState([]);
+  console.log('offers:', offers)
 
   useEffect(() => {
-    const getLatestJob = async () => {
-      const url = "http://localhost:5000/users/getLatestjobs";
+    const getOffers = async () => {
+      const url = "http://localhost:5000/users/getOffers"; //change users with allpeople
       const result = await axios.get(url);
-      setGetLatestJob(result.data);
+      setOffers(result.data);
     };
-    getLatestJob();
+    getOffers();
   }, []);
 
   
 
   return (
     <div className="job-list">
-      {getLatestJob.map((item) => (
+      {offers.map((item) => (
         <DescriptionJob
-          key={item.idOffers}
-          idJob={item.idOffers}
+          key={item.offerID}
+          idJob={item.offerID}
           logo={item.logo}
           wage={item.wage}
           contract={item.contract}

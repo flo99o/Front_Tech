@@ -66,3 +66,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### Modification
+
+(login) => changer la variable une fois que le login est opérationnelle
+
+(state) => changer la variable une fois que react contexte est opérationnelle
+
+(allpeopl) => changer le type de route par allpeople
