@@ -3,11 +3,18 @@ import axios from "axios";
 import JobContent from "./JobContent";
 
 const DescriptionJob = (props) => {
-  const { idJob, logo, wage, contract, job_name, compagny_name, location } = props;
+  const {
+    idJob,
+    logo,
+    wage,
+    contract,
+    job_name,
+    compagny_name,
+    location,
+  } = props;
 
   // stock details of ad
   const [furtherDetails, setFurtherDetails] = useState([]);
-  console.log('furtherDetails:', furtherDetails)
   const [toggleDetails, setToggleDetails] = useState(false);
 
   useEffect(() => {
@@ -18,8 +25,6 @@ const DescriptionJob = (props) => {
     };
     getFurtherDetails();
   }, [idJob]);
-
-
 
   return (
     <>
@@ -38,7 +43,12 @@ const DescriptionJob = (props) => {
             <li className="compagny__place">{location}</li>
           </ul>
         </div>
-        <span className="compagny__details"onClick={() => setToggleDetails(!toggleDetails)}>&dArr;</span>
+        <span
+          className="compagny__details"
+          onClick={() => setToggleDetails(!toggleDetails)}
+        >
+          &dArr;
+        </span>
       </div>
       {toggleDetails
         ? furtherDetails.map((item) => (

@@ -6,8 +6,7 @@ import DescriptionJob from "./DescriptionJob";
 const JobList = (props) => {
   //stock datas from DB
   const [offers, setOffers] = useState([]);
-  console.log('offers:', offers)
-
+ 
   useEffect(() => {
     const getOffers = async () => {
       const url = "http://localhost:5000/users/getOffers"; //change users with allpeople
@@ -16,8 +15,6 @@ const JobList = (props) => {
     };
     getOffers();
   }, []);
-
-  
 
   return (
     <div className="job-list">
