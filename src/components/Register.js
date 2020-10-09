@@ -87,7 +87,7 @@ const Register = () => {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
-          //validateOnMount
+          validateOnMount
         >
           {(formik) => (
             <Form className="signIn__form">
