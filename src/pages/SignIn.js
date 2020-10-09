@@ -67,7 +67,7 @@ const UserPage = () => {
             </div>
           </div>
           <div className="hello-friend">
-            <div className="inner-box">
+            <div className="inner-box inner-box--blue">
               <h1 className="heading-primary--main">Hello Friend!</h1>
               <p>Enter your personal details and start journey with us</p>
               <button

@@ -71,7 +71,7 @@ const Register = () => {
   return (
     <div className="container-signUp">
     <div className="welcome-back">
-      <div className="inner-box">
+      <div className="inner-box inner-box--blue">
         <h1 className="heading-primary--main">Welcome Back!</h1>
         <p>
           To keep connected with us please login with your personal info
@@ -91,53 +91,61 @@ const Register = () => {
         >
           {(formik) => (
             <Form className="signIn__form">
-              <h1 className="heading-primary--main">Create an account</h1>
+              <h1 className="heading-primary--main">Créer un compte</h1>
               <FormikControl
+                options={radioOptions}
                 control="radio"
                 label="Je suis"
                 name="type"
-                options={radioOptions}
+                className="test"
               />
               <FormikControl
               control="input"
               type="text"
               name="first_name"
-              placeholder="Prénom"
+              label="Prénom"
+              placeholder="Anne"
               />
               <FormikControl
               control="input"
               type="text"
               name="last_name"
-              placeholder="Nom"
+              label="Nom"
+              placeholder="Dupont"
               />
               <FormikControl
                 control="input"
                 type="email"
                 name="email"
-                placeholder="email"
+                label="E-mail"
+                placeholder="annedupont@gmail.com"
               />
               <FormikControl
                 control="input"
                 type="password"
                 name="password"
-                placeholder="mot de passe"
+                label="mot de passe"
+                placeholder="********"
               />
                <FormikControl
                 control="input"
                 type="password"
                 name="repeat_password"
-                placeholder="répétez votre mot de passe"
+                label="répétez votre mot de passe"
+                placeholder="********"
               />
               <FormikControl
               control="input"
               type="tel"
               name="phone"
+              label="Téléphone"
               placeholder="06 00 00 00 00"
               />
               <FormikControl
               control="input"
               type="text"
               name="logo"
+              label="Photo"
               placeholder="Insérer l'url de votre logo"
               />
               {/* champ for compagny */}
@@ -145,11 +153,13 @@ const Register = () => {
               control="input"
               type="text"
               name="compagny_name"
-              placeholder="Nom de l'entreprise"
+              label="Nom de l'entreprise"
+              placeholder="Microsoft"
               />
               <FormikControl
               control="textarea"
               name="description_compagny"
+              label="Description de votre entreprise"
               placeholder="Courte description de votre entreprise"
               />
 
