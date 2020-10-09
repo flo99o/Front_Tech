@@ -14,6 +14,12 @@ const [getValuesFilter, setGetValuesFilter] = useState([]
     getValuesFilter();
   }, []);
 
+  // delete duplicate data from differents arrays
+  const uniqueLocation = Array.from(new Set(getValuesFilter.map(item => item.location)))
+  const uniqueJob = Array.from(new Set(getValuesFilter.map(item => item.job_name)))
+  const uniqueCompagny = Array.from(new Set(getValuesFilter.map(item => item.compagny_name)))
+
+  
   return (
     <section className="filterBar">
       <div className="job-search">
@@ -21,20 +27,20 @@ const [getValuesFilter, setGetValuesFilter] = useState([]
           <div className="job-search__filter">
             <select name="job" id="job-select">
               <option value="" selected disabled hidden>Métier</option>
-              {getValuesFilter.map((item, index) => (
-                <option key={index} value={item.job_name}>{item.job_name}</option>
+              {uniqueJob.map((item, index) => (
+                <option key={index} value={item}>{item}</option>
               ))}
             </select>
             <select name="location" id="location-select">
               <option value="" selected disabled hidden>Lieu</option>
-              {getValuesFilter.map((item, index)  => (
-                <option key={index} value={item.location}>{item.location}</option>
+              {uniqueLocation.map((item, index)  => (
+                <option key={index} value={item}>{item}</option>
               ))}
             </select>
             <select name="compagn" id="compagny-select">
               <option value="" selected disabled hidden>Entreprise</option>
-              {getValuesFilter.map((item, index)  => (
-                <option key={index} value={item.compagny_name}>{item.compagny_name}</option>
+              {uniqueCompagny.map((item, index)  => (
+                <option key={index} value={item}>{item}</option>
               ))}
             </select>
             <input className="job-search__btn btn" type="submit" value="Rechercher"/>
