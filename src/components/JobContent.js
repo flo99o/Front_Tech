@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 //components
 import Button from "../components/Button";
 
+
 const JobContent = (props) => {
   return (
     <div className="jobpage__content">
@@ -18,13 +19,22 @@ const JobContent = (props) => {
           <li>{props.prerequisite}</li>
         </ul>
       </div>
-
       <div className="side-bar">
         <div className="widget">
           <div className="inner">
-            <Button className={"btn btn--grey"} value={"Sauvegarder"} />
-            <Link to={"/apply"} className="btn">
-              Postuler
+            {props.userType ? null : (
+              <Button className={"btn btn--grey"} value={"Sauvegarder"} />
+            )}
+
+            <Link
+              to={
+                props.userType === "compagny" || "admin" ? "/delete" : "/apply"
+              }
+              className="btn"
+            >
+              {props.userType === "compagny" || "admin"
+                ? "Supprimer"
+                : "Postuler"}
             </Link>
           </div>
         </div>

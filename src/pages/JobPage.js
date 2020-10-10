@@ -7,13 +7,15 @@ import JobContent from "../components/JobContent";
 const JobPage = (props) => {
   // Get params' id
   const id = props.match.params.id;
+  console.log('props.match:', props)
+
 
   //stock datas for DB
   const [descriptionJob, setDescriptionJob] = useState([{}]);
 
   useEffect(() => {
     const getDescriptionJob = async () => {
-      const url = `http://localhost:5000/users/GetOffer/${id}`;
+      const url = `http://localhost:5000/users/getOffer/${id}`;
       const result = await axios.get(url);
       setDescriptionJob(result.data);
     };
@@ -36,6 +38,7 @@ const JobPage = (props) => {
             contract={item.contract}
             compagny_name={item.compagny_name}
             location={item.location}
+            toggle={false}
           />
         ))}
         {descriptionJob.map((item) => (

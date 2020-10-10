@@ -11,7 +11,6 @@ const ProfilePages = () => {
       
         <AdminProfile />
         <UserProfile />
-        <CompagnyProfile />
       
     </div>
   );

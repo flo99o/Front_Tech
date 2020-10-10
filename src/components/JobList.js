@@ -28,6 +28,7 @@ const JobList = (props) => {
           job_name={item.job_name}
           compagny_name={item.compagny_name}
           location={item.location}
+          toggle={true}
         />
       ))}
     </div>

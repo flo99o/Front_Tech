@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import JobContent from "./JobContent";
+import arrowDown from "../assets/logo_layout/arrow-down.svg"
 
 const DescriptionJob = (props) => {
   const {
@@ -11,6 +12,8 @@ const DescriptionJob = (props) => {
     job_name,
     compagny_name,
     location,
+    toggle,
+    userType
   } = props;
 
   // stock details of ad
@@ -43,12 +46,15 @@ const DescriptionJob = (props) => {
             <li className="compagny__place">{location}</li>
           </ul>
         </div>
-        <span
+        { !toggle ?
+        null : <div className="details-box">
+        <img
           className="compagny__details"
           onClick={() => setToggleDetails(!toggleDetails)}
-        >
-          &dArr;
-        </span>
+        src={arrowDown}/>  </div> }
+
+        
+        
       </div>
       {toggleDetails
         ? furtherDetails.map((item) => (
@@ -56,6 +62,7 @@ const DescriptionJob = (props) => {
               description_compagny={item.description_compagny}
               description_position={item.description_position}
               prerequisite={item.prerequisite}
+              userType={userType}
             />
           ))
         : null}

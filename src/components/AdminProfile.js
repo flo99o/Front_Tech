@@ -85,7 +85,7 @@ const AdminProfile = () => {
             {compagnies.map(item => (
               <div key={item.id} className="item-compagny">
               <li >{item.compagny_name}</li>
-              <span>&#10060; </span>
+              <span>&#10060;</span>
               </div>
               ))}
               </ul>

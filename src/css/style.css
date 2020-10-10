@@ -21,8 +21,8 @@ body {
 section,
 footer,
 .container {
-  padding-left: 4rem;
-  padding-right: 4rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   width: 100%;
   margin-left: auto;
   margin-right: auto; }
@@ -350,8 +350,12 @@ h1, h2, h6 {
   color: var(--color-secondary-adress); }
 
 .compagny__details {
+  width: 1rem; }
+
+.details-box {
   width: 100%;
-  text-align: right; }
+  justify-content: flex-end;
+  display: flex; }
 
 .jobPage__content {
   display: flex;
@@ -535,7 +539,6 @@ nav {
 
 .user, .ad, .compagny, .details, .application {
   padding: 2rem 1.5rem;
-  border-bottom: 2px solid var(--color-border);
   display: flex;
   flex-direction: column; }
   .user h2, .ad h2, .compagny h2, .details h2, .application h2 {

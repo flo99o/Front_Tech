@@ -1,6 +1,5 @@
 .user, .ad, .compagny, .details, .application {
    padding: 2rem 1.5rem;
-   border-bottom: 2px solid var(--color-border);
    display: flex;
    flex-direction: column;
    & h2 {
