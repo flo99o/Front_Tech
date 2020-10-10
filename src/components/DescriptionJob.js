@@ -59,6 +59,7 @@ const DescriptionJob = (props) => {
       {toggleDetails
         ? furtherDetails.map((item) => (
             <JobContent
+            key={idJob}
               description_compagny={item.description_compagny}
               description_position={item.description_position}
               prerequisite={item.prerequisite}

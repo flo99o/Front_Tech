@@ -3,9 +3,9 @@ import axios from "axios";
 import { Link } from "react-router-dom"
 
 //components
-import HeroProfile from "./HeroProfile";
-import Category from "./Category";
-import DescriptionJob from "./DescriptionJob";
+import HeroProfile from "../components/HeroProfile";
+import Category from "../components/Category";
+import DescriptionJob from "../components/DescriptionJob";
 
 
 
@@ -15,7 +15,6 @@ const CompagnyProfile = (props) => {
   const id = props.match.params.id
 
   useEffect(() => {
-    console.log('hello');
     const getMyOffers = async () => {
       const url = `http://localhost:5000/compagny/getMyoffers/${id}`;
       const result = await axios.get(url);
@@ -48,7 +47,7 @@ const CompagnyProfile = (props) => {
                   compagny_name={offer.compagny_name}
                   location={offer.location}
                   toggle={true}
-                  userType={'compagny_name'}
+                  userType={'compagny'}
                 />
               ))}
             </div>

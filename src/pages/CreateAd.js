@@ -10,10 +10,12 @@ import Button from "../components/Button";
 
 const CreatedAd = () => {
 
-  const compagny_name = "LCL"
+  const compagny_name = "Conforma" //(state) - get this information from back when the user is login
 
  
-  ///////////////////////////////// FORMIK variables
+ /**
+  * Formik propreties
+  */
 
   //for job_name select element
   const dropdownOptionsJob = [

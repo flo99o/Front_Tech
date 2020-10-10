@@ -13,7 +13,8 @@ import Footer from './components/Footer'
 import ProfilePages from './pages/ProfilePages'
 import CreateAd from './pages/CreateAd'
 import ApplicationForm from './pages/ApplicationForm'
-import CompagnyProfile from './components/CompagnyProfile'
+import CompagnyProfile from './pages/CompagnyProfile'
+import AdminProfile from './components/AdminProfile'
 
 const App = () => {
 
@@ -26,6 +27,7 @@ const App = () => {
         <Route exact path="/job/:id" component={JobPage} />
         <Route exact path="/profile/:typeUser/:id" component={ProfilePages} />
         <Route exact path="/compagny/:id" component={CompagnyProfile}/>
+        <Route exact path="/admin" component={AdminProfile}/>
         <Route exact path="/createad" component={CreateAd} />
         <Route exact path="/apply" component={ApplicationForm} />
       </Switch>

@@ -29,6 +29,7 @@ const JobList = (props) => {
           compagny_name={item.compagny_name}
           location={item.location}
           toggle={true}
+          userType={null}
         />
       ))}
     </div>
