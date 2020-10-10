@@ -109,6 +109,7 @@ const CreatedAd = () => {
                   min="500"
                   max="8000"
                   step="100"
+                  placeholder="Count"
                 />
                 <FormikControl
                   control="input"
