@@ -10,7 +10,7 @@ import Homepage from './pages/Homepage'
 import SignIn from './pages/SignIn'
 import JobPage from './pages/JobPage'
 import Footer from './components/Footer'
-import ProfilePage from './pages/ProfilePage'
+import ProfilePages from './pages/ProfilePages'
 import CreateAd from './pages/CreateAd'
 import ApplicationForm from './pages/ApplicationForm'
 
@@ -23,7 +23,7 @@ const App = () => {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/connexion" component={SignIn} />
         <Route exact path="/job/:id" component={JobPage} />
-        <Route exact path="/profile/:typeUser/:id" component={ProfilePage} />
+        <Route exact path="/profile/:typeUser/:id" component={ProfilePages} />
         <Route exact path="/createad" component={CreateAd} />
         <Route exact path="/apply" component={ApplicationForm} />
       </Switch>

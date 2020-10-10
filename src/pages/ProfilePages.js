@@ -4,7 +4,7 @@ import UserProfile from'../components/UserProfile'
 import AdminProfile from "../components/AdminProfile";
 import CompagnyProfile from "../components/CompagnyProfile";
 
-const ProfilePage = () => {
+const ProfilePages = () => {
   return (
     <div className="profilePage">
      
@@ -17,4 +17,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default ProfilePages;

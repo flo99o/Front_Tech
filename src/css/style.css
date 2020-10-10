@@ -87,9 +87,6 @@ select, input, textarea {
   padding: 1.3rem 2rem;
   background-color: inherit; }
 
-input[type=radio] {
-  color: yellow; }
-
 textarea {
   width: 100%;
   height: 10rem; }
