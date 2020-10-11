@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DescriptionJob from "./DescriptionJob";
 
-
 const JobList = (props) => {
   //stock datas from DB
   const [offers, setOffers] = useState([]);
- 
+
   useEffect(() => {
     const getOffers = async () => {
       const url = "http://localhost:5000/users/getOffers"; //change users with allpeople

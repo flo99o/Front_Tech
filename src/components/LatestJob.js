@@ -8,9 +8,7 @@ const LatestJob = () => {
     <section className="latestJob">
       <div className="heading-secondary">
         <h2 className="heading-secondary--main">Tous Nos Jobs</h2>
-        <p className="heading-secondary--sub">
-          Trouver les jobs de vos rêves.
-        </p>
+        <p className="heading-secondary--sub">Trouver les jobs de vos rêves.</p>
       </div>
       <JobList />
     </section>

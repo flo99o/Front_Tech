@@ -9,10 +9,6 @@ import Button from "./Button";
 const Register = () => {
   const errormsg = "Obligatoire !"; //mettre dans state contexte
 
-
-
-
-
   const radioOptions = [
     {
       key: "Candidat",

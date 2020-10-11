@@ -1,44 +1,47 @@
-.user, .ad, .compagny, .details, .application {
-   padding: 2rem 1.5rem;
-   display: flex;
-   flex-direction: column;
-   & h2 {
-       margin-bottom: 0;
-       text-align: left;
-   }
+.user,
+.ad,
+.compagny,
+.details,
+.application {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  & h2 {
+    margin-bottom: 0;
+    text-align: left;
+  }
 }
 
 .list {
-    margin-top: 2.5rem;
-    //display: none;
-    font-weight: bold;
-    line-height: 1.75;
-    &--show {
-        display: block;
-    }
-    ul li {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    &__compagny, &__user {
-        display: flex;
-        justify-content: space-between;
-    }
+  margin-top: 2.5rem;
+  //display: none;
+  font-weight: bold;
+  line-height: 1.75;
+  &--show {
+    display: block;
+  }
+  ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__compagny,
+  &__user {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
-
 .inner--profilePage {
-    padding: 3rem 0;
-    display: flex;
-    flex-direction: column;
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .compagny > div:nth-child(2) {
-    justify-content: flex-start;
-   }
-
-.category > h2 {
-    color: var(--color-tertiary);
+  justify-content: flex-start;
 }
 
+.category > h2 {
+  color: var(--color-tertiary);
+}

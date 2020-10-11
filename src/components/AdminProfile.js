@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-// photo
-import user from "../assets/user_profile/man.jpg";
+import { Link } from "react-router-dom"
 // components
 import Category from "../components/Category";
 import DescriptionJob from "./DescriptionJob";
@@ -9,9 +8,12 @@ import HeroProfile from "./HeroProfile";
 import Button from "./Button";
 
 const AdminProfile = () => {
+  const userID = 1; //state
+  //get the list of : 
   const [users, setUsers] = useState([]);
   const [offers, setOffers] = useState([]);
   const [compagnies, setCompagnies] = useState([]);
+  const [myDetails, setMyDetails] = useState([]);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -34,18 +36,28 @@ const AdminProfile = () => {
       setCompagnies(result.data);
     };
     getCompagnies();
+
+    //state
+    const getMyDetails = async () => {
+      const url = `http://localhost:5000/allpeople/myDetails/${userID}`;
+      const result = await axios.get(url);
+      setMyDetails(result.data);
+    };
+    getMyDetails();
   }, []);
 
+  const logo = myDetails.map((item) => item.logo);
+ 
   return (
     <>
-      <HeroProfile photo={user} nameUser={"Yo les admins"} />
+      <HeroProfile logo={logo} nameUser={"Yo les admins"} />
       <div className="container">
         <div className="inner--profilePage">
           <div className="user">
             <Category name={"Les utilisateurs"} />
             <div className="list">
               {users.map((user) => (
-                <div className="list__user">
+                <div key={user.userID} className="list__user">
                   <p>
                     {user.first_name} {user.last_name}
                   </p>
@@ -59,7 +71,7 @@ const AdminProfile = () => {
             <Category name={"Les compagnies"} />
             <div className="list list--show">
               {compagnies.map((compagny) => (
-                <ul className="list__compagny">
+                <ul key={compagny.compagnyID} className="list__compagny">
                   <li key={compagny.compagnyID}>{compagny.compagny_name}</li>
                   <span> &#x274C;</span>
                 </ul>
@@ -87,7 +99,6 @@ const AdminProfile = () => {
             </div>
           </div>
         </div>
-        <Button className={"btn"} value={"Créer une nouvelle offre"} />
       </div>
     </>
   );

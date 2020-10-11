@@ -1,9 +1,8 @@
 import React from "react";
 //components
-import Header from "../components/Header"
+import Header from "../components/Header";
 
-const HeroProfile = ({photo, nameUser}) => {
-    
+const HeroProfile = ({ logo, nameUser }) => {
   return (
     <section className="hero">
       <img
@@ -13,11 +12,9 @@ const HeroProfile = ({photo, nameUser}) => {
       />
       <Header />
       <div className="heading-primary heading-primary--down">
-          <img className="profilePhoto" src={photo} alt=""/>
+        <img className="profilePhoto" src={logo} alt="" />
         <h1 className="heading-primary--main">{nameUser}</h1>
       </div>
-      
-
     </section>
   );
 };

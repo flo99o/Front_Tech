@@ -9,9 +9,9 @@ import Button from "../components/Button";
 
 
 const CreatedAd = () => {
-
-  const compagny_name = "Conforma" //(state) - get this information from back when the user is login
-
+//(state) - get this information from back when the user is login
+const userID = 4 
+const compagnyID = 2
  
  /**
   * Formik propreties
@@ -61,7 +61,7 @@ const CreatedAd = () => {
   });
   const onSubmit = async (values, onSubmitProps) => {
     const url = "http://localhost:5000/compagny/createad";
-    await axios.post(url, {...values, compagny_name});
+    await axios.post(url, {...values, userID, compagnyID});
     onSubmitProps.resetForm()
   };
 

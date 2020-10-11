@@ -174,13 +174,15 @@ th {
   border: 4px solid white;
   box-sizing: content-box; }
 
-h1, h2, h6 {
+h1,
+h2,
+h6 {
   color: var(--color-secondary-title); }
 
 .heading-primary {
   text-align: center; }
   .heading-primary--main {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 2.4rem;
     text-align: center;
@@ -196,7 +198,7 @@ h1, h2, h6 {
   text-align: center; }
   .heading-secondary--main {
     font-size: 2.4rem;
-    font-family: 'Montserrat', sans-serif; }
+    font-family: "Montserrat", sans-serif; }
 
 .category {
   display: flex;
@@ -382,10 +384,11 @@ h1, h2, h6 {
   display: flex;
   flex-direction: column;
   padding: 25px;
-  border: 1px solid #EDEDED;
+  border: 1px solid #ededed;
   margin-bottom: 3rem;
   text-transform: capitalize; }
-  .inner button:first-of-type, .inner a:first-of-type {
+  .inner button:first-of-type,
+  .inner a:first-of-type {
     margin-bottom: 2rem; }
 
 .latestJob {
@@ -537,11 +540,19 @@ nav {
     nav li p {
       padding-left: 1.5rem; }
 
-.user, .ad, .compagny, .details, .application {
+.user,
+.ad,
+.compagny,
+.details,
+.application {
   padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column; }
-  .user h2, .ad h2, .compagny h2, .details h2, .application h2 {
+  .user h2,
+  .ad h2,
+  .compagny h2,
+  .details h2,
+  .application h2 {
     margin-bottom: 0;
     text-align: left; }
 
