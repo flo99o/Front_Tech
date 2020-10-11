@@ -55,7 +55,6 @@ const compagnyID = 2
   const validationSchema = Yup.object({
     job_name: Yup.string().required("Obligatoire !"),
     desc_position: Yup.string().required("Obligatoire !"),
-    //wage: Yup.string().required('Obligatoire !'),
     location: Yup.string().required("Obligatoire !"),
     contract: Yup.string().required("Obligatoire !"),
   });

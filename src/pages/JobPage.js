@@ -22,6 +22,7 @@ const JobPage = (props) => {
   }, [id]);
 
   const titleJob = descriptionJob.map((item) => item.job_name);
+  console.log('descriptionJob:', descriptionJob)
 
   return (
     <div className="jobPage">

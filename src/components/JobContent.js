@@ -31,10 +31,10 @@ const JobContent = (props) => {
                 Editer
               </Link>
             ) : (
-              console.log("non")
+              null
             )}
 
-            <Link to={props.userType ? "/delete" : "/apply"} className="btn">
+            <Link to={props.userType ? "/delete" : `/apply/${props.idJob}`} className="btn">
               {props.userType ? "Supprimer" : "Postuler"}
             </Link>
           </div>

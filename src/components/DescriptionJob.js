@@ -60,6 +60,7 @@ const DescriptionJob = (props) => {
         ? furtherDetails.map((item) => (
             <JobContent
               key={idJob}
+              idJob={idJob}
               description_compagny={item.description_compagny}
               description_position={item.description_position}
               prerequisite={item.prerequisite}

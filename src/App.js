@@ -25,7 +25,7 @@ const App = () => {
           <Route exact path="/admin/" component={AdminProfile} />
           <Route exact path="/user/:id" component={UserProfile} />
           <Route exact path="/createad" component={CreateAd} />
-          <Route exact path="/apply" component={ApplicationForm} />
+          <Route exact path="/apply/:offerID" component={ApplicationForm} />
           <Route exact path="/update-profile" component={UpdateProfile}/>
         </Switch>
       </Router>
