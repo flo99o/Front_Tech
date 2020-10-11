@@ -56,7 +56,7 @@ const UserProfile = (props) => {
                 compagny_name={offer.compagny_name}
                 location={offer.location}
                 toggle={true}
-                userType={"user"}
+                userType={'user'}
               />
             ))}
           </div>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "../components/Button";
 
 const JobContent = (props) => {
+  console.log(props);
   return (
     <div className="jobpage__content">
       <div className="jobPage__description">
