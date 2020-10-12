@@ -7,7 +7,7 @@ import FormikControl from "../formik/FormikControl";
 import Button from "../Button";
 
 const UpdateUserProfile = (props) => {
-  const userID = 8; //(state)
+  const userID = 2; //(state)
   const [myDetails, setMyDetails] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const UpdateUserProfile = (props) => {
   let first_name, last_name, email, logo, phone
 
   if (myDetails.length) {
-    const details = myDetails[0];
+  const details = myDetails[0];
    first_name = details.first_name
     console.log('first_name:', first_name) //output: Manon
     
