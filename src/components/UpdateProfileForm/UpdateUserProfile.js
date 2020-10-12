@@ -17,42 +17,32 @@ const UpdateUserProfile = (props) => {
       setMyDetails(result.data);
     };
     getMyDetails();
-  }, []);
-
-//   if (myDetails.length) {
-//     const details = myDetails[0];
-
-//      const { first_name, last_name, email, logo, phone } = details;
 
     
-// return details
-//     ;
-//   }
+  }, []);
+  let first_name, last_name, email, logo, phone
+
+  if (myDetails.length) {
+    const details = myDetails[0];
+   first_name = details.first_name
+    console.log('first_name:', first_name) //output: Manon
+    
+  }
   
-  // const initialValues = {
-  //   first_name,
-  //   last_name,
-  //   email,
-  //   phone,
-  //   logo,
-  // };
-
-  const initialValues = {
-    first_name: "",
-    last_name: "",
-    email: "",
-    // password: "",
-    // repeat_password: "",
-    phone: "",
-    logo: ""
+  console.log('first_name:', first_name) // output Manon
+  let initialValues = {
+    first_name: first_name,
+    last_name: 'dupont',
+    email: 'manondupont@gmail.com',
+    phone: '0600000000',
+    logo: 'non renseigné',
   };
-
 
   const validationSchema = Yup.object({
     first_name: Yup.string(),
     last_name: Yup.string(),
     type: Yup.string(),
-    email: Yup.string().email("Le formt de l'email est incorrect"),
+    email: Yup.string().email("Le format de l'email est incorrect"),
     password: Yup.string(),
     repeat_password: Yup.string().oneOf(
       [Yup.ref("password"), ""],
