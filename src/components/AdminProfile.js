@@ -17,6 +17,7 @@ const AdminProfile = () => {
   const [myDetails, setMyDetails] = useState([]);
 
   const [modalIsOpen, setmodalIsOpen] = useState(false);
+  const [idToDelete, setidToDelete] = useState("")
 
   useEffect(() => {
     const getUsers = async () => {
@@ -49,17 +50,24 @@ const AdminProfile = () => {
     getMyDetails();
   }, []);
 
+  //admin's logo
   const logo = myDetails.map((item) => item.logo);
 
-  const handleDeleteUser = (id) => {
-    setmodalIsOpen(true);
-    console.log(modalIsOpen);
-    console.log("id:", id);
-    //function which delete users
+  //
+  const handleModale = (id) =>  {
+    //get user's id which has been clicked
+    setidToDelete(id)
+    setmodalIsOpen(true)
+  }
+
+  const handleDeleteUser = () => {
+    setmodalIsOpen(false);
+    
+    
   };
 
   const handleDeleteCompagny = (id) => {
-    console.log("id:", id);
+    
     //function which delete compagny
   };
 
@@ -76,7 +84,7 @@ const AdminProfile = () => {
                   <p>
                     {user.first_name} {user.last_name}
                   </p>
-                  <span onClick={() => handleDeleteUser(user.userID)}>
+                  <span onClick={() => handleModale(user.userID)}>
                     {" "}
                     &#x274C;
                   </span>
@@ -94,7 +102,7 @@ const AdminProfile = () => {
                   <span
                     onClick={() => handleDeleteCompagny(compagny.compagnyID)}
                   >
-                    {" "}
+                    
                     &#x274C;
                   </span>
                 </ul>
@@ -123,7 +131,7 @@ const AdminProfile = () => {
           </div>
         </div>
       </div>
-      <Modal isOpen={modalIsOpen} onRequestClose={() => setmodalIsOpen(false)} shouldCloseOnOverLayClick={false}>
+      <Modal isOpen={modalIsOpen} onAfterClose={handleDeleteUser} onRequestClose={() => setmodalIsOpen(false)} shouldCloseOnOverLayClick={false}>
         <div>
           <h2>confirmer la suppression ?</h2>
           <button onClick={() => setmodalIsOpen(false)}>Oui</button>
