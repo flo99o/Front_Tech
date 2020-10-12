@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import Modal from "react-modal";
 // components
 import Category from "../components/Category";
 import DescriptionJob from "./DescriptionJob";
 import HeroProfile from "./HeroProfile";
-import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 const AdminProfile = () => {
@@ -64,7 +63,6 @@ const AdminProfile = () => {
   }
 
   const handleDeleteUser = () => {
-    setmodalIsOpen(false);
     const url = `http://localhost:5000/allpeople/deleteUserAccount/${idToDelete}`
     axios.delete(url)
     .then(res => setResponse(res.data))

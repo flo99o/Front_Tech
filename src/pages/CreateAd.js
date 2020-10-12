@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -7,15 +8,15 @@ import FormikControl from "../components/formik/FormikControl";
 import Hero from "../components/Hero";
 import Button from "../components/Button";
 
-
 const CreatedAd = () => {
-//(state) - get this information from back when the user is login
-const userID = 4 
-const compagnyID = 2
- 
- /**
-  * Formik propreties
-  */
+  let history = useHistory();
+  //(state) - get this information from back when the user is login
+  const userID = 5;
+  const compagnyID = 3;
+
+  /**
+   * Formik propreties
+   */
 
   //for job_name select element
   const dropdownOptionsJob = [
@@ -46,11 +47,11 @@ const compagnyID = 2
   ];
   const initialValues = {
     job_name: "",
-    desc_position: "",
+    description_position: "",
     location: "",
     wage: "",
     contract: "",
-    prerequisite:"",
+    prerequisite: "",
   };
   const validationSchema = Yup.object({
     job_name: Yup.string().required("Obligatoire !"),
@@ -60,8 +61,9 @@ const compagnyID = 2
   });
   const onSubmit = async (values, onSubmitProps) => {
     const url = "http://localhost:5000/compagny/createad";
-    await axios.post(url, {...values, userID, compagnyID});
-    onSubmitProps.resetForm()
+    await axios.post(url, { ...values, userID, compagnyID });
+    onSubmitProps.resetForm();
+    history.goBack();
   };
 
   return (
@@ -83,14 +85,14 @@ const compagnyID = 2
                   name="job_name"
                   options={dropdownOptionsJob}
                 />
-              
+
                 <FormikControl
                   control="textarea"
                   label="Description du poste"
                   name="desc_position"
                   placeholder="Décrivez le poste"
                 />
-                 <FormikControl
+                <FormikControl
                   control="textarea"
                   label="Pré-requis"
                   name="prerequisite"

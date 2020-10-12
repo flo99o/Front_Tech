@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
 import axios from "axios";
 //components
 import Category from "../components/Category";
 import HeroProfile from "../components/HeroProfile";
 import DescriptionJob from "../components/DescriptionJob";
-import UpdateProfile from "./UpdateProfile";
+import UpdateFormControl from "../components/UpdateProfileForm/UpdateFormControl";
 
 const UserProfile = (props) => {
   const userID = props.match.params.id;
@@ -67,7 +65,7 @@ const UserProfile = (props) => {
 
           <div className="details">
             <Category name={"Mes infos personnelles"} />
-            <UpdateProfile />
+            <UpdateFormControl userType={"user"} />
           </div>
         </div>
       </div>

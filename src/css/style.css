@@ -387,9 +387,9 @@ h6 {
   border: 1px solid #ededed;
   margin-bottom: 3rem;
   text-transform: capitalize; }
-  .inner button:first-of-type,
-  .inner a:first-of-type {
-    margin-bottom: 2rem; }
+  .inner button:not(:first-child),
+  .inner a:not(:first-child) {
+    margin-top: 2rem; }
 
 .latestJob {
   padding-top: 6rem;

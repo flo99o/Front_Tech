@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import HeroProfile from "../components/HeroProfile";
 import Category from "../components/Category";
 import DescriptionJob from "../components/DescriptionJob";
+import UpdateFormControl from "../components/UpdateProfileForm/UpdateFormControl";
+
+
 
 const CompagnyProfile = (props) => {
   const userID = props.match.params.id;
@@ -25,7 +28,7 @@ const CompagnyProfile = (props) => {
 
     //state
     const getMyDetails = async () => {
-      const url = `http://localhost:5000/allpeople/myDetails/${userID}`;
+      const url = `http://localhost:5000/allpeople/userDetails/${userID}`;
       const result = await axios.get(url);
       setMyDetails(result.data);
     };
@@ -60,6 +63,10 @@ const CompagnyProfile = (props) => {
               ))}
             </div>
           </div>
+          <div className="mydetails">
+            <Category name={"Mon profil"}/>
+          </div>
+          <UpdateFormControl userType={"compagny"} />
 
           <Link to={"/createAd"} className={"btn"}>
             {" "}

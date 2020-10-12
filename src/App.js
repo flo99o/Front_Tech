@@ -11,7 +11,7 @@ import ApplicationForm from "./pages/ApplicationForm";
 import CompagnyProfile from "./pages/CompagnyProfile";
 import AdminProfile from "./components/AdminProfile";
 import UserProfile from "./pages/UserProfile";
-import UpdateProfile from "./pages/UpdateProfile";
+
 
 const App = () => {
   return (
@@ -26,7 +26,6 @@ const App = () => {
           <Route exact path="/user/:id" component={UserProfile} />
           <Route exact path="/createad" component={CreateAd} />
           <Route exact path="/apply/:offerID" component={ApplicationForm} />
-          <Route exact path="/update-profile" component={UpdateProfile}/>
         </Switch>
       </Router>
       <Footer />
