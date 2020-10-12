@@ -1,16 +1,17 @@
 import React from "react";
+import { useHistory } from "react-router-dom"
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 //components
 import FormikControl from "../components/formik/FormikControl";
-
 import Hero from "../components/Hero";
 import Button from "../components/Button";
 
 const ApplicationForm = (props) => {
-  const offerID = props.match.params.id;
-  const userID = 4; //(state)
+  let history = useHistory()
+  const offer_id = 13;
+  const user_id = 2; //(state)
 
   const initialValues = {
     first_name: "",
@@ -29,9 +30,10 @@ const ApplicationForm = (props) => {
       .required("Obligatoire !"),
   });
   const onSubmit = async (values) => {
-    console.log("values: ", values);
     const url = "http://localhost:5000/users/postApplication";
-    await axios.post(url, {...values, userID, offerID});
+    await axios.post(url, {...values, user_id, offer_id})
+    ;
+    history.goBack()
   };
   return (
     <div className="applicationForm">

@@ -19,6 +19,9 @@ const AdminProfile = () => {
   const [modalIsOpen, setmodalIsOpen] = useState(false);
   const [idToDelete, setidToDelete] = useState("")
 
+  //stock results from back
+  const [response, setResponse] = useState([])
+
   useEffect(() => {
     const getUsers = async () => {
       const url = "http://localhost:5000/admin/users";
@@ -48,7 +51,7 @@ const AdminProfile = () => {
       setMyDetails(result.data);
     };
     getMyDetails();
-  }, []);
+  }, [response]);
 
   //admin's logo
   const logo = myDetails.map((item) => item.logo);
@@ -62,8 +65,9 @@ const AdminProfile = () => {
 
   const handleDeleteUser = () => {
     setmodalIsOpen(false);
-    
-    
+    const url = `http://localhost:5000/allpeople/deleteUserAccount/${idToDelete}`
+    axios.delete(url)
+    .then(res => setResponse(res.data))
   };
 
   const handleDeleteCompagny = (id) => {
