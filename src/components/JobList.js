@@ -8,7 +8,7 @@ const JobList = (props) => {
 
   useEffect(() => {
     const getOffers = async () => {
-      const url = "http://localhost:5000/users/getOffers"; //change users with allpeople
+      const url = "http://localhost:5000/allpeople/getoffers";
       const result = await axios.get(url);
       setOffers(result.data);
     };

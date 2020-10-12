@@ -10,7 +10,7 @@ import Button from "../components/Button";
 
 const ApplicationForm = (props) => {
   const offerID = props.match.params.id;
-  const userId = 4; //(state)
+  const userID = 4; //(state)
 
   const initialValues = {
     first_name: "",
@@ -30,8 +30,8 @@ const ApplicationForm = (props) => {
   });
   const onSubmit = async (values) => {
     console.log("values: ", values);
-    // const url = "http://localhost:5000/users/apply";
-    // await axios.post(url, {...values, userID, offerID});
+    const url = "http://localhost:5000/users/postApplication";
+    await axios.post(url, {...values, userID, offerID});
   };
   return (
     <div className="applicationForm">

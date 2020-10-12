@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 // components
 import Category from "../components/Category";
 import DescriptionJob from "./DescriptionJob";
 import HeroProfile from "./HeroProfile";
-import Button from "./Button";
+import Modal from "react-modal";
 
+Modal.setAppElement("#root");
 const AdminProfile = () => {
   const userID = 1; //state
-  //get the list of : 
+  //get the list of :
   const [users, setUsers] = useState([]);
   const [offers, setOffers] = useState([]);
   const [compagnies, setCompagnies] = useState([]);
   const [myDetails, setMyDetails] = useState([]);
+
+  const [modalIsOpen, setmodalIsOpen] = useState(false);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -24,7 +27,7 @@ const AdminProfile = () => {
     getUsers();
 
     const getOffers = async () => {
-      const url = "http://localhost:5000/admin/offers";
+      const url = "http://localhost:5000/allpeople/getoffers";
       const result = await axios.get(url);
       setOffers(result.data);
     };
@@ -39,7 +42,7 @@ const AdminProfile = () => {
 
     //state
     const getMyDetails = async () => {
-      const url = `http://localhost:5000/allpeople/myDetails/${userID}`;
+      const url = `http://localhost:5000/allpeople/userDetails/${userID}`;
       const result = await axios.get(url);
       setMyDetails(result.data);
     };
@@ -47,7 +50,19 @@ const AdminProfile = () => {
   }, []);
 
   const logo = myDetails.map((item) => item.logo);
- 
+
+  const handleDeleteUser = (id) => {
+    setmodalIsOpen(true);
+    console.log(modalIsOpen);
+    console.log("id:", id);
+    //function which delete users
+  };
+
+  const handleDeleteCompagny = (id) => {
+    console.log("id:", id);
+    //function which delete compagny
+  };
+
   return (
     <>
       <HeroProfile logo={logo} nameUser={"Yo les admins"} />
@@ -61,7 +76,10 @@ const AdminProfile = () => {
                   <p>
                     {user.first_name} {user.last_name}
                   </p>
-                  <span> &#x274C;</span>
+                  <span onClick={() => handleDeleteUser(user.userID)}>
+                    {" "}
+                    &#x274C;
+                  </span>
                 </div>
               ))}
             </div>
@@ -72,8 +90,13 @@ const AdminProfile = () => {
             <div className="list list--show">
               {compagnies.map((compagny) => (
                 <ul key={compagny.compagnyID} className="list__compagny">
-                  <li key={compagny.compagnyID}>{compagny.compagny_name}</li>
-                  <span> &#x274C;</span>
+                  <li>{compagny.compagny_name}</li>
+                  <span
+                    onClick={() => handleDeleteCompagny(compagny.compagnyID)}
+                  >
+                    {" "}
+                    &#x274C;
+                  </span>
                 </ul>
               ))}
             </div>
@@ -100,6 +123,12 @@ const AdminProfile = () => {
           </div>
         </div>
       </div>
+      <Modal isOpen={modalIsOpen} onRequestClose={() => setmodalIsOpen(false)} shouldCloseOnOverLayClick={false}>
+        <div>
+          <h2>confirmer la suppression ?</h2>
+          <button onClick={() => setmodalIsOpen(false)}>Oui</button>
+        </div>
+      </Modal>
     </>
   );
 };
