@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -7,13 +7,14 @@ import FormikControl from "../components/formik/FormikControl";
 import Button from "../components/Button";
 import Register from "../components/Register"
 
+
 const UserPage = () => {
   const errormsg = "Obligatoire !"; //mettre dans state contexte
   const initialValues = {
     email: "",
     password: "",
   };
-
+  const [response, setResponse] = useState([])
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Le format de l'email est incorrect !")
@@ -21,10 +22,13 @@ const UserPage = () => {
     password: Yup.string().required(errormsg),
   });
 
+console.log('response: ', response);
+console.log('hello');
   const onSubmit = async (values) => {
     console.log("submission");
-    const url = "http://localhost:5000/allpeople/signin";
-    await axios.post(url, values);
+    const url = "http://localhost:5000/signin/signin";
+    await axios.post(url, values)
+    .then(res => setResponse(res.data));
   };
 
   return (
