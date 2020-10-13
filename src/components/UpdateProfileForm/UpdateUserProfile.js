@@ -45,7 +45,7 @@ const UpdateUserProfile = () => {
 
   const onSubmit = async (values) => {
     console.log("values:", values);
-    const url = `http://localhost:5000/users/updateProfile/${userID}`;
+    const url = `http://localhost:5000/allpeople/updateProfile/${userID}`;
     await axios.put(url, values);
   };
 
