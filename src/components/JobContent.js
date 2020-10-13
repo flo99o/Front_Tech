@@ -76,7 +76,7 @@ const JobContent = (props) => {
             ) : null}
             {props.userType === "user" ? 
             <Button 
-              value={"Supprimer"}
+              value={"Retirer sa candidature"}
               className="btn"
               action={handleModale}
 

@@ -557,6 +557,11 @@ nav {
     nav li p {
       padding-left: 1.5rem; }
 
+li.navigation__items > a {
+  display: flex;
+  align-items: center;
+  width: 100%; }
+
 .user,
 .ad,
 .compagny,

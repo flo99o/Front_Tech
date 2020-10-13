@@ -11,6 +11,7 @@ import ApplicationForm from "./pages/ApplicationForm";
 import CompagnyProfile from "./pages/CompagnyProfile";
 import AdminProfile from "./components/AdminProfile";
 import UserProfile from "./pages/UserProfile";
+import Register from "./pages/Register"
 
 
 const App = () => {
@@ -19,7 +20,8 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path="/" component={Homepage} />
-          <Route exact path="/connexion" component={SignIn} />
+          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/register" component={Register} />
           <Route exact path="/job/:id" component={JobPage} />
           <Route exact path="/compagny/:id" component={CompagnyProfile} />
           <Route exact path="/admin/" component={AdminProfile} />

@@ -4,8 +4,8 @@ import * as Yup from "yup";
 import axios from "axios";
 import $ from "jquery"
 //components
-import FormikControl from "./formik/FormikControl";
-import Button from "./Button";
+import FormikControl from "../components/formik/FormikControl";
+import Button from "../components/Button";
 
 const Register = () => {
   const errormsg = "Obligatoire !"; //mettre dans state contexte

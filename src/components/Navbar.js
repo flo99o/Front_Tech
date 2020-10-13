@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 //icons
 import briefcase from "../assets/logo_nav/mallette.svg";
 
@@ -7,18 +8,28 @@ const NavBar = () => {
     <nav className="navigation">
       <ul className="navigation__list">
         <li className="navigation__items active">
+          <Link to='/signin'>
           <img src={briefcase} alt="malette" />
-          <p>Jobs </p>
+          <p>Se connecter </p>
+          </Link>
         </li>
-        <li className="navigation__items"><img src={briefcase} alt="malette" />
-          <p>Compagnies </p></li>
+        <li 
+        className="navigation__items">
+          <Link to={"/register"}>
+          <img src={briefcase} alt="malette" />
+          <p>Créer un compte </p>
+          </Link>
+          </li>
+        <li className="navigation__items">
+          <Link to={"/"}>
+        <img src={briefcase} alt="malette" />
+          <p>Les offres d'emplois </p>
+
+          </Link>
+        </li>
         <li className="navigation__items">
         <img src={briefcase} alt="malette" />
           <p>FAQ </p>
-        </li>
-        <li className="navigation__items">
-        <img src={briefcase} alt="malette" />
-          <p>Review </p>
         </li>
       </ul>
     </nav>

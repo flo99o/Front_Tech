@@ -1,11 +1,12 @@
 import React, { useState }from "react";
+import { Link } from "react-router-dom"
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 //components
 import FormikControl from "../components/formik/FormikControl";
 import Button from "../components/Button";
-import Register from "../components/Register"
+import Register from "./Register"
 
 
 const UserPage = () => {
@@ -45,7 +46,7 @@ console.log('hello');
               >
                 {(formik) => (
                   <Form className="signIn__form">
-                    <h1 className="heading-primary--main">Sign in</h1>
+                    <h1 className="heading-primary--main">Se connecter</h1>
                     <FormikControl
                       control="input"
                       type="email"
@@ -74,17 +75,15 @@ console.log('hello');
             <div className="inner-box inner-box--blue">
               <h1 className="heading-primary--main">Hello Friend!</h1>
               <p>Enter your personal details and start journey with us</p>
-              <button
-                id="signUp"
+              <Link
+              to={"/register"}
                 className="btn btn--round btn--transparent"
-                // onClick={() => getSignIn()}
               >
                 sign up
-              </button>
+              </Link>
             </div>
           </div>
         </div>
-        <Register />
       </div>
     </div>
   );
