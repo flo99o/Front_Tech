@@ -6,8 +6,8 @@ import axios from "axios";
 import FormikControl from "../formik/FormikControl";
 import Button from "../Button";
 
-const UpdateUserProfile = () => {
-  const userID = 2; //(state)
+const UpdateCompagnyForm = () => {
+  const userID = 4; //state
 
   const [initialValues, setInitialValues] = useState([]);
 
@@ -27,6 +27,8 @@ const UpdateUserProfile = () => {
     email: initialValues.email,
     phone: initialValues.phone,
     logo: initialValues.logo,
+    description_compagny: initialValues.description_compagny,
+    compagny_name: initialValues.compagny_name,
   };
 
   const validationSchema = Yup.object({
@@ -49,7 +51,6 @@ const UpdateUserProfile = () => {
     const url = `http://localhost:5000/allpeople/updateProfile/${userID}`;
     await axios.put(url, values);
   };
-
   return (
     <div>
       {!initialValues ? null : (
@@ -106,6 +107,20 @@ const UpdateUserProfile = () => {
                 label="Photo"
               />
 
+              <FormikControl
+                control="input"
+                type="text"
+                name="compagny_name"
+                label="Nom de l'entreprise"
+                placeholder="Microsoft"
+              />
+              <FormikControl
+                control="textarea"
+                name="description_compagny"
+                label="Description de votre entreprise"
+                placeholder="Courte description de votre entreprise"
+              />
+
               <Button
                 type="submit"
                 disabled={!formik.isValid}
@@ -120,4 +135,4 @@ const UpdateUserProfile = () => {
   );
 };
 
-export default UpdateUserProfile;
+export default UpdateCompagnyForm;

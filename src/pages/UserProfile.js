@@ -4,6 +4,7 @@ import axios from "axios";
 import Category from "../components/Category";
 import HeroProfile from "../components/HeroProfile";
 import DescriptionJob from "../components/DescriptionJob";
+import UpdateUserProfile from "../components/UpdateProfileForm/UpdateUserProfile";
 import UpdateFormControl from "../components/UpdateProfileForm/UpdateFormControl";
 
 const UserProfile = (props) => {

@@ -5,6 +5,7 @@ import Modal from "react-modal";
 import Category from "../components/Category";
 import DescriptionJob from "./DescriptionJob";
 import HeroProfile from "./HeroProfile";
+import UpdateFormControl from "./UpdateProfileForm/UpdateFormControl";
 
 Modal.setAppElement("#root");
 const AdminProfile = () => {
@@ -132,6 +133,10 @@ const AdminProfile = () => {
             </div>
           </div>
         </div>
+      
+      <div className="mydetails">
+      <Category name={"Mon profil"} />
+      <UpdateFormControl userType={"admin"}/>
       </div>
       <Modal isOpen={modalIsOpen} onAfterClose={handleDeleteUser} onRequestClose={() => setmodalIsOpen(false)} shouldCloseOnOverLayClick={false}>
         <div>
@@ -139,6 +144,7 @@ const AdminProfile = () => {
           <button onClick={() => setmodalIsOpen(false)}>Oui</button>
         </div>
       </Modal>
+      </div>
     </>
   );
 };

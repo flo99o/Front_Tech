@@ -1,6 +1,6 @@
 import React from "react";
 import UpdateAdminProfile from "./UpdateAdminProfile";
-import UpdateCompagnyForm from "./UpdateCompagnyForm";
+import UpdateCompagnyProfile from "./UpdateCompagnyProfile";
 import UpdateUserProfile from "./UpdateUserProfile";
 
 const UpdateFormControl = (props) => {
@@ -11,7 +11,7 @@ const UpdateFormControl = (props) => {
     case "admin":
       return <UpdateAdminProfile />;
     case "compagny": 
-    return <UpdateCompagnyForm />
+    return <UpdateCompagnyProfile />
     default:
       return null;
   }
