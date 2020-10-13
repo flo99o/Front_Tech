@@ -6,36 +6,28 @@ import axios from "axios";
 import FormikControl from "../formik/FormikControl";
 import Button from "../Button";
 
-const UpdateUserProfile = (props) => {
+const UpdateUserProfile = () => {
   const userID = 2; //(state)
-  const [myDetails, setMyDetails] = useState([]);
+  const [userType, setUserType] = useState("");
+  const [initialValues, setInitialValues] = useState([]);
 
   useEffect(() => {
-    const getMyDetails = async () => {
-      const url = `http://localhost:5000/allpeople/myDetails/${userID}`;
-      const result = await axios.get(url);
-      setMyDetails(result.data);
-    };
-    getMyDetails();
-
-    
+    const url = `http://localhost:5000/allpeople/userDetails/${userID}`;
+    axios
+      .get(url)
+      .then((result) => {
+        setInitialValues(result.data[0]);
+        setUserType(result.data[0].type);
+      })
+      .catch("error");
   }, []);
-  let first_name, last_name, email, logo, phone
 
-  if (myDetails.length) {
-  const details = myDetails[0];
-   first_name = details.first_name
-    console.log('first_name:', first_name) //output: Manon
-    
-  }
-  
-  console.log('first_name:', first_name) // output Manon
-  let initialValues = {
-    first_name: first_name,
-    last_name: 'dupont',
-    email: 'manondupont@gmail.com',
-    phone: '0600000000',
-    logo: 'non renseigné',
+  const values = {
+    first_name: initialValues.first_name,
+    last_name: initialValues.last_name,
+    email: initialValues.email,
+    phone: initialValues.phone,
+    logo: initialValues.logo,
   };
 
   const validationSchema = Yup.object({
@@ -59,67 +51,86 @@ const UpdateUserProfile = (props) => {
 
   return (
     <div>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
-        {(formik) => (
-          <Form className="signIn__form">
-            <FormikControl
-              control="input"
-              type="text"
-              name="first_name"
-              label="Prénom"
-            />
-            <FormikControl
-              control="input"
-              type="text"
-              name="last_name"
-              label="Nom"
-            />
-            <FormikControl
-              control="input"
-              type="email"
-              name="email"
-              label="E-mail"
-            />
-            <FormikControl
-              control="input"
-              type="password"
-              name="password"
-              label="mot de passe"
-              placeholder="********"
-            />
-            <FormikControl
-              control="input"
-              type="password"
-              name="repeat_password"
-              label="répétez votre mot de passe"
-              placeholder="********"
-            />
-            <FormikControl
-              control="input"
-              type="tel"
-              name="phone"
-              label="Téléphone"
-            />
-            <FormikControl
-              control="input"
-              type="text"
-              name="logo"
-              label="Photo"
-            />
+      {!initialValues ? null : (
+        <Formik
+          initialValues={values}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
+          enableReinitialize
+        >
+          {(formik) => (
+            <Form className="signIn__form">
+              <FormikControl
+                control="input"
+                type="text"
+                name="first_name"
+                label="Prénom"
+              />
+              <FormikControl
+                control="input"
+                type="text"
+                name="last_name"
+                label="Nom"
+              />
+              <FormikControl
+                control="input"
+                type="email"
+                name="email"
+                label="E-mail"
+              />
+              <FormikControl
+                control="input"
+                type="password"
+                name="password"
+                label="mot de passe"
+                placeholder="********"
+              />
+              <FormikControl
+                control="input"
+                type="password"
+                name="repeat_password"
+                label="répétez votre mot de passe"
+                placeholder="********"
+              />
+              <FormikControl
+                control="input"
+                type="tel"
+                name="phone"
+                label="Téléphone"
+              />
+              <FormikControl
+                control="input"
+                type="text"
+                name="logo"
+                label="Photo"
+              />
 
-            <Button
-              type="submit"
-              disabled={!formik.isValid}
-              className={"btn btn--round"}
-              value={"Modifier mon profil"}
-            />
-          </Form>
-        )}
-      </Formik>
+              {userType === "compagny" ? (
+                <>
+                  <FormikControl
+                    control="input"
+                    type="text"
+                    name="compagny_name"
+                    label="Nom de l'entreprise"
+                  />
+                  <FormikControl
+                    control="textarea"
+                    name="description_compagny"
+                    label="Description de votre entreprise"
+                  />{" "}
+                </>
+              ) : null}
+
+              <Button
+                type="submit"
+                disabled={!formik.isValid}
+                className={"btn btn--round"}
+                value={"Modifier mon profil"}
+              />
+            </Form>
+          )}
+        </Formik>
+      )}
     </div>
   );
 };

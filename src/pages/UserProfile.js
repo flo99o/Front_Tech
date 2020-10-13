@@ -23,7 +23,7 @@ const UserProfile = (props) => {
 
     // (state)
     const getMyDetails = async () => {
-      const url = `http://localhost:5000/allpeople/myDetails/${userID}`;
+      const url = `http://localhost:5000/allpeople/userDetails/${userID}`;
       const result = await axios.get(url);
       setMyDetails(result.data);
     };
@@ -33,7 +33,6 @@ const UserProfile = (props) => {
   const logo = myDetails.map((item) => item.logo);
   const nameUser = myDetails.map((item) => item.first_name);
 
-  console.log("nameUser:", nameUser);
   return (
     <>
       <HeroProfile logo={logo} nameUser={nameUser} />
