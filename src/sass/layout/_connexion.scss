@@ -78,4 +78,13 @@ display: flex;
 label.createAd-form__block {
   margin-bottom: 5px;
  }
- 
+
+// .isShowInput {
+//   display: none;
+// }
+
+
+.radioButton > .container-radioOptions > #compagny:checked ~  .isShowInput  {
+  color: red;
+  display: block;
+}

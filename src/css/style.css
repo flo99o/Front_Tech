@@ -462,6 +462,10 @@ h6 {
 label.createAd-form__block {
   margin-bottom: 5px; }
 
+.radioButton > .container-radioOptions > #compagny:checked ~ .isShowInput {
+  color: red;
+  display: block; }
+
 .createAd-form__inner {
   display: flex;
   flex-direction: column;
