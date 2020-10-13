@@ -9,10 +9,12 @@ import UpdateFormControl from "../components/UpdateProfileForm/UpdateFormControl
 
 const UserProfile = (props) => {
   const userID = props.match.params.id;
+  console.log('userID:', userID)
+
 
   const [myDetails, setMyDetails] = useState([]);
   const [myApplications, setMyApplications] = useState([]);
-  console.log("myApplications:", myApplications);
+  
 
   useEffect(() => {
     const geyMyApplications = async () => {
@@ -47,6 +49,7 @@ const UserProfile = (props) => {
               <DescriptionJob
                 key={offer.offerID}
                 idJob={offer.offerID}
+                userID={userID}
                 logo={offer.logo}
                 wage={offer.wage}
                 contract={offer.contract}

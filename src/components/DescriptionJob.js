@@ -6,6 +6,7 @@ import arrowDown from "../assets/logo_layout/arrow-down.svg";
 const DescriptionJob = (props) => {
   const {
     idJob,
+    userID,
     logo,
     wage,
     contract,
@@ -61,6 +62,7 @@ const DescriptionJob = (props) => {
             <JobContent
               key={idJob}
               idJob={idJob}
+              userID={userID}
               description_compagny={item.description_compagny}
               description_position={item.description_position}
               prerequisite={item.prerequisite}

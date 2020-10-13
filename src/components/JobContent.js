@@ -8,8 +8,9 @@ import Button from "../components/Button";
 
 const JobContent = (props) => {
  
-
+  const userType = props.userType
   const offerID = props.idJob
+  const userID = props.userID
   console.log(props.userType);
   const [modalIsOpen, setmodalIsOpen] = useState(false);
   const [response, setResponse] = useState([])
@@ -20,9 +21,15 @@ const JobContent = (props) => {
 
   const handleDeleteOffer = () => {
     setmodalIsOpen(false)
-    const url = `http://localhost:5000/compagny/deleteOffer/${offerID}`
-    axios.delete(url)
-    .then(res => setResponse(res.data))
+    if(userType === "user"){
+      const url = `http://localhost:5000/users/deleteApplication/${userID}/${offerID}`
+      axios.delete(url)
+      .then(res => setResponse(res.data))
+    }else{
+      const url = `http://localhost:5000/compagny/deleteOffer/${offerID}`
+      axios.delete(url)
+      .then(res => setResponse(res.data))
+    }
     
   };
 
@@ -67,6 +74,14 @@ const JobContent = (props) => {
                 className="btn"
               />
             ) : null}
+            {props.userType === "user" ? 
+            <Button 
+              value={"Supprimer"}
+              className="btn"
+              action={handleModale}
+
+            /> 
+          : null}
           </div>
         </div>
       </div>
