@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
+import { useHistory } from "react-router-dom"
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -8,22 +9,18 @@ import FormikControl from "../components/formik/FormikControl";
 import Button from "../components/Button";
 
 const Register = () => {
+  let history = useHistory()
   const errormsg = "Obligatoire !"; //mettre dans state contexte
 
-
-if( $("input[type=radio]").is(":checked") ){
-  console.log('checked!');
-}
-
-
+  
 
   const radioOptions = [
     {
-      key: "Candidat",
+      key: "Un candidat",
       value: "user",
     },
-    { key: "Entreprise", value: "compagny" },
-    { key: "Admin", value: "Admin" },
+    { key: "Une entreprise", value: "compagny" },
+  
   ];
 
 
@@ -66,10 +63,14 @@ if( $("input[type=radio]").is(":checked") ){
     }),
   });
 
-  const onSubmit = (values) => {
+  const onSubmit = (values, onSubmitProps) => {
     console.log("values:", values);
-    const url = "http://localhost:5000/allpeople/register"; //(allpeople)
-    axios.post(url, values);
+    const url = "http://localhost:5000/allpeople/register";
+    axios.post(url, values)
+    .then(res => {
+      history.push(`/user/${res.data.userID}`)
+    })
+
   };
 
 

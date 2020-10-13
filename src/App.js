@@ -17,6 +17,7 @@ import Register from "./pages/Register"
 const App = () => {
   return (
     <div className="global_container">
+     
       <Router>
         <Switch>
           <Route exact path="/" component={Homepage} />
@@ -30,7 +31,7 @@ const App = () => {
           <Route exact path="/apply/:offerID" component={ApplicationForm} />
         </Switch>
       </Router>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

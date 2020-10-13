@@ -97,7 +97,6 @@ const AdminProfile = () => {
                     {user.first_name} {user.last_name}
                   </p>
                   <span onClick={() => handleModale(user.userID, "user")}>
-                    {" "}
                     &#x274C;
                   </span>
                 </div>

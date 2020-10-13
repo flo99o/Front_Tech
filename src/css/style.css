@@ -315,7 +315,9 @@ h6 {
   top: 0;
   right: 2.4rem;
   display: flex;
-  margin-top: 2.5rem; }
+  margin-top: 2.5rem;
+  z-index: 200;
+  cursor: pointer; }
 
 .job-list {
   display: flex;
@@ -561,6 +563,12 @@ li.navigation__items > a {
   display: flex;
   align-items: center;
   width: 100%; }
+
+.cross-closed-menu {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer; }
 
 .user,
 .ad,

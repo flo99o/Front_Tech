@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom"
+import $ from "jquery"
 //icons
 import briefcase from "../assets/logo_nav/mallette.svg";
 
 const NavBar = () => {
+
+  useEffect(() => {
+    $(".cross-closed-menu").on('click', () => {
+      console.log("hello");
+      $(".navigation").hide()
+    })
+  }, [])
+
   return (
     <nav className="navigation">
       <ul className="navigation__list">
@@ -32,6 +41,7 @@ const NavBar = () => {
           <p>FAQ </p>
         </li>
       </ul>
+    <span className="cross-closed-menu">&#10006;</span>
     </nav>
   );
 };
