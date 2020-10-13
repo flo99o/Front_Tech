@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Modal from "react-modal"
 //components
 import Button from "../components/Button";
 
+
 const JobContent = (props) => {
+ 
+
   const offerID = props.idJob
   console.log(props.userType);
   const [modalIsOpen, setmodalIsOpen] = useState(false);
@@ -16,9 +19,11 @@ const JobContent = (props) => {
   };
 
   const handleDeleteOffer = () => {
+    setmodalIsOpen(false)
     const url = `http://localhost:5000/compagny/deleteOffer/${offerID}`
     axios.delete(url)
     .then(res => setResponse(res.data))
+    
   };
 
   return (
@@ -66,10 +71,10 @@ const JobContent = (props) => {
         </div>
       </div>
     </div>
-    <Modal isOpen={modalIsOpen} onAfterClose={handleDeleteOffer} onRequestClose={() => setmodalIsOpen(false)} shouldCloseOnOverLayClick={false}>
+    <Modal isOpen={modalIsOpen} onRequestClose={() => setmodalIsOpen(false)} shouldCloseOnOverLayClick={false}>
     <div>
       <h2>confirmer la suppression ?</h2>
-      <button onClick={() => setmodalIsOpen(false)}>Oui</button>
+      <button onClick={() => handleDeleteOffer()}>Oui</button>
     </div>
   </Modal>
   </>

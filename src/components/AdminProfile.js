@@ -16,11 +16,15 @@ const AdminProfile = () => {
   const [compagnies, setCompagnies] = useState([]);
   const [myDetails, setMyDetails] = useState([]);
 
+  //handle modal opening
   const [modalIsOpen, setmodalIsOpen] = useState(false);
-  const [idToDelete, setidToDelete] = useState("")
+
+  //get what user's type and user's id to delete
+  const [idToDelete, setidToDelete] = useState("");
+  const [userToDelete, setUserToDelete] = useState("");
 
   //stock results from back
-  const [response, setResponse] = useState([])
+  const [response, setResponse] = useState([]);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -56,23 +60,28 @@ const AdminProfile = () => {
   //admin's logo
   const logo = myDetails.map((item) => item.logo);
 
-  //
-  const handleModale = (id) =>  {
+  // function to open modal
+  const handleModale = (id, userType) => {
+    console.log("id:", id, userType);
     //get user's id which has been clicked
-    setidToDelete(id)
-    setmodalIsOpen(true)
-  }
-
-  const handleDeleteUser = () => {
-    const url = `http://localhost:5000/allpeople/deleteUserAccount/${idToDelete}`
-    axios.delete(url)
-    .then(res => setResponse(res.data))
+    setUserToDelete(userType);
+    setidToDelete(id);
+    setmodalIsOpen(true);
   };
 
-  const handleDeleteCompagny = (id) => {
-    
-    //function which delete compagny
+  // function to delete user
+  const handleDelete = () => {
+    setmodalIsOpen(false)
+    if (userToDelete === "user") {
+      const url = `http://localhost:5000/allpeople/deleteUserAccount/${idToDelete}`;
+      axios.delete(url).then((res) => setResponse(res.data));
+    } else if (userToDelete === "compagny") {
+      const url = `http://localhost:5000/compagny/deleteCompagny/${idToDelete}`;
+      axios.delete(url).then((res) => setResponse(res.data));
+    }
   };
+
+
 
   return (
     <>
@@ -87,7 +96,7 @@ const AdminProfile = () => {
                   <p>
                     {user.first_name} {user.last_name}
                   </p>
-                  <span onClick={() => handleModale(user.userID)}>
+                  <span onClick={() => handleModale(user.userID, "user")}>
                     {" "}
                     &#x274C;
                   </span>
@@ -103,9 +112,10 @@ const AdminProfile = () => {
                 <ul key={compagny.compagnyID} className="list__compagny">
                   <li>{compagny.compagny_name}</li>
                   <span
-                    onClick={() => handleDeleteCompagny(compagny.compagnyID)}
+                    onClick={() =>
+                      handleModale(compagny.compagnyID, "compagny")
+                    }
                   >
-                    
                     &#x274C;
                   </span>
                 </ul>
@@ -132,19 +142,22 @@ const AdminProfile = () => {
               ))}
             </div>
           </div>
-        
-      
-      <div className="mydetails">
-      <Category name={"Mon profil"} />
-      <UpdateFormControl userType={"admin"}/>
-      </div>
-      <Modal isOpen={modalIsOpen} onAfterClose={handleDeleteUser} onRequestClose={() => setmodalIsOpen(false)} shouldCloseOnOverLayClick={false}>
-        <div>
-          <h2>confirmer la suppression ?</h2>
-          <button onClick={() => setmodalIsOpen(false)}>Oui</button>
+
+          <div className="mydetails">
+            <Category name={"Mon profil"} />
+            <UpdateFormControl userType={"admin"} />
+          </div>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={() => setmodalIsOpen(false)}
+            shouldCloseOnOverLayClick={false}
+          >
+            <div>
+              <h2>confirmer la suppression ?</h2>
+              <button onClick={() => handleDelete()}>Oui</button>
+            </div>
+          </Modal>
         </div>
-      </Modal>
-      </div>
       </div>
     </>
   );

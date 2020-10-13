@@ -7,7 +7,6 @@ import FormikControl from "../formik/FormikControl";
 import Button from "../Button";
 
 const UpdateAdminProfile = () => {
-    
   const userID = 1; //state
   const [initialValues, setInitialValues] = useState([]);
 
@@ -101,20 +100,6 @@ const UpdateAdminProfile = () => {
                 type="text"
                 name="logo"
                 label="Photo"
-              />
-
-              <FormikControl
-                control="input"
-                type="text"
-                name="compagny_name"
-                label="Nom de l'entreprise"
-                placeholder="Microsoft"
-              />
-              <FormikControl
-                control="textarea"
-                name="description_compagny"
-                label="Description de votre entreprise"
-                placeholder="Courte description de votre entreprise"
               />
 
               <Button

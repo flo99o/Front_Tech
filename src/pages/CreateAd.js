@@ -55,7 +55,7 @@ const CreatedAd = () => {
   };
   const validationSchema = Yup.object({
     job_name: Yup.string().required("Obligatoire !"),
-    desc_position: Yup.string().required("Obligatoire !"),
+    description_position: Yup.string().required("Obligatoire !"),
     location: Yup.string().required("Obligatoire !"),
     contract: Yup.string().required("Obligatoire !"),
   });
@@ -89,7 +89,7 @@ const CreatedAd = () => {
                 <FormikControl
                   control="textarea"
                   label="Description du poste"
-                  name="desc_position"
+                  name="description_position"
                   placeholder="Décrivez le poste"
                 />
                 <FormikControl

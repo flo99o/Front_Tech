@@ -7,7 +7,7 @@ import FormikControl from "../formik/FormikControl";
 import Button from "../Button";
 
 const UpdateCompagnyForm = () => {
-  const userID = 4; //state
+  const userID = 7; //state
 
   const [initialValues, setInitialValues] = useState([]);
 
@@ -16,6 +16,8 @@ const UpdateCompagnyForm = () => {
     axios
       .get(url)
       .then((result) => {
+        console.log('result:', result)
+        
         setInitialValues(result.data[0]);
       })
       .catch("error");
