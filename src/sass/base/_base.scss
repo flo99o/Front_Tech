@@ -205,3 +205,18 @@ th {
   border: 4px solid white;
   box-sizing: content-box;
 }
+
+//Modal's propreties
+.ReactModal__Overlay {
+z-index: 4000;
+ }
+
+ .ReactModal__Content > div:nth-child(1) {
+  top: 50%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+ }
+ 
+ 
+ 

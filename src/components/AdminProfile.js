@@ -151,6 +151,7 @@ const AdminProfile = () => {
             isOpen={modalIsOpen}
             onRequestClose={() => setmodalIsOpen(false)}
             shouldCloseOnOverLayClick={false}
+            
           >
             <div>
               <h2>confirmer la suppression ?</h2>

@@ -174,6 +174,15 @@ th {
   border: 4px solid white;
   box-sizing: content-box; }
 
+.ReactModal__Overlay {
+  z-index: 4000; }
+
+.ReactModal__Content > div:nth-child(1) {
+  top: 50%;
+  position: absolute;
+  display: flex;
+  flex-direction: column; }
+
 h1,
 h2,
 h6 {
