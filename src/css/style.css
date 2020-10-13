@@ -426,6 +426,9 @@ h6 {
   .hello-friend h1, .welcome-back h1 {
     color: inherit; }
 
+.signIn {
+  padding: 0 2.5rem; }
+
 .inner-box {
   display: flex;
   flex-direction: column;
@@ -436,7 +439,7 @@ h6 {
     text-align: center; }
 
 .create-account {
-  padding: 3rem 0; }
+  padding: 3rem 2.5rem; }
 
 .radioButton {
   display: flex;
@@ -470,7 +473,8 @@ label.createAd-form__block {
   font-size: 1.4rem;
   line-height: 2;
   font-weight: bold;
-  color: var(--color-tertiary); }
+  color: var(--color-tertiary);
+  width: 100%; }
 
 header {
   position: absolute;

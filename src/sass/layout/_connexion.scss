@@ -35,6 +35,10 @@
   }
 }
 
+.signIn {
+  padding: 0 2.5rem;
+}
+
 .inner-box {
   @include flexAllCenter;
   &--blue {
@@ -45,7 +49,7 @@
 }
 
 .create-account {
-  padding: 3rem 0;
+  padding: 3rem 2.5rem;
 }
 
 .radioButton {
