@@ -132,7 +132,7 @@ const AdminProfile = () => {
               ))}
             </div>
           </div>
-        </div>
+        
       
       <div className="mydetails">
       <Category name={"Mon profil"} />
@@ -144,6 +144,7 @@ const AdminProfile = () => {
           <button onClick={() => setmodalIsOpen(false)}>Oui</button>
         </div>
       </Modal>
+      </div>
       </div>
     </>
   );
