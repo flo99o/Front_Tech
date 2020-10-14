@@ -14,6 +14,7 @@ const AdminProfile = () => {
   const [users, setUsers] = useState([]);
   const [offers, setOffers] = useState([]);
   const [compagnies, setCompagnies] = useState([]);
+  console.log('compagnies:', compagnies)
   const [myDetails, setMyDetails] = useState([]);
 
   //handle modal opening
@@ -22,6 +23,7 @@ const AdminProfile = () => {
   //get what user's type and user's id to delete
   const [idToDelete, setidToDelete] = useState("");
   const [userToDelete, setUserToDelete] = useState("");
+  const [compagnyToDelete, setCompagnyToDelete] = useState("")
 
   //stock results from back
   const [response, setResponse] = useState([]);
@@ -61,18 +63,27 @@ const AdminProfile = () => {
   const logo = myDetails.map((item) => item.logo);
 
   // function to open modal
-  const handleModale = (id, userType) => {
-    console.log("id:", id, userType);
-    //get user's id which has been clicked
+  const handleModale = (id, userType, compagny_name) => {
+    console.log("id:", id, userType, compagny_name);
+    //stock user's id, type or compagny name which has been clicked
     setUserToDelete(userType);
     setidToDelete(id);
+    setCompagnyToDelete(compagny_name)
     setmodalIsOpen(true);
   };
 
   // function to delete user
-  const handleDelete = () => {
+  const handleDelete = async ()  => {
+    console.log(compagnyToDelete);
     setmodalIsOpen(false)
-    if (userToDelete === "user") {
+    if (compagnyToDelete){
+      console.log('compagnyToDelete:', compagnyToDelete)
+      
+    
+      const url = `http://localhost:5000/compagny/deleteCompagny/${compagnyToDelete}`
+      await axios.delete(url)
+    }
+    else if (userToDelete === "user") {
       const url = `http://localhost:5000/allpeople/deleteUserAccount/${idToDelete}`;
       axios.delete(url).then((res) => setResponse(res.data));
     } else if (userToDelete === "compagny") {
@@ -112,7 +123,7 @@ const AdminProfile = () => {
                   <li>{compagny.compagny_name}</li>
                   <span
                     onClick={() =>
-                      handleModale(compagny.compagnyID, "compagny")
+                      handleModale(compagny.compagnyID, "compagny", compagny.compagny_name)
                     }
                   >
                     &#x274C;
