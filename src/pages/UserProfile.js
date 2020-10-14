@@ -7,6 +7,10 @@ import DescriptionJob from "../components/DescriptionJob";
 import UpdateUserProfile from "../components/UpdateProfileForm/UpdateUserProfile";
 import UpdateFormControl from "../components/UpdateProfileForm/UpdateFormControl";
 
+const test = require('../services/services')
+
+test() 
+
 const UserProfile = (props) => {
   const userID = props.match.params.id;
   console.log('userID:', userID)
@@ -15,6 +19,7 @@ const UserProfile = (props) => {
   const [myDetails, setMyDetails] = useState([]);
   const [myApplications, setMyApplications] = useState([]);
   
+
 
   useEffect(() => {
     const geyMyApplications = async () => {
@@ -62,9 +67,9 @@ const UserProfile = (props) => {
             ))}
           </div>
 
-          <div className="ad">
+          {/* <div className="ad">
             <Category name={"Mes offres sauvergardées"} />
-          </div>
+          </div> */}
 
           <div className="details">
             <Category name={"Mes infos personnelles"} />

@@ -1,21 +1,38 @@
-import React, { useState }from "react";
-import { Link } from "react-router-dom"
+import React, { useState, useEffect }from "react";
+import { Link, useHistory } from "react-router-dom"
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 //components
 import FormikControl from "../components/formik/FormikControl";
 import Button from "../components/Button";
-import Register from "./Register"
 
 
-const UserPage = () => {
+const SignIn = () => {
+  let history = useHistory()
   const errormsg = "Obligatoire !"; //mettre dans state contexte
+  const [response, setResponse] = useState([])
+
+  //users' details to set localstorage with them
+  const { first_name, last_name, userID, userType, email, phone, description_compagny, compagny_name, isLogged} = response
+  console.log(response);
+  const getLoggedDetails = { 
+    "first_name" : first_name,
+    "last_name" : last_name,
+    "userID" : userID,
+    "userType" : userType,
+    "email": email,
+    "phone" : phone,
+    "description_compagny" : description_compagny,
+    "compagny_name" : compagny_name,
+    "isLogged": isLogged
+  }
+
+  // variables for formik
   const initialValues = {
     email: "",
     password: "",
   };
-  const [response, setResponse] = useState([])
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Le format de l'email est incorrect !")
@@ -23,14 +40,23 @@ const UserPage = () => {
     password: Yup.string().required(errormsg),
   });
 
-console.log('response: ', response);
-console.log('hello');
   const onSubmit = async (values) => {
     console.log("submission");
     const url = "http://localhost:5000/signin/signin";
     await axios.post(url, values)
-    .then(res => setResponse(res.data));
-  };
+    .then(res => {
+      setResponse(res.data)
+        localStorage.setItem("test","hello")
+      console.log("test:" + JSON.stringify(getLoggedDetails));
+        localStorage.setItem("dataKey", JSON.stringify(getLoggedDetails))
+        console.log(getLoggedDetails);
+     
+     
+      
+        //history.push(`/user/${res.data.userID}`)
+      }
+  );
+}
 
   return (
     <div className="container--connexion">
@@ -89,4 +115,6 @@ console.log('hello');
   );
 };
 
-export default UserPage;
+
+export default SignIn
+

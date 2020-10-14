@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -81,9 +81,9 @@ const Register = () => {
         <div className="inner-box inner-box--blue">
           <h1 className="heading-primary--main">Welcome Back!</h1>
           <p>To keep connected with us please login with your personal info</p>
-          <button id="signIn" className="btn btn--round btn--transparent">
+          <Link to={"/signin"} id="signIn" className="btn btn--round btn--transparent">
             Sign In
-          </button>
+          </Link>
         </div>
       </div>
       <div className="create-account">

@@ -7,7 +7,8 @@ import FormikControl from "../formik/FormikControl";
 import Button from "../Button";
 
 const UpdateUserProfile = () => {
-  const userID = 14; //(state)
+  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
+  const userID = getUserID.userID;
 
   const [initialValues, setInitialValues] = useState([]);
 
