@@ -14,19 +14,26 @@ const SignIn = () => {
   const [response, setResponse] = useState([])
 
   //users' details to set localstorage with them
-  const { first_name, last_name, userID, userType, email, phone, description_compagny, compagny_name, isLogged} = response
+  
+  
   console.log(response);
-  const getLoggedDetails = { 
-    "first_name" : first_name,
-    "last_name" : last_name,
-    "userID" : userID,
-    "userType" : userType,
-    "email": email,
-    "phone" : phone,
-    "description_compagny" : description_compagny,
-    "compagny_name" : compagny_name,
-    "isLogged": isLogged
-  }
+
+  // const getLoggedDetails = { 
+  //   "first_name" : first_name,
+  //   "last_name" : last_name,
+  //   "userID" : userID,
+  //   "userType" : userType,
+  //   "email": email,
+  //   "phone" : phone,
+  //   "description_compagny" : description_compagny,
+  //   "compagny_name" : compagny_name,
+  //   "isLogged": isLogged
+  // }
+
+  useEffect(() => {
+    localStorage.getItem("userID", response.userID )
+   
+  }, [response])
 
   // variables for formik
   const initialValues = {
@@ -46,14 +53,13 @@ const SignIn = () => {
     await axios.post(url, values)
     .then(res => {
       setResponse(res.data)
-        localStorage.setItem("test","hello")
-      console.log("test:" + JSON.stringify(getLoggedDetails));
-        localStorage.setItem("dataKey", JSON.stringify(getLoggedDetails))
-        console.log(getLoggedDetails);
-     
-     
-      
-        //history.push(`/user/${res.data.userID}`)
+      const userID = res.data.userID
+      localStorage.setItem("userID",userID)
+      // localStorage.setItem("userID","hello") 
+      // console.log("test:" + JSON.stringify(getLoggedDetails));
+      // localStorage.setItem("dataKey", JSON.stringify(getLoggedDetails))
+      // console.log(getLoggedDetails);
+        history.push(`/user/${res.data.userID}`)
       }
   );
 }

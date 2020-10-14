@@ -4,22 +4,25 @@ import axios from "axios";
 import Category from "../components/Category";
 import HeroProfile from "../components/HeroProfile";
 import DescriptionJob from "../components/DescriptionJob";
-import UpdateUserProfile from "../components/UpdateProfileForm/UpdateUserProfile";
 import UpdateFormControl from "../components/UpdateProfileForm/UpdateFormControl";
 
-const test = require('../services/services')
-
-test() 
+const userDetails = require("../services/services");
 
 const UserProfile = (props) => {
+  
+  useEffect(() => {
+   async function fetchData() {
+
+   const getUserDetails = await userDetails.getUserDetails(userID);
+    console.log("userDetails:", getUserDetails);
+    setMyDetails(getUserDetails)
+    }
+    fetchData();
+  }, []);
+
   const userID = props.match.params.id;
-  console.log('userID:', userID)
-
-
   const [myDetails, setMyDetails] = useState([]);
   const [myApplications, setMyApplications] = useState([]);
-  
-
 
   useEffect(() => {
     const geyMyApplications = async () => {
@@ -29,13 +32,15 @@ const UserProfile = (props) => {
     };
     geyMyApplications();
 
+
+
     // (state)
-    const getMyDetails = async () => {
-      const url = `http://localhost:5000/allpeople/userDetails/${userID}`;
-      const result = await axios.get(url);
-      setMyDetails(result.data);
-    };
-    getMyDetails();
+    // const getMyDetails = async () => {
+    //   const url = `http://localhost:5000/allpeople/userDetails/${userID}`;
+    //   const result = await axios.get(url);
+    //   setMyDetails(result.data);
+    // };
+    // getMyDetails();
   }, []);
 
   const logo = myDetails.map((item) => item.logo);
@@ -62,7 +67,7 @@ const UserProfile = (props) => {
                 compagny_name={offer.compagny_name}
                 location={offer.location}
                 toggle={true}
-                userType={'user'}
+                userType={"user"}
               />
             ))}
           </div>
