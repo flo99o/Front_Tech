@@ -11,12 +11,8 @@ import ApplicationForm from "./pages/ApplicationForm";
 import CompagnyProfile from "./pages/CompagnyProfile";
 import AdminProfile from "./components/AdminProfile";
 import UserProfile from "./pages/UserProfile";
-<<<<<<< HEAD
-import Register from "./pages/Register"
-=======
 import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import { Unauthorized } from "./components/Unauthorized";
->>>>>>> paginations
 
 
 const App = () => {
