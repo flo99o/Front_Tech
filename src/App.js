@@ -1,5 +1,5 @@
 // Packages
-import React from "react";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // Components
 import Homepage from "./pages/Homepage";
@@ -11,10 +11,17 @@ import ApplicationForm from "./pages/ApplicationForm";
 import CompagnyProfile from "./pages/CompagnyProfile";
 import AdminProfile from "./components/AdminProfile";
 import UserProfile from "./pages/UserProfile";
+<<<<<<< HEAD
 import Register from "./pages/Register"
+=======
+import { ProtectedRoutes } from "./components/ProtectedRoutes";
+import { Unauthorized } from "./components/Unauthorized";
+>>>>>>> paginations
 
 
 const App = () => {
+ 
+
   return (
     <div className="global_container">
      
@@ -24,11 +31,12 @@ const App = () => {
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/job/:id" component={JobPage} />
-          <Route exact path="/compagny/:id" component={CompagnyProfile} />
+          <ProtectedRoutes exact path="/compagny/:id" component={CompagnyProfile} />
           <Route exact path="/admin/" component={AdminProfile} />
-          <Route exact path="/user/:id" component={UserProfile} />
+          <ProtectedRoutes exact path="/user/:id" component={UserProfile} />
           <Route exact path="/createad" component={CreateAd} />
           <Route exact path="/apply/:offerID" component={ApplicationForm} />
+          <Route exact path="/unauthorized" component ={Unauthorized}/>
         </Switch>
       </Router>
       {/* <Footer /> */}
