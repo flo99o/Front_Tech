@@ -11,8 +11,10 @@ import Button from "../components/Button";
 const Register = () => {
   let history = useHistory()
   const errormsg = "Obligatoire !"; //mettre dans state contexte
-
-  
+  const [response, setResponse] = useState([]);
+  useEffect(() => {
+    localStorage.getItem("userID", response.userID);
+  }, [response]);
 
   const radioOptions = [
     {
@@ -68,6 +70,12 @@ const Register = () => {
     const url = "http://localhost:5000/allpeople/register";
     axios.post(url, values)
     .then(res => {
+      setResponse(res.data);
+      const getData = {
+        userID: res.data.userID,
+        isLogged: res.data.isLogged,
+      };
+      localStorage.setItem("dataKey", JSON.stringify(getData));
       history.push(`/user/${res.data.userID}`)
     })
 

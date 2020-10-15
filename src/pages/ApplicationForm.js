@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useHistory } from "react-router-dom"
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -8,10 +8,30 @@ import FormikControl from "../components/formik/FormikControl";
 import Hero from "../components/Hero";
 import Button from "../components/Button";
 
+const getUserDetails = require ("../../src/services/services")
+
 const ApplicationForm = (props) => {
   let history = useHistory()
-  const offer_id = 13;
-  const user_id = 2; //(state)
+  const getUserID = JSON.parse(localStorage.getItem("dataKey"));//(state)
+  const userID = getUserID.userID //(state)
+  
+  const offer_id = props.match.params.idJob;
+  console.log('offer_id:', offer_id)
+  const user_id = userID; 
+  console.log('user_id:', user_id)
+
+  //state
+  const [myDetails, setMyDetails] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      const UserDetails = await getUserDetails.getUserDetails(userID);
+       setMyDetails(UserDetails)
+       }
+       fetchData();
+  }, [])
+
+  console.log(myDetails);
 
   const initialValues = {
     first_name: "",
