@@ -33,6 +33,7 @@ const SignIn = () => {
     const url = "http://localhost:5000/signin/signin";
     await axios.post(url, values).then((res) => {
       setResponse(res.data);
+      console.log('rrr',res)
       const getData = {
         userID: res.data.userID,
         isLogged: res.data.isLogged,
