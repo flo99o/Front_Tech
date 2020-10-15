@@ -1,5 +1,5 @@
-import React, { useState, useEffect }from "react";
-import { Link, useHistory } from "react-router-dom"
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -7,33 +7,14 @@ import axios from "axios";
 import FormikControl from "../components/formik/FormikControl";
 import Button from "../components/Button";
 
-
 const SignIn = () => {
-  let history = useHistory()
+  let history = useHistory();
   const errormsg = "Obligatoire !"; //mettre dans state contexte
-  const [response, setResponse] = useState([])
-
-  //users' details to set localstorage with them
-  
-  
-  console.log(response);
-
-  // const getLoggedDetails = { 
-  //   "first_name" : first_name,
-  //   "last_name" : last_name,
-  //   "userID" : userID,
-  //   "userType" : userType,
-  //   "email": email,
-  //   "phone" : phone,
-  //   "description_compagny" : description_compagny,
-  //   "compagny_name" : compagny_name,
-  //   "isLogged": isLogged
-  // }
+  const [response, setResponse] = useState([]);
 
   useEffect(() => {
-    localStorage.getItem("userID", response.userID )
-   
-  }, [response])
+    localStorage.getItem("userID", response.userID);
+  }, [response]);
 
   // variables for formik
   const initialValues = {
@@ -48,25 +29,18 @@ const SignIn = () => {
   });
 
   const onSubmit = async (values) => {
-    console.log('values:', values)
+    console.log("values:", values);
     const url = "http://localhost:5000/signin/signin";
-    await axios.post(url, values)
-    .then(res => {
-      setResponse(res.data)
+    await axios.post(url, values).then((res) => {
+      setResponse(res.data);
       const getData = {
-        "userID": res.data.userID,
-        "isLogged": res.data.isLogged
-      }
-      localStorage.setItem("dataKey",JSON.stringify(getData))
-      
-      // localStorage.setItem("userID","hello") 
-      // console.log("test:" + JSON.stringify(getLoggedDetails));
-      // localStorage.setItem("dataKey", JSON.stringify(getLoggedDetails))
-      // console.log(getLoggedDetails);
-        history.push(`/user/${res.data.userID}`)
-      }
-  );
-}
+        userID: res.data.userID,
+        isLogged: res.data.isLogged,
+      };
+      localStorage.setItem("dataKey", JSON.stringify(getData));
+      history.push(`/user/${res.data.userID}`);
+    });
+  };
 
   return (
     <div className="container--connexion">
@@ -112,7 +86,7 @@ const SignIn = () => {
               <h1 className="heading-primary--main">Hello Friend!</h1>
               <p>Enter your personal details and start journey with us</p>
               <Link
-              to={"/register"}
+                to={"/register"}
                 className="btn btn--round btn--transparent"
               >
                 sign up
@@ -125,6 +99,4 @@ const SignIn = () => {
   );
 };
 
-
-export default SignIn
-
+export default SignIn;
