@@ -15,6 +15,7 @@ import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import { Unauthorized } from "./components/Unauthorized";
 
 
+
 const App = () => {
  
 
@@ -25,7 +26,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/register" component={Register} />
+          {/* <Route exact path="/register" component={Register} /> */}
           <Route exact path="/job/:id" component={JobPage} />
           <ProtectedRoutes exact path="/compagny/:id" component={CompagnyProfile} />
           <Route exact path="/admin/" component={AdminProfile} />
