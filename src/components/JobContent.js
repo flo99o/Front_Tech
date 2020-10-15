@@ -56,7 +56,7 @@ const JobContent = (props) => {
               <Button className={"btn btn--grey"} value={"Sauvegarder"} />
             )}
             {props.userType ? null : (
-              <Link to={"/apply/${props.idJob}"} className="btn">
+              <Link to={`/apply/${props.idJob}`} className="btn">
                 Postuler
               </Link>
             )}

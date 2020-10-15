@@ -11,11 +11,12 @@ import Button from "../components/Button";
 const getUserDetails = require ("../../src/services/services")
 
 const ApplicationForm = (props) => {
+  console.log('props:', props)
   let history = useHistory()
   const getUserID = JSON.parse(localStorage.getItem("dataKey"));//(state)
   const userID = getUserID.userID //(state)
   
-  const offer_id = props.match.params.idJob;
+  const offer_id = props.match.params.offerID;
   console.log('offer_id:', offer_id)
   const user_id = userID; 
   console.log('user_id:', user_id)
