@@ -74,7 +74,7 @@ const Register = () => {
       const getData = {
         userID: res.data.userID,
         isLogged: res.data.isLogged,
-        type: res.data.userType
+        userType: res.data.userType
         
       };
      
