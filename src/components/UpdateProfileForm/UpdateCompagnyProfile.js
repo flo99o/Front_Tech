@@ -6,8 +6,10 @@ import axios from "axios";
 import FormikControl from "../formik/FormikControl";
 import Button from "../Button";
 
-const UpdateCompagnyForm = () => {
-  const userID = 7; //state
+const UpdateCompagnyForm = (props) => {
+  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
+  const userID = getUserID.userID
+  const userDetails = props.userDetails
 
   const [initialValues, setInitialValues] = useState([]);
 
@@ -24,13 +26,13 @@ const UpdateCompagnyForm = () => {
   }, []);
 
   const values = {
-    first_name: initialValues.first_name,
-    last_name: initialValues.last_name,
-    email: initialValues.email,
-    phone: initialValues.phone,
-    logo: initialValues.logo,
-    description_compagny: initialValues.description_compagny,
-    compagny_name: initialValues.compagny_name,
+    first_name: userDetails.first_name,
+    last_name: userDetails.last_name,
+    email: userDetails.email,
+    phone: userDetails.phone,
+    logo: userDetails.logo,
+    description_compagny: userDetails.description_compagny,
+    compagny_name: userDetails.compagny_name,
   };
 
   const validationSchema = Yup.object({

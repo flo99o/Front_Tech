@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Redirect } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -36,9 +36,25 @@ const SignIn = () => {
       const getData = {
         userID: res.data.userID,
         isLogged: res.data.isLogged,
+        userType: res.data.userType,
+        compagnyID: res.data.compagnyID
       };
       localStorage.setItem("dataKey", JSON.stringify(getData));
-      history.push(`/user/${res.data.userID}`);
+      switch(res.data.userType){
+        case "admin":
+          history.push("/admin")
+          break;
+        case "user":
+          history.push(`/user/${res.data.userID}`)
+          break;
+        case "compagny":
+          history.push(`/compagny/${res.data.userID}`)
+          break;
+        default:
+          return <Redirect to={"/"}/>
+
+      }
+     ;
     });
   };
 

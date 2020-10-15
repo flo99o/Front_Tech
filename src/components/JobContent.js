@@ -11,7 +11,7 @@ const JobContent = (props) => {
   const userType = props.userType
   const offerID = props.idJob
   const userID = props.userID
-  console.log(props.userType);
+  
   const [modalIsOpen, setmodalIsOpen] = useState(false);
   const [response, setResponse] = useState([])
 

@@ -6,8 +6,9 @@ import axios from "axios";
 import FormikControl from "../formik/FormikControl";
 import Button from "../Button";
 
-const UpdateAdminProfile = () => {
-  const userID = 1; //state
+const UpdateAdminProfile = (props) => {
+  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
+  const userID = getUserID.userID
   const [initialValues, setInitialValues] = useState([]);
 
   useEffect(() => {

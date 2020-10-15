@@ -11,8 +11,10 @@ import Button from "../components/Button";
 const CreatedAd = () => {
   let history = useHistory();
   //(state) - get this information from back when the user is login
-  const userID = 5;
-  const compagnyID = 3;
+  
+  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
+  const userID = getUserID.userID
+  const compagnyID = 5;
 
   /**
    * Formik propreties
