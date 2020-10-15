@@ -13,8 +13,6 @@ const getUserDetails = require("../../src/services/services");
 const ApplicationForm = (props) => {
   let history = useHistory();
   
-  
-
   const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false; //(state)
   const user_id = getUserID.userID || "";
   console.log('user_id:', user_id)
