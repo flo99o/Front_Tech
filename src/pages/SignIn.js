@@ -48,13 +48,17 @@ const SignIn = () => {
   });
 
   const onSubmit = async (values) => {
-    console.log("submission");
     const url = "http://localhost:5000/signin/signin";
     await axios.post(url, values)
     .then(res => {
       setResponse(res.data)
       const userID = res.data.userID
-      localStorage.setItem("userID",userID)
+      const getData = {
+        "userID": res.data.userID,
+        "isLogged": res.data.isLogged
+      }
+      localStorage.setItem("dataKey",JSON.stringify(getData))
+      
       // localStorage.setItem("userID","hello") 
       // console.log("test:" + JSON.stringify(getLoggedDetails));
       // localStorage.setItem("dataKey", JSON.stringify(getLoggedDetails))

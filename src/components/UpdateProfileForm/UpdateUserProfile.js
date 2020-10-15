@@ -6,28 +6,33 @@ import axios from "axios";
 import FormikControl from "../formik/FormikControl";
 import Button from "../Button";
 
-const UpdateUserProfile = () => {
+
+
+const UpdateUserProfile = (props) => {
   const getUserID = JSON.parse(localStorage.getItem("dataKey"));
-  const userID = getUserID.userID;
+  const userID = getUserID.userID
+  const userDetails = props.userDetails
+  
+  // const userID = localStorage.getItem("userID")
 
-  const [initialValues, setInitialValues] = useState([]);
+  // const [initialValues, setInitialValues] = useState([]);
 
-  useEffect(() => {
-    const url = `http://localhost:5000/allpeople/userDetails/${userID}`;
-    axios
-      .get(url)
-      .then((result) => {
-        setInitialValues(result.data[0]);
-      })
-      .catch("error");
-  }, []);
+  // useEffect(() => {
+  //   const url = `http://localhost:5000/allpeople/userDetails/${userID}`;
+  //   axios
+  //     .get(url)
+  //     .then((result) => {
+  //       setInitialValues(result.data[0]);
+  //     })
+  //     .catch("error");
+  // }, []);
 
   const values = {
-    first_name: initialValues.first_name,
-    last_name: initialValues.last_name,
-    email: initialValues.email,
-    phone: initialValues.phone,
-    logo: initialValues.logo,
+    first_name: userDetails.first_name,
+    last_name: userDetails.last_name,
+     email: userDetails.email,
+     phone: userDetails.phone,
+     logo: userDetails.logo
   };
 
   const validationSchema = Yup.object({
@@ -53,7 +58,7 @@ const UpdateUserProfile = () => {
 
   return (
     <div>
-      {!initialValues ? null : (
+      {!values ? null : (
         <Formik
           initialValues={values}
           validationSchema={validationSchema}

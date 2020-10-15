@@ -14,6 +14,7 @@ import UserProfile from "./pages/UserProfile";
 import Register from "./pages/Register"
 
 
+
 const App = () => {
   return (
     <div className="global_container">

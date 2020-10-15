@@ -5,22 +5,13 @@ import Category from "../components/Category";
 import HeroProfile from "../components/HeroProfile";
 import DescriptionJob from "../components/DescriptionJob";
 import UpdateFormControl from "../components/UpdateProfileForm/UpdateFormControl";
+import UpdateUserProfile from "../components/UpdateProfileForm/UpdateUserProfile";
 
-const userDetails = require("../services/services");
+const getUserDetails = require("../services/services");
 
-const UserProfile = (props) => {
-  
-  useEffect(() => {
-   async function fetchData() {
-
-   const getUserDetails = await userDetails.getUserDetails(userID);
-    console.log("userDetails:", getUserDetails);
-    setMyDetails(getUserDetails)
-    }
-    fetchData();
-  }, []);
-
-  const userID = props.match.params.id;
+const UserProfile = () => {
+  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
+  const userID = getUserID.userID
   const [myDetails, setMyDetails] = useState([]);
   const [myApplications, setMyApplications] = useState([]);
 
@@ -32,20 +23,16 @@ const UserProfile = (props) => {
     };
     geyMyApplications();
 
-
-
-    // (state)
-    // const getMyDetails = async () => {
-    //   const url = `http://localhost:5000/allpeople/userDetails/${userID}`;
-    //   const result = await axios.get(url);
-    //   setMyDetails(result.data);
-    // };
-    // getMyDetails();
+    async function fetchData() {
+      const userDetails = await getUserDetails.getUserDetails(userID);
+      setMyDetails(userDetails);
+    }
+    fetchData();
   }, []);
 
-  const logo = myDetails.map((item) => item.logo);
-  const nameUser = myDetails.map((item) => item.first_name);
-
+  const logo = myDetails.logo;
+  const nameUser = myDetails.first_name;
+  
   return (
     <>
       <HeroProfile logo={logo} nameUser={nameUser} />
@@ -78,7 +65,7 @@ const UserProfile = (props) => {
 
           <div className="details">
             <Category name={"Mes infos personnelles"} />
-            <UpdateFormControl userType={"user"} />
+            <UpdateUserProfile userDetails={myDetails} />
           </div>
         </div>
       </div>
