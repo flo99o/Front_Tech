@@ -36,13 +36,13 @@ const Register = () => {
     logo: "",
     compagny_name: "",
     description_compagny: "",
-    type: "",
+    Usertype: "",
   };
 
   const validationSchema = Yup.object({
     first_name: Yup.string().required(errormsg),
     last_name: Yup.string().required(errormsg),
-    type: Yup.string().required(errormsg),
+    userType: Yup.string().required(errormsg),
     email: Yup.string()
       .email("Le formt de l'email est incorrect")
       .required(errormsg),
@@ -53,7 +53,6 @@ const Register = () => {
         "Les mots de passe doivent être indentiques"
       )
       .required(errormsg),
-    type: Yup.string().required(errormsg),
     phone: Yup.string().required(errormsg),
     compagny_name: Yup.string().when("type", {
       is: "compagny",
@@ -71,15 +70,20 @@ const Register = () => {
     axios.post(url, values)
     .then(res => {
       setResponse(res.data);
+      console.log('hello',res)
       const getData = {
         userID: res.data.userID,
         isLogged: res.data.isLogged,
+        type: res.data.userType
+        
       };
+     
       localStorage.setItem("dataKey", JSON.stringify(getData));
-      history.push(`/user/${res.data.userID}`)
+      history.push(`/user/${res.data.userID}`)   
+     console.log('hello are you there', getData.userType)
     })
-
   };
+ 
 
 
 

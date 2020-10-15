@@ -5,31 +5,40 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import SignIn from "./pages/SignIn";
 import JobPage from "./pages/JobPage";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import CreateAd from "./pages/CreateAd";
 import ApplicationForm from "./pages/ApplicationForm";
 import CompagnyProfile from "./pages/CompagnyProfile";
 import AdminProfile from "./components/AdminProfile";
 import UserProfile from "./pages/UserProfile";
 import Register from "./pages/Register"
+import ProtectedRoutes from "./components/ProtectedRoutes"
+import { Unauthorized } from "./components/Unauthorized";
 
 
 
 const App = () => {
+  const getIsLogged  = JSON.parse(localStorage.getItem('dataKey')) || false
+  const isLogged = getIsLogged.isLogged || false
+  
+
   return (
     <div className="global_container">
-     
+
       <Router>
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/job/:id" component={JobPage} />
-          <Route exact path="/compagny/:id" component={CompagnyProfile} />
+          {isLogged ? <>
+          <ProtectedRoutes exact path="/compagny/:id" component={CompagnyProfile} />
           <Route exact path="/admin/" component={AdminProfile} />
-          <Route exact path="/user/:id" component={UserProfile} />
-          <Route exact path="/createad" component={CreateAd} />
+          <ProtectedRoutes exact path="/user/:id" component={UserProfile} />
+          <Route exact path="/createad" component={CreateAd} /> </>
+          : null}
           <Route exact path="/apply/:offerID" component={ApplicationForm} />
+          {/* <Route exact path = "/unauthorized" component={Unauthorized}/> */}
         </Switch>
       </Router>
       {/* <Footer /> */}
