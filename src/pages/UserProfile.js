@@ -11,7 +11,7 @@ const getUserDetails = require("../services/services");
 
 const UserProfile = () => {
   const getUserID = JSON.parse(localStorage.getItem("dataKey"));
-  const userID = getUserID.userID
+  const userID = getUserID.userID;
   const [myDetails, setMyDetails] = useState([]);
   const [myApplications, setMyApplications] = useState([]);
 
@@ -32,7 +32,7 @@ const UserProfile = () => {
 
   const logo = myDetails.logo;
   const nameUser = myDetails.first_name;
-  
+
   return (
     <>
       <HeroProfile logo={logo} nameUser={nameUser} />

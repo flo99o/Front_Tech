@@ -37,24 +37,22 @@ const SignIn = () => {
         userID: res.data.userID,
         isLogged: res.data.isLogged,
         userType: res.data.userType,
-        compagnyID: res.data.compagnyID
+        compagnyID: res.data.compagnyID,
       };
       localStorage.setItem("dataKey", JSON.stringify(getData));
-      switch(res.data.userType){
+      switch (res.data.userType) {
         case "admin":
-          history.push("/admin")
+          history.push("/admin");
           break;
         case "user":
-          history.push(`/user/${res.data.userID}`)
+          history.push(`/user/${res.data.userID}`);
           break;
         case "compagny":
-          history.push(`/compagny/${res.data.userID}`)
+          history.push(`/compagny/${res.data.userID}`);
           break;
         default:
-          return <Redirect to={"/"}/>
-
+          return <Redirect to={"/"} />;
       }
-     ;
     });
   };
 

@@ -9,7 +9,7 @@ import DescriptionJob from "../components/DescriptionJob";
 import UpdateFormControl from "../components/UpdateProfileForm/UpdateFormControl";
 import UpdateCompagnyForm from "../components/UpdateProfileForm/UpdateCompagnyProfile";
 
-
+const getUserDetails = require("../services/services");
 
 const CompagnyProfile = (props) => {
   //get the user's id of the compagny
@@ -22,10 +22,9 @@ const CompagnyProfile = (props) => {
   //stock compagny's details
   const [myDetails, setMyDetails] = useState([]);
   
-  const getUserDetails = require("../services/services");
+  
   useEffect(() => {
-    const getUserID = JSON.parse(localStorage.getItem("dataKey"));
-    const userID = getUserID.userID
+   
 
     const getMyOffers = async () => {
       console.log("userID:", userID);

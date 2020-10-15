@@ -5,16 +5,19 @@ import Modal from "react-modal";
 import Category from "../components/Category";
 import DescriptionJob from "./DescriptionJob";
 import HeroProfile from "./HeroProfile";
-import UpdateFormControl from "./UpdateProfileForm/UpdateFormControl";
+import UpdateAdminProfile from "./UpdateProfileForm/UpdateAdminProfile";
+
+const getUserDetails = require("../services/services");
 
 Modal.setAppElement("#root");
+
 const AdminProfile = () => {
-  const userID = 1; //state
+  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
+  const userID = getUserID.userID
   //get the list of :
   const [users, setUsers] = useState([]);
   const [offers, setOffers] = useState([]);
   const [compagnies, setCompagnies] = useState([]);
-  console.log('compagnies:', compagnies)
   const [myDetails, setMyDetails] = useState([]);
 
   //handle modal opening
@@ -50,21 +53,19 @@ const AdminProfile = () => {
     };
     getCompagnies();
 
-    //state
-    const getMyDetails = async () => {
-      const url = `http://localhost:5000/allpeople/userDetails/${userID}`;
-      const result = await axios.get(url);
-      setMyDetails(result.data);
-    };
-    getMyDetails();
+    async function fetchData() {
+      const userDetails = await getUserDetails.getUserDetails(userID);
+      setMyDetails(userDetails);
+    }
+    fetchData();
   }, [response]);
 
   //admin's logo
-  const logo = myDetails.map((item) => item.logo);
+  const logo = myDetails.logo;
 
   // function to open modal
   const handleModale = (id, userType, compagny_name) => {
-    console.log("id:", id, userType, compagny_name);
+    
     //stock user's id, type or compagny name which has been clicked
     setUserToDelete(userType);
     setidToDelete(id);
@@ -81,7 +82,7 @@ const AdminProfile = () => {
       
     
       const url = `http://localhost:5000/compagny/deleteCompagny/${compagnyToDelete}`
-      await axios.delete(url)
+      await axios.delete(url).then((res) => setResponse(res.data))
     }
     else if (userToDelete === "user") {
       const url = `http://localhost:5000/allpeople/deleteUserAccount/${idToDelete}`;
@@ -155,7 +156,7 @@ const AdminProfile = () => {
 
           <div className="mydetails">
             <Category name={"Mon profil"} />
-            <UpdateFormControl userType={"admin"} />
+            <UpdateAdminProfile userDetails={myDetails} />
           </div>
           <Modal
             isOpen={modalIsOpen}

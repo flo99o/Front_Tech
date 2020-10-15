@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import SignIn from "./pages/SignIn";
 import JobPage from "./pages/JobPage";
-import Footer from "./components/Footer";
 import CreateAd from "./pages/CreateAd";
 import ApplicationForm from "./pages/ApplicationForm";
 import CompagnyProfile from "./pages/CompagnyProfile";

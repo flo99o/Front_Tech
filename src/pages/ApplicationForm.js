@@ -12,30 +12,28 @@ const getUserDetails = require("../../src/services/services");
 
 const ApplicationForm = (props) => {
   let history = useHistory();
-  
+
   const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false; //(state)
   const user_id = getUserID.userID || "";
-  console.log('user_id:', user_id)
+  console.log("user_id:", user_id);
 
   // offer's id of the offer which we went to apply to
   const offer_id = props.match.params.offerID;
 
   //state
   const [myDetails, setMyDetails] = useState([]);
-  //create an id for user(visitor) which have not user's id 
-  const [lastUserID, setLastUserID] = useState([])
+  //create an id for user(visitor) which have not user's id
+  const [lastUserID, setLastUserID] = useState([]);
 
   useEffect(() => {
-
     const getLastUser = async () => {
-      const url = "http://localhost:5000/users/lastUserID"
+      const url = "http://localhost:5000/users/lastUserID";
       const results = await axios.get(url);
-      setLastUserID(results.data[0].userID + 1)
-    }
-    getLastUser()
+      setLastUserID(results.data[0].userID + 1);
+    };
+    getLastUser();
 
-    if(user_id){
-
+    if (user_id) {
       async function fetchData() {
         const userDetails = await getUserDetails.getUserDetails(user_id);
         setMyDetails(userDetails);
@@ -46,13 +44,13 @@ const ApplicationForm = (props) => {
 
   console.log("last: ", lastUserID);
 
-const initialValues = {
-  first_name: "",
-  last_name: "",
-  email: "",
-  phone: "",
-  cover_letter: ""
-}
+  const initialValues = {
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone: "",
+    cover_letter: "",
+  };
   const validationSchema = Yup.object({
     first_name: Yup.string().required("Obligatoire !"),
     last_name: Yup.string().required("Obligatoire !"),
@@ -64,16 +62,16 @@ const initialValues = {
   });
 
   const onSubmit = async (values) => {
-    if(user_id){
+    if (user_id) {
       const url = "http://localhost:5000/users/postApplication";
       await axios.post(url, { ...values, user_id, offer_id });
-    }else {
+    } else {
       const url = "http://localhost:5000/users/postApplication";
-      await axios.post(url, { ...values, offer_id, user_id: lastUserID })
+      await axios.post(url, { ...values, offer_id, user_id: lastUserID });
     }
     history.goBack();
   };
- 
+
   return (
     <div className="applicationForm">
       <Hero title="Postuler" subtitle={""} />
@@ -131,12 +129,11 @@ const initialValues = {
                 </div>
               </Form>
             )}
-            
           </Formik>
         )}
 
-
-        {!getUserID ?  <Formik
+        {!getUserID ? (
+          <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={onSubmit}
@@ -188,8 +185,8 @@ const initialValues = {
                 </div>
               </Form>
             )}
-            
-          </Formik> : null}
+          </Formik>
+        ) : null}
       </div>
     </div>
   );
