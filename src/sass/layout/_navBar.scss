@@ -1,5 +1,5 @@
 nav {
-display: none;
+//display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -22,6 +22,7 @@ display: none;
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     width: 100%;
+  
     }
 
     & li{
@@ -36,10 +37,8 @@ display: none;
         -ms-border-radius: 4rem;
         -o-border-radius: 4rem;
         margin-bottom: 1.2rem;
-        &.active {
-            color: var(--color-primary);
-            background-color: var(--color-tertiary);
-        }
+        
+      
         & img {
             height: 2rem;
         }
@@ -54,6 +53,12 @@ li.navigation__items > a {
     display: flex;
     align-items: center;
     width: 100%;
+   
+}
+
+li.navigation__items:hover{
+    color: var(--color-primary);
+    background-color: var(--color-tertiary);
 }
 
 .cross-closed-menu {

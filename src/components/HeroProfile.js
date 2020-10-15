@@ -1,8 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
+import $ from "jquery"
 //components
 import Header from "../components/Header";
+import NavBar from "./Navbar";
 
 const HeroProfile = ({ logo, nameUser }) => {
+
+  useEffect(() => {
+    $("#logo-menu").on('click', () => {
+      $(".navigation").toggle()
+    })
+  }, []) 
   return (
     <section className="hero">
       <img
@@ -10,6 +18,7 @@ const HeroProfile = ({ logo, nameUser }) => {
         src="https://img.icons8.com/metro/26/000000/menu.png"
         alt="utilisateur"
       />
+      <NavBar />
       <Header />
       <div className="heading-primary heading-primary--down">
         <img className="profilePhoto" src={logo} alt="" />

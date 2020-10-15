@@ -517,7 +517,6 @@ footer {
     font-size: 19px; }
 
 nav {
-  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -551,9 +550,6 @@ nav {
     -ms-border-radius: 4rem;
     -o-border-radius: 4rem;
     margin-bottom: 1.2rem; }
-    nav li.active {
-      color: var(--color-primary);
-      background-color: var(--color-tertiary); }
     nav li img {
       height: 2rem; }
     nav li p {
@@ -563,6 +559,10 @@ li.navigation__items > a {
   display: flex;
   align-items: center;
   width: 100%; }
+
+li.navigation__items:hover {
+  color: var(--color-primary);
+  background-color: var(--color-tertiary); }
 
 .cross-closed-menu {
   position: absolute;
