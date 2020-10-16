@@ -10,22 +10,18 @@ import registration from "../assets/logo_nav/registration.svg";
 
 const NavBar = () => {
   let history = useHistory()
-  const [isLogged, setIsLogged] = useState("");
-  const [userID, setUserID] = useState("");
+  
+  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
+  const userID = getUserID.userID = 19
 
   useEffect(() => {
-    if (localStorage) {
-      setIsLogged(localStorage.getItem("dataKey"));
-      if (isLogged) {
-        setUserID(isLogged.userID);
-      }
-    }
+   
 
     $( ".cross-closed-menu, li.navigation__items" ).on("click", () => {
       console.log('hello');
       $(".navigation").hide();
     });
-  }, [isLogged, userID]);
+  }, [userID]);
 
   const getLogout = () => {
     console.log("logout");
@@ -37,7 +33,7 @@ const NavBar = () => {
   return (
     <nav className="navigation">
       <ul className="navigation__list">
-        {isLogged ? (
+        {userID ? (
           <li className="navigation__items">
             <Link to={`/user/${userID}`}>
               <IcomoonReact
@@ -50,7 +46,7 @@ const NavBar = () => {
             </Link>
           </li>
         ) : null}
-        {!isLogged ? (
+        {userID ? (
           <li className="navigation__items">
             <Link to="/signin">
               <IcomoonReact
