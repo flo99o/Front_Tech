@@ -49,6 +49,7 @@ span {
 
 .btn {
   text-align: center;
+  margin-top: 1.5rem;
   background-color: var(--color-tertiary);
   color: var(--color-primary);
   padding: 1rem 3rem;
@@ -182,6 +183,11 @@ th {
   position: absolute;
   display: flex;
   flex-direction: column; }
+
+.othersOptions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem; }
 
 h1,
 h2,
@@ -615,15 +621,6 @@ li.navigation__items:hover {
 @keyframes floating {
   to {
     top: 1.5rem; } }
-
-.container {
-  background-color: #fff;
-  color: #000;
-  text-align: center;
-  font-family: "Open Sans";
-  font-size: 1.3rem; }
-  .container h1 {
-    font-size: 2.5rem; }
 
 .message {
   max-width: 700px;

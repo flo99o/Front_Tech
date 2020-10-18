@@ -60,6 +60,7 @@ span {
 // bouton propreties
 .btn {
   text-align: center;
+  margin-top: 1.5rem;
   background-color: var(--color-tertiary);
   color: var(--color-primary);
   padding: 1rem 3rem;
@@ -216,6 +217,13 @@ z-index: 4000;
   position: absolute;
   display: flex;
   flex-direction: column;
+ }
+
+ //btn : delete account
+ .othersOptions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
  }
  
  
