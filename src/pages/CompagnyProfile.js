@@ -6,8 +6,9 @@ import { Link } from "react-router-dom";
 import HeroProfile from "../components/HeroProfile";
 import Category from "../components/Category";
 import DescriptionJob from "../components/DescriptionJob";
-import UpdateFormControl from "../components/UpdateProfileForm/UpdateFormControl";
+
 import UpdateCompagnyForm from "../components/UpdateProfileForm/UpdateCompagnyProfile";
+import DeleteAccount from "../components/DeleteAccount";
 
 const getUserDetails = require("../services/services");
 
@@ -15,17 +16,12 @@ const CompagnyProfile = (props) => {
   //get the user's id of the compagny
   const getUserID = JSON.parse(localStorage.getItem("dataKey"));
   const userID = getUserID.userID
-
-  
-  //stock all offers of the comapgny
+  //store all offers of the comapgny
   const [myOffers, setMyOffers] = useState([]);
-  //stock compagny's details
+  //store compagny's details
   const [myDetails, setMyDetails] = useState([]);
   
-  
   useEffect(() => {
-   
-
     const getMyOffers = async () => {
       console.log("userID:", userID);
       const url = `http://localhost:5000/compagny/getMyoffers/${userID}`;
@@ -34,7 +30,7 @@ const CompagnyProfile = (props) => {
     };
     getMyOffers();
 
-    //state
+     //get user's details form "getUserDetails" function (services component)
     async function fetchData() {
       const userDetails = await getUserDetails.getUserDetails(userID);
       setMyDetails(userDetails);
@@ -42,7 +38,7 @@ const CompagnyProfile = (props) => {
     fetchData();
   }, []);
 
-  console.log('myOffers:', myOffers)
+  //store logo and first name of the user
   const logo = myDetails.logo;
   const nameUser = myDetails.first_name;
 
@@ -77,11 +73,11 @@ const CompagnyProfile = (props) => {
             <Category name={"Mon profil"}/>
           </div>
           <UpdateCompagnyForm userDetails={myDetails} />
-
           <Link to={"/createAd"} className={"btn"}>
             {" "}
             Crée une nouvelle offre
           </Link>
+          <DeleteAccount />
         </div>
       </div>
     </>

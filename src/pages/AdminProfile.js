@@ -3,17 +3,20 @@ import axios from "axios";
 import Modal from "react-modal";
 // components
 import Category from "../components/Category";
-import DescriptionJob from "./DescriptionJob";
-import HeroProfile from "./HeroProfile";
-import UpdateAdminProfile from "./UpdateProfileForm/UpdateAdminProfile";
+import DescriptionJob from "../components/DescriptionJob";
+import HeroProfile from "../components/HeroProfile";
+import UpdateAdminProfile from "../components/UpdateProfileForm/UpdateAdminProfile";
+import DeleteAccount from "../components/DeleteAccount";
 
 const getUserDetails = require("../services/services");
 
 Modal.setAppElement("#root");
 
 const AdminProfile = () => {
+  //get the user's id form localstorage
   const getUserID = JSON.parse(localStorage.getItem("dataKey"));
-  const userID = getUserID.userID
+  const userID = getUserID.userID;
+
   //get the list of :
   const [users, setUsers] = useState([]);
   const [offers, setOffers] = useState([]);
@@ -26,7 +29,7 @@ const AdminProfile = () => {
   //get what user's type and user's id to delete
   const [idToDelete, setidToDelete] = useState("");
   const [userToDelete, setUserToDelete] = useState("");
-  const [compagnyToDelete, setCompagnyToDelete] = useState("")
+  const [compagnyToDelete, setCompagnyToDelete] = useState("");
 
   //stock results from back
   const [response, setResponse] = useState([]);
@@ -53,6 +56,7 @@ const AdminProfile = () => {
     };
     getCompagnies();
 
+    //get user's details form "getUserDetails" function (services component)
     async function fetchData() {
       const userDetails = await getUserDetails.getUserDetails(userID);
       setMyDetails(userDetails);
@@ -63,28 +67,23 @@ const AdminProfile = () => {
   //admin's logo
   const logo = myDetails.logo;
 
-  // function to open modal
+  // handle opening modal
   const handleModale = (id, userType, compagny_name) => {
-    
-    //stock user's id, type or compagny name which has been clicked
+    //store user's id, type or compagny name which has been clicked
     setUserToDelete(userType);
     setidToDelete(id);
-    setCompagnyToDelete(compagny_name)
+    setCompagnyToDelete(compagny_name);
     setmodalIsOpen(true);
   };
 
-  // function to delete user
-  const handleDelete = async ()  => {
+  // handle deletation of user/compagny depending on is type
+  const handleDelete = async () => {
     console.log(compagnyToDelete);
-    setmodalIsOpen(false)
-    if (compagnyToDelete){
-      console.log('compagnyToDelete:', compagnyToDelete)
-      
-    
-      const url = `http://localhost:5000/compagny/deleteCompagny/${compagnyToDelete}`
-      await axios.delete(url).then((res) => setResponse(res.data))
-    }
-    else if (userToDelete === "user") {
+    setmodalIsOpen(false);
+    if (compagnyToDelete) {
+      const url = `http://localhost:5000/compagny/deleteCompagny/${compagnyToDelete}`;
+      await axios.delete(url).then((res) => setResponse(res.data));
+    } else if (userToDelete === "user") {
       const url = `http://localhost:5000/allpeople/deleteUserAccount/${idToDelete}`;
       axios.delete(url).then((res) => setResponse(res.data));
     } else if (userToDelete === "compagny") {
@@ -92,8 +91,6 @@ const AdminProfile = () => {
       axios.delete(url).then((res) => setResponse(res.data));
     }
   };
-
-
 
   return (
     <>
@@ -124,7 +121,11 @@ const AdminProfile = () => {
                   <li>{compagny.compagny_name}</li>
                   <span
                     onClick={() =>
-                      handleModale(compagny.compagnyID, "compagny", compagny.compagny_name)
+                      handleModale(
+                        compagny.compagnyID,
+                        "compagny",
+                        compagny.compagny_name
+                      )
                     }
                   >
                     &#x274C;
@@ -158,11 +159,11 @@ const AdminProfile = () => {
             <Category name={"Mon profil"} />
             <UpdateAdminProfile userDetails={myDetails} />
           </div>
+          <DeleteAccount />
           <Modal
             isOpen={modalIsOpen}
             onRequestClose={() => setmodalIsOpen(false)}
             shouldCloseOnOverLayClick={false}
-            
           >
             <div>
               <h2>confirmer la suppression ?</h2>

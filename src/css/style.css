@@ -477,12 +477,12 @@ label.createAd-form__block {
   color: red;
   display: block; }
 
-.createAd-form__inner {
+.createAd-form__inner, .updateAd-form__inner {
   display: flex;
   flex-direction: column;
   padding: 2rem 1.5rem; }
 
-.createAd-form__block {
+.createAd-form__block, .updateAd-form__block {
   display: flex;
   flex-direction: column;
   font-size: 1.4rem;

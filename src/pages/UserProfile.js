@@ -4,14 +4,17 @@ import axios from "axios";
 import Category from "../components/Category";
 import HeroProfile from "../components/HeroProfile";
 import DescriptionJob from "../components/DescriptionJob";
-import UpdateFormControl from "../components/UpdateProfileForm/UpdateFormControl";
 import UpdateUserProfile from "../components/UpdateProfileForm/UpdateUserProfile";
+import DeleteAccount from "../components/DeleteAccount";
 
 const getUserDetails = require("../services/services");
 
 const UserProfile = () => {
+   //get the user's id form localstorage
   const getUserID = JSON.parse(localStorage.getItem("dataKey"));
   const userID = getUserID.userID;
+
+  //store details of the user and his application
   const [myDetails, setMyDetails] = useState([]);
   const [myApplications, setMyApplications] = useState([]);
 
@@ -23,6 +26,7 @@ const UserProfile = () => {
     };
     geyMyApplications();
 
+    //get user's details form "getUserDetails" function (services component)
     async function fetchData() {
       const userDetails = await getUserDetails.getUserDetails(userID);
       setMyDetails(userDetails);
@@ -30,6 +34,7 @@ const UserProfile = () => {
     fetchData();
   }, []);
 
+  //store logo and first name of the user
   const logo = myDetails.logo;
   const nameUser = myDetails.first_name;
 
@@ -58,16 +63,13 @@ const UserProfile = () => {
               />
             ))}
           </div>
-
-          {/* <div className="ad">
-            <Category name={"Mes offres sauvergardées"} />
-          </div> */}
-
           <div className="details">
             <Category name={"Mes infos personnelles"} />
             <UpdateUserProfile userDetails={myDetails} />
           </div>
+
         </div>
+        <DeleteAccount />
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, Redirect } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -30,10 +30,9 @@ const Register = () => {
     password: "",
     repeat_password: "",
     phone: "",
-    logo: "",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/f/f4/User_Avatar_2.png",
     compagny_name: "",
     description_compagny: "",
-    Usertype: "",
   };
 
   const validationSchema = Yup.object({
@@ -41,7 +40,7 @@ const Register = () => {
     last_name: Yup.string().required(errormsg),
     userType: Yup.string().required(errormsg),
     email: Yup.string()
-      .email("Le formt de l'email est incorrect")
+      .email("Le format de l'email est incorrect")
       .required(errormsg),
     password: Yup.string().required(errormsg),
     repeat_password: Yup.string()
@@ -61,24 +60,40 @@ const Register = () => {
     }),
   });
 
-  const onSubmit = (values, onSubmitProps) => {
-    console.log("values:", values);
+  const onSubmit = async (values) => {
+    //remove empty string from the objects "values" in order to add into the BDD only values' fields provided
+    Object.keys(values).forEach(
+      (key) => values[key] == "" && delete values[key]
+    );
+
     const url = "http://localhost:5000/allpeople/register";
-    axios.post(url, values).then((res) => {
+    await axios.post(url, values).then((res) => {
       setResponse(res.data);
-      console.log('hello',res)
       const getData = {
         userID: res.data.userID,
         isLogged: res.data.isLogged,
-        userType: res.data.isLogged,
+        userType: res.data.userType,
         compagnyID: res.data.compagnyID,
+        compagny_name: res.data.compagny_name
       };
-     
+
       localStorage.setItem("dataKey", JSON.stringify(getData));
-      history.push(`/user/${res.data.userID}`);
+       history.push("/");
+      // switch (res.data.userType) {
+      //   case "admin":
+      //     history.push("/admin");
+      //     break;
+      //   case "user":
+      //     history.push(`/user/${res.data.userID}`);
+      //     break;
+      //   case "compagny":
+      //     history.push(`/compagny/${res.data.userID}`);
+      //     break;
+      //   default:
+      //     return <Redirect to={"/"} />;
+      // }
     });
   };
- 
 
   return (
     <div className="container-signUp">
@@ -110,7 +125,7 @@ const Register = () => {
                   options={radioOptions}
                   control="radio"
                   label="Je suis"
-                  name="type"
+                  name="userType"
                   className="test"
                 />
                 <FormikControl

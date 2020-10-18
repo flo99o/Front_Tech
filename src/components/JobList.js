@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+//components
 import DescriptionJob from "./DescriptionJob";
 
 const JobList = (props) => {

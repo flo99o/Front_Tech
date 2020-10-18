@@ -12,15 +12,23 @@ const SignIn = () => {
   const errormsg = "Obligatoire !"; //mettre dans state contexte
   const [response, setResponse] = useState([]);
 
+  const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false
+  const userID = getUserID.userID || false
+  const userType = getUserID.userType || false
+
   useEffect(() => {
     localStorage.getItem("userID", response.userID);
+    
   }, [response]);
+
 
   // variables for formik
   const initialValues = {
     email: "",
     password: "",
   };
+
+  //
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Le format de l'email est incorrect !")
@@ -29,31 +37,33 @@ const SignIn = () => {
   });
 
   const onSubmit = async (values) => {
-    console.log("values:", values);
     const url = "http://localhost:5000/signin/signin";
     await axios.post(url, values).then((res) => {
       setResponse(res.data);
-      console.log('rrr',res)
       const getData = {
         userID: res.data.userID,
         isLogged: res.data.isLogged,
         userType: res.data.userType,
         compagnyID: res.data.compagnyID,
+        compagny_name: res.data.compagny_name
       };
+      // async function (param) {  }
       localStorage.setItem("dataKey", JSON.stringify(getData));
-      switch (res.data.userType) {
-        case "admin":
-          history.push("/admin");
-          break;
-        case "user":
-          history.push(`/user/${res.data.userID}`);
-          break;
-        case "compagny":
-          history.push(`/compagny/${res.data.userID}`);
-          break;
-        default:
-          return <Redirect to={"/"} />;
-      }
+      history.push("/")
+      //should wait localStorage to be set
+      // switch (res.data.userType) {
+      //   case "admin":
+      //     history.push(`/admin/${res.data.userID}`);
+      //     break;
+      //   case "user":
+      //     history.push(`/user/${res.data.userID}`);
+      //     break;
+      //   case "compagny":
+      //     history.push(`/compagny/${res.data.userID}`);
+      //     break;
+      //   default:
+      //     return <Redirect to={"/"} />;
+      // }
     });
   };
 

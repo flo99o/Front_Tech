@@ -7,23 +7,12 @@ import FormikControl from "../formik/FormikControl";
 import Button from "../Button";
 
 const UpdateCompagnyForm = (props) => {
+   //get the user's id form localstorage
   const getUserID = JSON.parse(localStorage.getItem("dataKey"));
   const userID = getUserID.userID
+  // get user's details from userProfile component
   const userDetails = props.userDetails
 
-  const [initialValues, setInitialValues] = useState([]);
-
-  useEffect(() => {
-    const url = `http://localhost:5000/allpeople/userDetails/${userID}`;
-    axios
-      .get(url)
-      .then((result) => {
-        console.log('result:', result)
-        
-        setInitialValues(result.data[0]);
-      })
-      .catch("error");
-  }, []);
 
   const values = {
     first_name: userDetails.first_name,
@@ -35,6 +24,7 @@ const UpdateCompagnyForm = (props) => {
     compagny_name: userDetails.compagny_name,
   };
 
+  //set rules for validating of the field's form
   const validationSchema = Yup.object({
     first_name: Yup.string(),
     last_name: Yup.string(),
@@ -50,14 +40,17 @@ const UpdateCompagnyForm = (props) => {
     compagny_name: Yup.string(),
   });
 
+  //send new user's details to the BDD
   const onSubmit = async (values) => {
     console.log("values:", values);
     const url = `http://localhost:5000/allpeople/updateProfile/${userID}`;
     await axios.put(url, values);
+    window.location.reload()
   };
+
   return (
     <div>
-      {!initialValues ? null : (
+      {!values ? null : (
         <Formik
           initialValues={values}
           validationSchema={validationSchema}

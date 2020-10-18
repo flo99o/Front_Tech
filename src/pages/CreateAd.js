@@ -13,7 +13,7 @@ const CreatedAd = () => {
   //(state) - get this information from back when the user is login
   const getUserID = JSON.parse(localStorage.getItem("dataKey"));
   const userID = getUserID.userID;
-  const compagnyID = getUserID.compagnyID;
+  const compagny_name = getUserID.compagny_name
 
   /**
    * Formik propreties
@@ -62,7 +62,7 @@ const CreatedAd = () => {
   });
   const onSubmit = async (values, onSubmitProps) => {
     const url = "http://localhost:5000/compagny/createad";
-    await axios.post(url, { ...values, userID, compagnyID });
+    await axios.post(url, { ...values, userID, compagny_name });
     onSubmitProps.resetForm();
     history.goBack();
   };
@@ -107,13 +107,9 @@ const CreatedAd = () => {
                 />
                 <FormikControl
                   control="input"
-                  type="range"
                   label="Salaire (par mois)"
                   name="wage"
-                  min="500"
-                  max="8000"
-                  step="100"
-                  placeholder="Count"
+                  placeholder="ex:1200"
                 />
                 <FormikControl
                   control="input"

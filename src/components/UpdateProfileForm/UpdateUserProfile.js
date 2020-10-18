@@ -8,25 +8,15 @@ import Button from "../Button";
 
 
 
+
 const UpdateUserProfile = (props) => {
+  //get the user's id form localstorage
   const getUserID = JSON.parse(localStorage.getItem("dataKey"));
   const userID = getUserID.userID
+  // get user's details from userProfile component
   const userDetails = props.userDetails
   
-  // const userID = localStorage.getItem("userID")
-
-  // const [initialValues, setInitialValues] = useState([]);
-
-  // useEffect(() => {
-  //   const url = `http://localhost:5000/allpeople/userDetails/${userID}`;
-  //   axios
-  //     .get(url)
-  //     .then((result) => {
-  //       setInitialValues(result.data[0]);
-  //     })
-  //     .catch("error");
-  // }, []);
-
+  //set the values of the form with userDetails content 
   const values = {
     first_name: userDetails.first_name,
     last_name: userDetails.last_name,
@@ -35,6 +25,7 @@ const UpdateUserProfile = (props) => {
      logo: userDetails.logo
   };
 
+  //set rules for validating of the field's form
   const validationSchema = Yup.object({
     first_name: Yup.string(),
     last_name: Yup.string(),
@@ -46,14 +37,19 @@ const UpdateUserProfile = (props) => {
       "Les mots de passe doivent être indentiques"
     ),
     phone: Yup.string(),
-    description_compagny: Yup.string(),
-    compagny_name: Yup.string(),
   });
 
+  //send new user's details to the BDD
   const onSubmit = async (values) => {
-    console.log("values:", values);
+    console.log('values:', values)
+    delete values["repeat_password"]
+    console.log('values:', values)
+    
     const url = `http://localhost:5000/allpeople/updateProfile/${userID}`;
     await axios.put(url, values);
+    setInterval(function() {
+      window.location.reload()
+    }, 300)
   };
 
   return (

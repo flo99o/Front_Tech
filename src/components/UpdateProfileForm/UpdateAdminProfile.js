@@ -7,12 +7,12 @@ import FormikControl from "../formik/FormikControl";
 import Button from "../Button";
 
 const UpdateAdminProfile = (props) => {
+  //get the user's id form localstorage
   const getUserID = JSON.parse(localStorage.getItem("dataKey"));
   const userID = getUserID.userID
+// get user's details from userProfile component
   const userDetails = props.userDetails
-  console.log('userDetails:', userDetails)
- 
-
+  //set the values of the form with userDetails content
   const values = {
     first_name: userDetails.first_name,
     last_name: userDetails.last_name,
@@ -20,7 +20,7 @@ const UpdateAdminProfile = (props) => {
     phone: userDetails.phone,
     logo: userDetails.logo,
   };
-
+  //set rules for validating of the field's form
   const validationSchema = Yup.object({
     first_name: Yup.string(),
     last_name: Yup.string(),
@@ -38,6 +38,7 @@ const UpdateAdminProfile = (props) => {
     console.log("values:", values);
     const url = `http://localhost:5000/allpeople/updateProfile/${userID}`;
     await axios.put(url, values);
+    //window.location.reload()
   };
   return (
     <div>
