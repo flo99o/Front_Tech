@@ -15,6 +15,7 @@ import Register from "./pages/Register";
 import UpdateAd from "./pages/UpdateAd"
 import Unauthorized from "./components/Unauthorized";
 import ErrorPage from "./pages/ErrorPage";
+import Application from "./pages/Application";
 
 const App = () => {
   const getIsLogged = JSON.parse(localStorage.getItem("dataKey")) || false;
@@ -23,6 +24,7 @@ const App = () => {
   const userType = getUserType.userType || false;
   console.log(userType);
 
+ 
   return (
     <div className="global_container">
       <Router>
@@ -31,26 +33,38 @@ const App = () => {
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/job/:id" component={JobPage} />
+          {isLogged ?
+          <>
+          {userType === "compagny" || userType === "admin" ?
+          <>
           <Route
             exact
             path="/compagny/:id"
             component={CompagnyProfile}
             userType={userType}
           />
+          <Route exact path="/application" component={Application} />
+          </>
+          : null }
+          {userType === "admin" ?
           <Route
             exact
             path="/admin/:id"
             component={AdminProfile}
             userType={userType}
-          />
+          /> : null}
+          {userType === "user" || userType === "admin" ?
           <Route
             exact
             path="/user/:id"
             component={UserProfile}
             userType={userType}
           />
+            : null}
           <Route exact path="/createad" component={CreateAd} />
           <Route exact path="/updatead/:id" component={UpdateAd}/>
+          </>
+          : null}
           <Route exact path="/apply/:offerID" component={ApplicationForm} />
           <Route component={ErrorPage} />
         </Switch>

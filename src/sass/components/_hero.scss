@@ -7,6 +7,9 @@
     background-repeat: no-repeat;
     background-position: right;
     background-size: cover;
+    @include respond(desktop){
+        padding-top: 44%;
+    }
     &::before {
         z-index: -1;
         content: "";

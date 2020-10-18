@@ -26,7 +26,10 @@ const NavBar = () => {
   const getLogout = () => {
     localStorage.clear();
     alert("vous avez étez déconnecté")
-    history.push("/")
+    setInterval(function() {
+      history.push("/")
+      window.location.reload()
+    }, 300)
   };
   
 

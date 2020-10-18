@@ -1,0 +1,23 @@
+.application {
+    & h2 {
+        color: var(--color-tertiary);
+    }
+    &-items{
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+} 
+
+.job-name {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.otherOptions{
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    justify-content: center;
+    align-self: center;
+}

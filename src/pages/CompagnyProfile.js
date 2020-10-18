@@ -73,11 +73,16 @@ const CompagnyProfile = (props) => {
             <Category name={"Mon profil"}/>
           </div>
           <UpdateCompagnyForm userDetails={myDetails} />
+          
+          <div className="otherOptions">
+
           <Link to={"/createAd"} className={"btn"}>
             {" "}
             Crée une nouvelle offre
           </Link>
           <DeleteAccount />
+          <Link to={"/application"} className="btn btn--grey"> Voir les candidatures</Link>
+          </div>
         </div>
       </div>
     </>

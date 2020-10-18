@@ -1,3 +1,20 @@
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap");
 :root {
   --color-primary: #ffffff;
@@ -55,7 +72,9 @@ span {
   padding: 1rem 3rem;
   appearance: none;
   border: 1px solid var(--color-tertiary);
-  text-transform: capitalize; }
+  text-transform: capitalize;
+  width: max-content;
+  display: block; }
   .btn--transparent {
     background-color: transparent;
     border: 1px solid currentColor; }
@@ -292,6 +311,9 @@ h6 {
   background-repeat: no-repeat;
   background-position: right;
   background-size: cover; }
+  @media only screen and (min-width: 75.5em) {
+    .hero {
+      padding-top: 44%; } }
   .hero::before {
     z-index: -1;
     content: "";
@@ -412,6 +434,25 @@ h6 {
   padding-top: 6rem;
   padding-bottom: 6rem;
   font-family: "Open Sans", sans-serif; }
+
+.application h2 {
+  color: var(--color-tertiary); }
+
+.application-items {
+  margin-top: 2rem;
+  margin-bottom: 2rem; }
+
+.job-name {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: bold; }
+
+.otherOptions {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  justify-content: center;
+  align-self: center; }
 
 .box {
   position: relative; }

@@ -49,7 +49,12 @@ const SignIn = () => {
       };
       // async function (param) {  }
       localStorage.setItem("dataKey", JSON.stringify(getData));
-      history.push("/")
+      setInterval(function() {
+        history.push("/")
+        window.location.reload()
+      }, 100)
+
+
       //should wait localStorage to be set
       // switch (res.data.userType) {
       //   case "admin":

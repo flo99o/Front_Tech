@@ -78,7 +78,10 @@ const Register = () => {
       };
 
       localStorage.setItem("dataKey", JSON.stringify(getData));
-       history.push("/");
+      setInterval(function() {
+        history.push("/")
+        window.location.reload()
+      }, 100)
       // switch (res.data.userType) {
       //   case "admin":
       //     history.push("/admin");
