@@ -56,7 +56,7 @@ span {
   flex-direction: column;
   justify-content: center;
 }
-
+ 
 // bouton propreties
 .btn {
   text-align: center;
@@ -68,6 +68,7 @@ span {
   border: 1px solid var(--color-tertiary);
   text-transform: capitalize;
   display: block;
+  width: 100%;
   &--transparent {
     background-color: transparent;
     border: 1px solid currentColor;
@@ -206,6 +207,10 @@ th {
   -o-border-radius: 50%;
   border: 4px solid white;
   box-sizing: content-box;
+  @include respond(desktop){
+    height: 16rem;
+    width: 16rem;
+  }
 }
 
 //Modal's propreties

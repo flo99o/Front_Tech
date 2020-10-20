@@ -49,26 +49,23 @@ const SignIn = () => {
       };
       // async function (param) {  }
       localStorage.setItem("dataKey", JSON.stringify(getData));
-      setInterval(function() {
-        history.push("/")
-        window.location.reload()
-      }, 100)
-
-
-      //should wait localStorage to be set
-      // switch (res.data.userType) {
-      //   case "admin":
-      //     history.push(`/admin/${res.data.userID}`);
-      //     break;
-      //   case "user":
-      //     history.push(`/user/${res.data.userID}`);
-      //     break;
-      //   case "compagny":
-      //     history.push(`/compagny/${res.data.userID}`);
-      //     break;
-      //   default:
-      //     return <Redirect to={"/"} />;
-      // }
+      // setInterval(function() {
+      //   history.push("/")
+      //   window.location.reload()
+      // }, 100)
+      switch (res.data.userType) {
+        case "admin":
+          history.push(`/admin/${res.data.userID}`);
+          break;
+        case "user":
+          history.push(`/user/${res.data.userID}`);
+          break;
+        case "compagny":
+          history.push(`/compagny/${res.data.userID}`);
+          break;
+        default:
+          return <Redirect to={"/"} />;
+      }
     });
   };
 

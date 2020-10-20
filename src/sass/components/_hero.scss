@@ -8,7 +8,7 @@
     background-position: right;
     background-size: cover;
     @include respond(desktop){
-        padding-top: 44%;
+        padding-top: 24%;
     }
     &::before {
         z-index: -1;

@@ -78,23 +78,26 @@ const Register = () => {
       };
 
       localStorage.setItem("dataKey", JSON.stringify(getData));
-      setInterval(function() {
-        history.push("/")
-        window.location.reload()
-      }, 100)
-      // switch (res.data.userType) {
-      //   case "admin":
-      //     history.push("/admin");
-      //     break;
-      //   case "user":
-      //     history.push(`/user/${res.data.userID}`);
-      //     break;
-      //   case "compagny":
-      //     history.push(`/compagny/${res.data.userID}`);
-      //     break;
-      //   default:
-      //     return <Redirect to={"/"} />;
-      // }
+      // setInterval(function() {
+      //   history.push("/")
+      //   window.location.reload()
+      // }, 100)
+      
+      console.log('res.data.userType:', res.data.userType)
+      switch (res.data.userType) {
+        case "admin":
+          history.push("/admin");
+          break;
+        case "user":
+          history.push(`/user/${res.data.userID}`);
+          break;
+        case "compagny":
+          history.push(`/compagny/${res.data.userID}`);
+          break;
+        default:
+          return <Redirect to={"/"} />;
+      }
+      
     });
   };
 

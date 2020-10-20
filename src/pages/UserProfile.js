@@ -9,10 +9,11 @@ import DeleteAccount from "../components/DeleteAccount";
 
 const getUserDetails = require("../services/services");
 
-const UserProfile = () => {
+const UserProfile = (props) => {
    //get the user's id form localstorage
   const getUserID = JSON.parse(localStorage.getItem("dataKey"));
   const userID = getUserID.userID;
+  
 
   //store details of the user and his application
   const [myDetails, setMyDetails] = useState([]);

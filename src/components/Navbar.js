@@ -7,32 +7,25 @@ import IcomoonReact, { iconList } from "icomoon-react";
 import briefcase from "../assets/logo_nav/mallette.svg";
 import registration from "../assets/logo_nav/registration.svg";
 
-
 const NavBar = () => {
-  let history = useHistory()
-  
-  //get the user's id and type form localstorage
-  const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false
-  const userID = getUserID.userID || false
-  const userType = getUserID.userType || false
+  let history = useHistory();
 
-  
+  //get the user's id and type form localstorage
+  const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false;
+  const userID = getUserID.userID || false;
+  const userType = getUserID.userType || false;
+
   useEffect(() => {
-    $( ".cross-closed-menu, li.navigation__items" ).on("click", () => {
+    $(".cross-closed-menu, li.navigation__items").on("click", () => {
       $(".navigation").hide();
     });
   }, [userID]);
 
   const getLogout = () => {
     localStorage.clear();
-    alert("vous avez étez déconnecté")
-    setInterval(function() {
-      history.push("/")
-      window.location.reload()
-    }, 300)
+    alert("vous avez étez déconnecté");
+    history.push("/");
   };
-  
-
 
   return (
     <nav className="navigation">

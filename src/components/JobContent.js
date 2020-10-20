@@ -47,6 +47,7 @@ const JobContent = (props) => {
     setInterval(function() {
       window.location.reload()
     }, 300)
+    //re-render force
   };
 
   return (

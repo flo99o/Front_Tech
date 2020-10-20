@@ -44,5 +44,8 @@
 
 .category > h2 {
   color: var(--color-tertiary);
+  @include respond(desktop){
+    text-transform: uppercase;
+  }
 }
 
