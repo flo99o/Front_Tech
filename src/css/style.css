@@ -462,38 +462,112 @@ h6 {
   justify-content: center;
   align-self: center; }
 
-.box {
-  position: relative; }
+@media only screen and (min-width: 75.5em) {
+  .container-signIn {
+    display: flex;
+    height: 100vh; } }
 
-.signIn,
-.hello-friend, .welcome-back {
-  height: 50vh;
+.container-signUp {
   display: flex;
-  justify-content: center; }
+  height: 100vh; }
 
-.signIn__form, .create-account__form {
+@media only screen and (min-width: 75.5em) {
+  .create-account {
+    flex: 2;
+    overflow: scroll; } }
+
+.create-account__form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; }
 
-.signIn a, .create-account a {
+@media only screen and (min-width: 75.5em) {
+  .create-account {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; } }
+
+.create-account a {
   margin: 2rem 0 3rem; }
 
-.signIn h1, .create-account h1 {
+.create-account h1 {
   margin-bottom: 3rem; }
 
-.hello-friend, .welcome-back {
+.welcome-back {
   background-color: var(--color-tertiary);
-  color: var(--color-primary) !important; }
-  .hello-friend p, .welcome-back p {
+  color: var(--color-primary) !important;
+  height: 50vh;
+  display: flex;
+  justify-content: center; }
+  @media only screen and (min-width: 75.5em) {
+    .welcome-back {
+      height: unset;
+      flex: 1; } }
+  .welcome-back p {
     letter-spacing: 0.5px;
     margin: 2rem 0 3rem; }
-  .hello-friend h1, .welcome-back h1 {
+  .welcome-back h1 {
     color: inherit; }
+
+@media only screen and (min-width: 75.5em) {
+  .isShowInput {
+    width: 100%; } }
+
+.box {
+  position: relative; }
+
+.signIn,
+.hello-friend {
+  height: 50vh;
+  display: flex;
+  justify-content: center; }
+  @media only screen and (min-width: 75.5em) {
+    .signIn,
+    .hello-friend {
+      height: unset; } }
+
+.signIn__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
+@media only screen and (min-width: 75.5em) {
+  .signIn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; } }
+
+.signIn a {
+  margin: 2rem 0 3rem; }
+
+.signIn h1 {
+  margin-bottom: 3rem; }
+
+.hello-friend {
+  background-color: var(--color-tertiary);
+  color: var(--color-primary) !important; }
+  .hello-friend p {
+    letter-spacing: 0.5px;
+    margin: 2rem 0 3rem; }
+  .hello-friend h1 {
+    color: inherit; }
+  @media only screen and (min-width: 75.5em) {
+    .hello-friend {
+      flex: 1; } }
 
 .signIn {
   padding: 0 2.5rem; }
+  @media only screen and (min-width: 75.5em) {
+    .signIn {
+      flex: 1; } }
+  @media only screen and (min-width: 75.5em) {
+    .signIn__form {
+      width: 100%; } }
 
 .inner-box {
   display: flex;
@@ -503,6 +577,9 @@ h6 {
   .inner-box--blue {
     padding: 0 5rem;
     text-align: center; }
+  @media only screen and (min-width: 75.5em) {
+    .inner-box {
+      width: 60%; } }
 
 .create-account {
   padding: 3rem 2.5rem; }
@@ -532,12 +609,12 @@ label.createAd-form__block {
   color: red;
   display: block; }
 
-.createAd-form__inner, .updateAd-form__inner {
+.createAd-form__inner, .updateAd-form__inner, .isShowInput__inner {
   display: flex;
   flex-direction: column;
   padding: 2rem 1.5rem; }
 
-.createAd-form__block, .updateAd-form__block {
+.createAd-form__block, .updateAd-form__block, .isShowInput__block {
   display: flex;
   flex-direction: column;
   font-size: 1.4rem;
