@@ -546,6 +546,28 @@ label.createAd-form__block {
   color: var(--color-tertiary);
   width: 100%; }
 
+.errorPage {
+  height: 100vh;
+  width: 100%;
+  background: url("../assets/background_image/bg-errorPage.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative; }
+  .errorPage__content {
+    position: absolute;
+    bottom: 24px;
+    left: 17px;
+    cursor: pointer; }
+  .errorPage__link {
+    text-transform: uppercase;
+    color: var(--color-primary);
+    font-weight: bolder;
+    font-size: 2rem; }
+  .errorPage__logo {
+    font-size: 3rem;
+    margin-right: 0.5rem; }
+
 header {
   position: absolute;
   top: 0;
