@@ -634,9 +634,10 @@ li.navigation__items:hover {
   text-transform: uppercase;
   font-size: 2.2rem; }
 
-.container-signUp {
-  display: flex;
-  height: 100vh; }
+@media only screen and (min-width: 75.5em) {
+  .container-signUp {
+    display: flex;
+    height: 100vh; } }
 
 .create-account {
   padding: 3rem 2.5rem; }

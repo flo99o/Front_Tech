@@ -1,13 +1,15 @@
 .container-signUp {
-  display: flex;
-  height: 100vh;
+  @include respond(desktop){
+    display: flex;
+    height: 100vh;
+  }
 }
 
 .create-account {
   padding: 3rem 2.5rem;
   @include respond(desktop) {
     flex: 2;
-    overflow: scroll;
+    overflow: scroll; 
   }
   &__form {
     @include flexAllCenter;
