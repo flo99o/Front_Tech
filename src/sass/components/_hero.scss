@@ -10,6 +10,12 @@
     @include respond(desktop){
         padding-top: 24%;
     }
+    @include respond(tab-port){
+        padding-top: 50%;
+    }
+    @include respond(tab-land){
+        padding-top: 50%;
+    }
     &::before {
         z-index: -1;
         content: "";

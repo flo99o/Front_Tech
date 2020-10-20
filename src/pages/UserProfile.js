@@ -65,7 +65,7 @@ const UserProfile = (props) => {
             ))}
           </div>
           <div className="details">
-            <Category name={"Mes infos personnelles"} />
+            <Category name={"Mon Profil"} />
             <UpdateUserProfile userDetails={myDetails} />
           </div>
 

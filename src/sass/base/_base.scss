@@ -13,6 +13,19 @@
 // element's HTML properties
 html {
   font-size: 62.5%;
+  @include respond(tab-land) {
+    // width < 1200?
+    font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(tab-port) {
+    // width < 900?
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(desktop) {
+    font-size: 70%; // 
+  }
 }
 
 body {
@@ -69,6 +82,7 @@ span {
   text-transform: capitalize;
   display: block;
   width: 100%;
+  cursor: pointer;
   &--transparent {
     background-color: transparent;
     border: 1px solid currentColor;
@@ -208,6 +222,14 @@ th {
   border: 4px solid white;
   box-sizing: content-box;
   @include respond(desktop){
+    height: 16rem;
+    width: 16rem;
+  }
+  @include respond(tab-port){
+    height: 16rem;
+    width: 16rem;
+  }
+  @include respond(tab-land){
     height: 16rem;
     width: 16rem;
   }

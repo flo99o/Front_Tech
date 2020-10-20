@@ -29,6 +29,15 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 html {
   font-size: 62.5%; }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (min-width: 75.5em) {
+    html {
+      font-size: 70%; } }
 
 body {
   color: var(--color-secondary-text);
@@ -74,7 +83,8 @@ span {
   border: 1px solid var(--color-tertiary);
   text-transform: capitalize;
   display: block;
-  width: 100%; }
+  width: 100%;
+  cursor: pointer; }
   .btn--transparent {
     background-color: transparent;
     border: 1px solid currentColor; }
@@ -197,6 +207,14 @@ th {
     .profilePhoto {
       height: 16rem;
       width: 16rem; } }
+  @media only screen and (max-width: 56.25em) {
+    .profilePhoto {
+      height: 16rem;
+      width: 16rem; } }
+  @media only screen and (max-width: 75em) {
+    .profilePhoto {
+      height: 16rem;
+      width: 16rem; } }
 
 .ReactModal__Overlay {
   z-index: 4000; }
@@ -241,7 +259,8 @@ h6 {
 
 .category {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  margin: 3rem 0; }
 
 .comment {
   position: relative;
@@ -322,6 +341,12 @@ h6 {
   @media only screen and (min-width: 75.5em) {
     .hero {
       padding-top: 24%; } }
+  @media only screen and (max-width: 56.25em) {
+    .hero {
+      padding-top: 50%; } }
+  @media only screen and (max-width: 75em) {
+    .hero {
+      padding-top: 50%; } }
   .hero::before {
     z-index: -1;
     content: "";
@@ -361,7 +386,6 @@ h6 {
   .job-list__item {
     padding: 2rem 1.5rem;
     border-bottom: 1px solid var(--color-border);
-    border-top: 1px solid var(--color-border);
     display: flex;
     flex-wrap: wrap; }
   .job-list__photo {
@@ -462,159 +486,12 @@ h6 {
   justify-content: center;
   align-self: center; }
 
-@media only screen and (min-width: 75.5em) {
-  .container-signIn {
-    display: flex;
-    height: 100vh; } }
-
-.container-signUp {
-  display: flex;
-  height: 100vh; }
-
-@media only screen and (min-width: 75.5em) {
-  .create-account {
-    flex: 2;
-    overflow: scroll; } }
-
-.create-account__form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; }
-
-@media only screen and (min-width: 75.5em) {
-  .create-account {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%; } }
-
-.create-account a {
-  margin: 2rem 0 3rem; }
-
-.create-account h1 {
-  margin-bottom: 3rem; }
-
-.welcome-back {
-  background-color: var(--color-tertiary);
-  color: var(--color-primary) !important;
-  height: 50vh;
-  display: flex;
-  justify-content: center; }
-  @media only screen and (min-width: 75.5em) {
-    .welcome-back {
-      height: unset;
-      flex: 1; } }
-  .welcome-back p {
-    letter-spacing: 0.5px;
-    margin: 2rem 0 3rem; }
-  .welcome-back h1 {
-    color: inherit; }
-
-@media only screen and (min-width: 75.5em) {
-  .isShowInput {
-    width: 100%; } }
-
-.box {
-  position: relative; }
-
-.signIn,
-.hello-friend {
-  height: 50vh;
-  display: flex;
-  justify-content: center; }
-  @media only screen and (min-width: 75.5em) {
-    .signIn,
-    .hello-friend {
-      height: unset; } }
-
-.signIn__form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; }
-
-@media only screen and (min-width: 75.5em) {
-  .signIn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%; } }
-
-.signIn a {
-  margin: 2rem 0 3rem; }
-
-.signIn h1 {
-  margin-bottom: 3rem; }
-
-.hello-friend {
-  background-color: var(--color-tertiary);
-  color: var(--color-primary) !important; }
-  .hello-friend p {
-    letter-spacing: 0.5px;
-    margin: 2rem 0 3rem; }
-  .hello-friend h1 {
-    color: inherit; }
-  @media only screen and (min-width: 75.5em) {
-    .hello-friend {
-      flex: 1; } }
-
-.signIn {
-  padding: 0 2.5rem; }
-  @media only screen and (min-width: 75.5em) {
-    .signIn {
-      flex: 1; } }
-  @media only screen and (min-width: 75.5em) {
-    .signIn__form {
-      width: 100%; } }
-
-.inner-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; }
-  .inner-box--blue {
-    padding: 0 5rem;
-    text-align: center; }
-  @media only screen and (min-width: 75.5em) {
-    .inner-box {
-      width: 60%; } }
-
-.create-account {
-  padding: 3rem 2.5rem; }
-
-.radioButton {
-  display: flex;
-  flex-direction: column;
-  width: 100%; }
-
-.radio {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  padding: 0;
-  margin-right: 1rem; }
-  .radio:checked {
-    background-color: var(--color-tertiary);
-    border-color: var(--color-tertiary); }
-
-.container-radioOptions {
-  display: flex; }
-
-label.createAd-form__block {
-  margin-bottom: 5px; }
-
-.radioButton > .container-radioOptions > #compagny:checked ~ .isShowInput {
-  color: red;
-  display: block; }
-
-.createAd-form__inner, .updateAd-form__inner, .isShowInput__inner {
+.createAd-form__inner, .updateAd-form__inner {
   display: flex;
   flex-direction: column;
   padding: 2rem 1.5rem; }
 
-.createAd-form__block, .updateAd-form__block, .isShowInput__block {
+.createAd-form__block, .updateAd-form__block {
   display: flex;
   flex-direction: column;
   font-size: 1.4rem;
@@ -725,25 +602,15 @@ li.navigation__items:hover {
   top: 1rem;
   cursor: pointer; }
 
-.user,
-.ad,
-.compagny,
-.details,
-.application {
-  padding: 2rem 1.5rem;
-  display: flex;
-  flex-direction: column; }
-  .user h2,
-  .ad h2,
-  .compagny h2,
-  .details h2,
-  .application h2 {
-    margin-bottom: 0;
-    text-align: left; }
+.user h2,
+.ad h2,
+.compagny h2,
+.details h2,
+.application h2 {
+  margin-bottom: 0;
+  text-align: left; }
 
 .list {
-  margin-top: 2.5rem;
-  font-weight: bold;
   line-height: 1.75; }
   .list--show {
     display: block; }
@@ -756,7 +623,6 @@ li.navigation__items:hover {
     justify-content: space-between; }
 
 .inner--profilePage {
-  padding: 3rem 0;
   display: flex;
   flex-direction: column; }
 
@@ -764,10 +630,147 @@ li.navigation__items:hover {
   justify-content: flex-start; }
 
 .category > h2 {
-  color: var(--color-tertiary); }
+  color: var(--color-tertiary);
+  text-transform: uppercase;
+  font-size: 2.2rem; }
+
+.container-signUp {
+  display: flex;
+  height: 100vh; }
+
+.create-account {
+  padding: 3rem 2.5rem; }
   @media only screen and (min-width: 75.5em) {
-    .category > h2 {
-      text-transform: uppercase; } }
+    .create-account {
+      flex: 2;
+      overflow: scroll; } }
+  .create-account__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+  @media only screen and (min-width: 75.5em) {
+    .create-account {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%; } }
+  .create-account a {
+    margin: 2rem 0 3rem; }
+  .create-account h1 {
+    margin-bottom: 3rem; }
+
+.welcome-back {
+  background-color: var(--color-tertiary);
+  color: var(--color-primary) !important;
+  height: 50vh;
+  display: flex;
+  justify-content: center; }
+  @media only screen and (min-width: 75.5em) {
+    .welcome-back {
+      height: unset;
+      flex: 1; } }
+  .welcome-back p {
+    letter-spacing: 0.5px;
+    margin: 2rem 0 3rem; }
+  .welcome-back h1 {
+    color: inherit; }
+
+@media only screen and (min-width: 75.5em) {
+  .isShowInput {
+    width: 100%; } }
+
+.radioButton {
+  display: flex;
+  flex-direction: column;
+  width: 100%; }
+
+.radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  padding: 0;
+  margin-right: 1rem; }
+  .radio:checked {
+    background-color: var(--color-tertiary);
+    border-color: var(--color-tertiary); }
+
+.container-radioOptions {
+  display: flex; }
+
+.radioButton > .container-radioOptions > #compagny:checked ~ .isShowInput {
+  color: red;
+  display: block; }
+
+@media only screen and (min-width: 75.5em) {
+  .container-signIn {
+    display: flex;
+    height: 100vh; } }
+
+.box {
+  position: relative; }
+
+.signIn,
+.hello-friend {
+  height: 50vh;
+  display: flex;
+  justify-content: center; }
+  @media only screen and (min-width: 75.5em) {
+    .signIn,
+    .hello-friend {
+      height: unset; } }
+
+.signIn {
+  padding: 0 2.5rem; }
+  @media only screen and (min-width: 75.5em) {
+    .signIn {
+      flex: 1; } }
+  .signIn__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+    @media only screen and (min-width: 75.5em) {
+      .signIn__form {
+        width: 100%; } }
+  @media only screen and (min-width: 75.5em) {
+    .signIn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%; } }
+  .signIn a {
+    margin: 2rem 0 3rem; }
+  .signIn h1 {
+    margin-bottom: 3rem; }
+
+.hello-friend {
+  background-color: var(--color-tertiary);
+  color: var(--color-primary) !important; }
+  .hello-friend p {
+    letter-spacing: 0.5px;
+    margin: 2rem 0 3rem; }
+  .hello-friend h1 {
+    color: inherit; }
+  @media only screen and (min-width: 75.5em) {
+    .hello-friend {
+      flex: 1; } }
+
+.inner-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .inner-box--blue {
+    padding: 0 5rem;
+    text-align: center; }
+  @media only screen and (min-width: 75.5em) {
+    .inner-box {
+      width: 60%; } }
+
+label.createAd-form__block {
+  margin-bottom: 5px; }
 
 .unauthorized {
   height: 100vh;

@@ -37,7 +37,7 @@ const DeleteAccount = () => {
       <div className="othersOptions">
         <Button
           action={() => handleModale()}
-          className={"btn"}
+          className={"btn btn--round btn--grey"}
           value={"supprimer mon compte"}
         />
       </div>

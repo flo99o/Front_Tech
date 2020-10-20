@@ -9,9 +9,9 @@ const JobContent = (props) => {
   //get user's details from "descriptionJob" component
   const offerID = props.idJob;
   //(state) - get this information from back when the user is login
-  const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false
-  const userID = getUserID.userID || false
-  const userType = getUserID.userType || false
+  const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false;
+  const userID = getUserID.userID || false;
+  const userType = getUserID.userType || false;
 
   //handle the modal and the response from the back when deleting something
   const [modalIsOpen, setmodalIsOpen] = useState(false);
@@ -25,7 +25,7 @@ const JobContent = (props) => {
   //close the modal and delete the offer
   const handleDeleteOffer = () => {
     setmodalIsOpen(false);
-    switch (userType)  {
+    switch (userType) {
       case "compagny":
         console.log("offerId: ", offerID);
         const urlCompagny = `http://localhost:5000/compagny/deleteOffer/${offerID}`;
@@ -45,8 +45,8 @@ const JobContent = (props) => {
         break;
     }
     setInterval(function() {
-      window.location.reload()
-    }, 300)
+      window.location.reload();
+    }, 300);
     //re-render force
   };
 
@@ -61,9 +61,7 @@ const JobContent = (props) => {
         </div>
         <div className="jobPage__prerequisite">
           <h6>Pré-requis</h6>
-          <ul>
-            <li>{props.prerequisite}</li>
-          </ul>
+          <p>{props.prerequisite}</p>
         </div>
         <div className="side-bar">
           <div className="widget">
