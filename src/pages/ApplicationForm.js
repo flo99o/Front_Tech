@@ -12,20 +12,20 @@ const getUserDetails = require("../../src/services/services");
 
 const ApplicationForm = (props) => {
   let history = useHistory();
+  const {offer_id, compagny_id} = props.match.params
+  console.log('offer_id:', offer_id)
 
+  // get user'id from localstorage
   const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false; //(state)
   const user_id = getUserID.userID || "";
-  console.log("user_id:", user_id);
-
-  // offer's id of the offer which we went to apply to
-  const offer_id = props.match.params.offerID;
-
-  //state
+  
+  //store user's details
   const [myDetails, setMyDetails] = useState([]);
-  //create an id for user(visitor) which have not user's id
+  //store visitor's id
   const [lastUserID, setLastUserID] = useState([]);
 
   useEffect(() => {
+    //create a id for visitor which wants to apply to a job
     const getLastUser = async () => {
       const url = "http://localhost:5000/users/lastUserID";
       const results = await axios.get(url);
@@ -40,9 +40,8 @@ const ApplicationForm = (props) => {
       }
       fetchData();
     }
-  }, []);
+  }, [user_id]);
 
-  console.log("last: ", lastUserID);
 
   const initialValues = {
     first_name: "",
@@ -63,11 +62,12 @@ const ApplicationForm = (props) => {
 
   const onSubmit = async (values) => {
     if (user_id) {
+      console.log("see props: ", user_id, compagny_id,lastUserID);
       const url = "http://localhost:5000/users/postApplication";
-      await axios.post(url, { ...values, user_id, offer_id });
+      await axios.post(url, { ...values, user_id, offer_id, compagny_id });
     } else {
       const url = "http://localhost:5000/users/postApplication";
-      await axios.post(url, { ...values, offer_id, user_id: lastUserID });
+      await axios.post(url, { ...values, offer_id, user_id: lastUserID, compagny_id });
     }
     history.goBack();
   };

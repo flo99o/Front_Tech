@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import $ from "jquery";
 import iconSet from "../assets/selection.json";
-import IcomoonReact, { iconList } from "icomoon-react";
+import IcomoonReact from "icomoon-react";
 //icons
 import briefcase from "../assets/logo_nav/mallette.svg";
 import registration from "../assets/logo_nav/registration.svg";
@@ -24,7 +24,7 @@ const NavBar = () => {
   const getLogout = () => {
     localStorage.clear();
     alert("vous avez étez déconnecté");
-    history.push("/");
+    history.push("/home");
   };
 
   return (
@@ -76,7 +76,7 @@ const NavBar = () => {
           </Link>
         </li>
         <li className="navigation__items">
-          <Link to={"/"}>
+          <Link to={"/home"}>
             <img src={briefcase} alt="malette" />
             <p>Les offres d'emplois </p>
           </Link>

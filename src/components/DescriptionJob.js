@@ -7,6 +7,7 @@ const DescriptionJob = (props) => {
   const {
     idJob,
     userID,
+    compagny_id,
     logo,
     wage,
     contract,
@@ -16,7 +17,8 @@ const DescriptionJob = (props) => {
     toggle,
     userType,
   } = props;
-
+  
+  console.log('userType:', userType)
   // stock details of ad
   const [furtherDetails, setFurtherDetails] = useState([]);
   const [toggleDetails, setToggleDetails] = useState(false);
@@ -53,7 +55,8 @@ const DescriptionJob = (props) => {
               className="compagny__details"
               onClick={() => setToggleDetails(!toggleDetails)}
               src={arrowDown}
-            />{" "}
+              alt={"chevron vers le bas"}
+            />
           </div>
         )}
       </div>
@@ -63,6 +66,7 @@ const DescriptionJob = (props) => {
               key={idJob}
               idJob={idJob}
               userID={userID}
+              compagny_id={compagny_id}
               description_compagny={item.description_compagny}
               description_position={item.description_position}
               prerequisite={item.prerequisite}

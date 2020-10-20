@@ -63,7 +63,7 @@ const Register = () => {
   const onSubmit = async (values) => {
     //remove empty string from the objects "values" in order to add into the BDD only values' fields provided
     Object.keys(values).forEach(
-      (key) => values[key] == "" && delete values[key]
+      (key) => values[key] === "" && delete values[key]
     );
 
     const url = "http://localhost:5000/allpeople/register";
@@ -78,11 +78,7 @@ const Register = () => {
       };
 
       localStorage.setItem("dataKey", JSON.stringify(getData));
-      // setInterval(function() {
-      //   history.push("/")
-      //   window.location.reload()
-      // }, 100)
-      
+     
       console.log('res.data.userType:', res.data.userType)
       switch (res.data.userType) {
         case "admin":
@@ -95,7 +91,7 @@ const Register = () => {
           history.push(`/compagny/${res.data.userID}`);
           break;
         default:
-          return <Redirect to={"/"} />;
+          return <Redirect to={"/home"} />;
       }
       
     });

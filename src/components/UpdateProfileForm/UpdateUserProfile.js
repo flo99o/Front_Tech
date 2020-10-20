@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -15,7 +15,7 @@ const UpdateUserProfile = (props) => {
   const userID = getUserID.userID
   // get user's details from userProfile component
   const userDetails = props.userDetails
-  
+
   //set the values of the form with userDetails content 
   const values = {
     first_name: userDetails.first_name,
@@ -41,25 +41,18 @@ const UpdateUserProfile = (props) => {
 
   //send new user's details to the BDD
   const onSubmit = async (values) => {
-    console.log('values:', values)
     delete values["repeat_password"]
-    console.log('values:', values)
-    
     const url = `http://localhost:5000/allpeople/updateProfile/${userID}`;
     await axios.put(url, values);
-    setInterval(function() {
-      window.location.reload()
-    }, 300)
   };
 
   return (
     <div>
-      {!values ? null : (
+      {!userDetails.logo ? null : (
         <Formik
           initialValues={values}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
-          enableReinitialize
         >
           {(formik) => (
             <Form className="signIn__form">

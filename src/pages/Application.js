@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios"
-import DescriptionJob from '../components/DescriptionJob'
 import Hero from '../components/Hero';
 
 
@@ -24,16 +23,15 @@ const [myDetails, setMyDetails] = useState([]);
           };
           getMyApplications();
 
-          console.log('application :', );
            //get user's details form "getUserDetails" function (services component)
           async function fetchData() {
             const userDetails = await getUserDetails.getUserDetails(userID);
             setMyDetails(userDetails);
           }
           fetchData();
-    }, [getUserDetails])
+    }, [userID, compagny_name])
 
-    const logo = myDetails.logo
+    
     return (
         <div className="application">
             <Hero title={"Les candidatures"} subtitle={""}/>

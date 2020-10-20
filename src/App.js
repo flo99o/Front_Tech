@@ -1,5 +1,5 @@
 // Packages
-import React, { Component } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -73,13 +73,13 @@ const App = () => {
 
   return (
     <>
-      <Router forceRefresh>
+      <Router>
         <Switch>
-          <Route exact path="/" component={Homepage} />
+          <Route exact path="/home" component={Homepage} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/job/:id" component={JobPage} />
-          <Route exact path="/apply/:offerID" component={ApplicationForm} />
+          <Route exact path="/apply/:offer_id/:compagny_id" component={ApplicationForm} />
 
           <CompagnyRoute
             exact
@@ -88,9 +88,9 @@ const App = () => {
           />
           <CompagnyRoute exact path="/application" component={Application} />
           <CompagnyRoute exact path="/createad" component={CreateAd} />
-          <CompagnyRoute exact path="/updatead/:id" component={UpdateAd} />
-          <AdminRoute exact path="/admin/:id" component={AdminProfile} />
-          <UserRoute exact path="/user/:id" component={UserProfile} />
+          <CompagnyRoute forceRefresh exact path="/updatead/:id" component={UpdateAd} />
+          <AdminRoute forceRefresh exact path="/admin/:id" component={AdminProfile} />
+          <UserRoute forceRefresh  exact path="/user/:id" component={UserProfile} />
           <Route exact path="/unauthorized" component={Unauthorized}/>
           <Route component={ErrorPage} />
         </Switch>

@@ -22,6 +22,7 @@ const JobList = (props) => {
         <DescriptionJob
           key={item.offerID}
           idJob={item.offerID}
+          compagny_id={item.compagny_id}
           logo={item.logo}
           wage={item.wage}
           contract={item.contract}

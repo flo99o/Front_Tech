@@ -62,7 +62,7 @@ const AdminProfile = () => {
       setMyDetails(userDetails);
     }
     fetchData();
-  }, [response]);
+  }, [response, userID]);
 
   //admin's logo
   const logo = myDetails.logo;
@@ -105,7 +105,7 @@ const AdminProfile = () => {
                   <p>
                     {user.first_name} {user.last_name}
                   </p>
-                  <span onClick={() => handleModale(user.userID, "user")}>
+                  <span onClick={() => handleModale(user.userID, "user")} role="img" aria-label={"supprimer"}>
                     &#x274C;
                   </span>
                 </div>
@@ -120,6 +120,8 @@ const AdminProfile = () => {
                 <ul key={compagny.compagnyID} className="list__compagny">
                   <li>{compagny.compagny_name}</li>
                   <span
+                  role="img"
+                  aria-label={"supprimer"}
                     onClick={() =>
                       handleModale(
                         compagny.compagnyID,

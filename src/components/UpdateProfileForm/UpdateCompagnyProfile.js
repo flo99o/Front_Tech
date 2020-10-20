@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -50,12 +50,11 @@ const UpdateCompagnyForm = (props) => {
 
   return (
     <div>
-      {!values ? null : (
+      {!userDetails.logo ? null : (
         <Formik
           initialValues={values}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
-          enableReinitialize
         >
           {(formik) => (
             <Form className="signIn__form">

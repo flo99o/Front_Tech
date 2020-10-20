@@ -36,7 +36,7 @@ const CompagnyProfile = (props) => {
       setMyDetails(userDetails);
     }
     fetchData();
-  }, []);
+  }, [userID]);
 
   //store logo and first name of the user
   const logo = myDetails.logo;

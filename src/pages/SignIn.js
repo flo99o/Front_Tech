@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useHistory, Redirect } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -10,17 +10,6 @@ import Button from "../components/Button";
 const SignIn = () => {
   let history = useHistory();
   const errormsg = "Obligatoire !"; //mettre dans state contexte
-  const [response, setResponse] = useState([]);
-
-  const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false
-  const userID = getUserID.userID || false
-  const userType = getUserID.userType || false
-
-  useEffect(() => {
-    localStorage.getItem("userID", response.userID);
-    
-  }, [response]);
-
 
   // variables for formik
   const initialValues = {
@@ -39,7 +28,6 @@ const SignIn = () => {
   const onSubmit = async (values) => {
     const url = "http://localhost:5000/signin/signin";
     await axios.post(url, values).then((res) => {
-      setResponse(res.data);
       const getData = {
         userID: res.data.userID,
         isLogged: res.data.isLogged,
@@ -47,12 +35,7 @@ const SignIn = () => {
         compagnyID: res.data.compagnyID,
         compagny_name: res.data.compagny_name
       };
-      // async function (param) {  }
       localStorage.setItem("dataKey", JSON.stringify(getData));
-      // setInterval(function() {
-      //   history.push("/")
-      //   window.location.reload()
-      // }, 100)
       switch (res.data.userType) {
         case "admin":
           history.push(`/admin/${res.data.userID}`);
@@ -64,7 +47,7 @@ const SignIn = () => {
           history.push(`/compagny/${res.data.userID}`);
           break;
         default:
-          return <Redirect to={"/"} />;
+          return <Redirect to={"/home"} />;
       }
     });
   };

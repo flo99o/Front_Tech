@@ -24,7 +24,7 @@ const UpdateAd = (props) => {
       setadDetails(results.data[0]);
     };
     getAdDetails();
-  }, [response]);
+  }, [response, offerID]);
 
    /**
    * Formik propreties

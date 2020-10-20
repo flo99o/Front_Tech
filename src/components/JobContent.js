@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
@@ -6,12 +6,11 @@ import Modal from "react-modal";
 import Button from "../components/Button";
 
 const JobContent = (props) => {
-  //get user's details from "descriptionJob" component
-  const offerID = props.idJob;
-  //(state) - get this information from back when the user is login
-  const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false;
-  const userID = getUserID.userID || false;
-  const userType = getUserID.userType || false;
+  const {idJob, compagny_id, description_compagny, description_position, prerequisite, userType} = props
+
+  // get user'id from localstorage
+  const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false; //(state)
+  const userID = getUserID.userID || "";
 
   //handle the modal and the response from the back when deleting something
   const [modalIsOpen, setmodalIsOpen] = useState(false);
@@ -27,20 +26,18 @@ const JobContent = (props) => {
     setmodalIsOpen(false);
     switch (userType) {
       case "compagny":
-        console.log("offerId: ", offerID);
-        const urlCompagny = `http://localhost:5000/compagny/deleteOffer/${offerID}`;
+        const urlCompagny = `http://localhost:5000/compagny/deleteOffer/${idJob}`;
         axios.delete(urlCompagny).then((res) => setResponse(res.data));
         break;
       case "admin":
-        console.log("offerId: ", offerID);
-        const urlAdmin = `http://localhost:5000/compagny/deleteOffer/${offerID}`;
+        const urlAdmin = `http://localhost:5000/compagny/deleteOffer/${idJob}`;
         axios.delete(urlAdmin).then((res) => setResponse(res.data));
         break;
       case "user":
         console.log("user deleted his apllication");
-        const urlUser = `http://localhost:5000/users/deleteApplication/${userID}/${offerID}`;
+        const urlUser = `http://localhost:5000/users/deleteApplication/${userID}/${idJob}`;
         axios.delete(urlUser).then((res) => setResponse(res.data));
-
+        break;
       default:
         break;
     }
@@ -55,34 +52,40 @@ const JobContent = (props) => {
       <div className="jobpage__content">
         <div className="jobPage__description">
           <h6>Description de l'entreprise</h6>
-          <p>{props.description_compagny}</p>
+          <p>{description_compagny}</p>
           <h6>Description du poste</h6>
-          <p>{props.description_position}</p>
+          <p>{description_position}</p>
         </div>
         <div className="jobPage__prerequisite">
           <h6>Pré-requis</h6>
-          <p>{props.prerequisite}</p>
+          <p>{prerequisite}</p>
         </div>
         <div className="side-bar">
           <div className="widget">
             <div className="inner">
               {/* element available from homepage */}
-              {props.userType ? null : (
+              {userType ? null : (
                 <Button className={"btn btn--grey"} value={"Sauvegarder"} />
               )}
-              {props.userType ? null : (
-                <Link to={`/apply/${props.idJob}`} className="btn">
+              {userType ? null : (
+                <Link to={`/apply/${idJob}/${compagny_id}`} className="btn">
                   Postuler
                 </Link>
               )}
 
               {/* element available from compagnyProfile and/or adminProfile */}
-              {props.userType === "compagny" || props.userType === "admin" ? (
-                <Link to={`/updatead/${props.idJob}`} className="btn btn--grey">
+              {userType === "compagny" || userType === "admin" ? (
+                <Link
+                  to={{
+                    pathname: `/updatead/${idJob}`,
+                    state: { compagny_id: true }
+                  }}
+                  className="btn btn--grey"
+                >
                   Editer
                 </Link>
               ) : null}
-              {props.userType === "compagny" || props.userType === "admin" ? (
+              {userType === "compagny" || userType === "admin" ? (
                 <Button
                   action={handleModale}
                   value={"Supprimer"}
@@ -91,7 +94,7 @@ const JobContent = (props) => {
               ) : null}
 
               {/* element available for user only */}
-              {props.userType === "user" ? (
+              {userType === "user"  ? (
                 <Button
                   value={"Retirer sa candidature"}
                   className="btn"
