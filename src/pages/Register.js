@@ -180,7 +180,6 @@ const Register = () => {
                   label="Photo"
                   placeholder="Insérer l'url de votre logo"
                 />
-                {/* champ for compagny */}
                 {formik.values.userType === "compagny" ? (
                   <>
                     <FormikControl

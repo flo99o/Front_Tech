@@ -33,7 +33,7 @@ const SignIn = () => {
         isLogged: res.data.isLogged,
         userType: res.data.userType,
         compagnyID: res.data.compagnyID,
-        compagny_name: res.data.compagny_name
+        compagny_name: res.data.compagny_name,
       };
       localStorage.setItem("dataKey", JSON.stringify(getData));
       switch (res.data.userType) {
@@ -64,7 +64,9 @@ const SignIn = () => {
                 onSubmit={onSubmit}
                 validateOnMount
               >
-                {(formik) => (
+                {formik => {
+                  console.log('formik:', formik)
+                  return(
                   <Form className="signIn__form">
                     <h1 className="heading-primary--main">Se connecter</h1>
                     <FormikControl
@@ -87,7 +89,7 @@ const SignIn = () => {
                       value={"Sign In"}
                     />
                   </Form>
-                )}
+                   )}}
               </Formik>
             </div>
           </div>
