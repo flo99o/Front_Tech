@@ -20,6 +20,8 @@ const UpdateCompagnyForm = (props) => {
     email: userDetails.email,
     phone: userDetails.phone,
     logo: userDetails.logo,
+    password:"",
+     repeat_password:"",
     description_compagny: userDetails.description_compagny,
     compagny_name: userDetails.compagny_name,
   };
@@ -42,7 +44,11 @@ const UpdateCompagnyForm = (props) => {
 
   //send new user's details to the BDD
   const onSubmit = async (values) => {
-    console.log("values:", values);
+    delete values["repeat_password"]
+    //remove empty string from the objects "values" in order to add into the BDD only values' fields provided
+    Object.keys(values).forEach(
+      (key) => values[key] === "" && delete values[key]
+    );
     const url = `http://localhost:5000/allpeople/updateProfile/${userID}`;
     await axios.put(url, values);
     window.location.reload()
@@ -119,7 +125,7 @@ const UpdateCompagnyForm = (props) => {
 
               <Button
                 type="submit"
-                disabled={!formik.isValid}
+                disabled={!(formik.dirty && formik.isValid)}
                 className={"btn btn--round"}
                 value={"Modifier mon profil"}
               />

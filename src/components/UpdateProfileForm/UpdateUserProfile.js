@@ -22,7 +22,9 @@ const UpdateUserProfile = (props) => {
     last_name: userDetails.last_name,
      email: userDetails.email,
      phone: userDetails.phone,
-     logo: userDetails.logo
+     logo: userDetails.logo,
+     password:"",
+     repeat_password:""
   };
 
   //set rules for validating of the field's form
@@ -42,10 +44,14 @@ const UpdateUserProfile = (props) => {
   //send new user's details to the BDD
   const onSubmit = async (values) => {
     delete values["repeat_password"]
+    //remove empty string from the objects "values" in order to add into the BDD only values' fields provided
+    Object.keys(values).forEach(
+      (key) => values[key] === "" && delete values[key]
+    );
     const url = `http://localhost:5000/allpeople/updateProfile/${userID}`;
     await axios.put(url, values);
   };
-
+ 
   return (
     <div>
       {!userDetails.logo ? null : (
@@ -54,7 +60,9 @@ const UpdateUserProfile = (props) => {
           validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
-          {(formik) => (
+          {formik => {
+            console.log('formik:', formik)
+            return (
             <Form className="signIn__form">
               <FormikControl
                 control="input"
@@ -103,12 +111,12 @@ const UpdateUserProfile = (props) => {
 
               <Button
                 type="submit"
-                disabled={!formik.isValid}
+                disabled={!(formik.dirty && formik.isValid)}
                 className={"btn btn--round"}
                 value={"Modifier mon profil"}
               />
             </Form>
-          )}
+            )}}
         </Formik>
       )}
     </div>
