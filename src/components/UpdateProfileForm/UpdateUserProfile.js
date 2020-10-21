@@ -61,7 +61,6 @@ const UpdateUserProfile = (props) => {
           onSubmit={onSubmit}
         >
           {formik => {
-            console.log('formik:', formik)
             return (
             <Form className="signIn__form">
               <FormikControl

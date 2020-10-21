@@ -30,7 +30,8 @@ const Register = () => {
     password: "",
     repeat_password: "",
     phone: "",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/f/f4/User_Avatar_2.png",
+    logo:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f4/User_Avatar_2.png",
     compagny_name: "",
     description_compagny: "",
   };
@@ -74,12 +75,12 @@ const Register = () => {
         isLogged: res.data.isLogged,
         userType: res.data.userType,
         compagnyID: res.data.compagnyID,
-        compagny_name: res.data.compagny_name
+        compagny_name: res.data.compagny_name,
       };
 
       localStorage.setItem("dataKey", JSON.stringify(getData));
-     
-      console.log('res.data.userType:', res.data.userType)
+
+      console.log("res.data.userType:", res.data.userType);
       switch (res.data.userType) {
         case "admin":
           history.push("/admin");
@@ -93,7 +94,6 @@ const Register = () => {
         default:
           return <Redirect to={"/home"} />;
       }
-      
     });
   };
 
@@ -181,21 +181,23 @@ const Register = () => {
                   placeholder="Insérer l'url de votre logo"
                 />
                 {/* champ for compagny */}
-                <div className="isShowInput">
-                  <FormikControl
-                    control="input"
-                    type="text"
-                    name="compagny_name"
-                    label="Nom de l'entreprise"
-                    placeholder="Microsoft"
-                  />
-                  <FormikControl
-                    control="textarea"
-                    name="description_compagny"
-                    label="Description de votre entreprise"
-                    placeholder="Courte description de votre entreprise"
-                  />
-                </div>
+                {formik.values.userType === "compagny" ? (
+                  <>
+                    <FormikControl
+                      control="input"
+                      type="text"
+                      name="compagny_name"
+                      label="Nom de l'entreprise"
+                      placeholder="Microsoft"
+                    />
+                    <FormikControl
+                      control="textarea"
+                      name="description_compagny"
+                      label="Description de votre entreprise"
+                      placeholder="Courte description de votre entreprise"
+                    />
+                  </>
+                ) : null}
 
                 <Button
                   type="submit"
