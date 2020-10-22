@@ -338,15 +338,15 @@ h6 {
   background-repeat: no-repeat;
   background-position: right;
   background-size: cover; }
-  @media only screen and (min-width: 75em) {
-    .hero {
-      padding-top: 24%; } }
   @media only screen and (min-width: 43em) {
     .hero {
       padding-top: 50%; } }
   @media only screen and (min-width: 62em) {
     .hero {
       padding-top: 50%; } }
+      @media only screen and (min-width: 75em) {
+        .hero {
+          padding-top: 24%; } }
   .hero::before {
     z-index: -1;
     content: "";
