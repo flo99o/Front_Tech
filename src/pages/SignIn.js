@@ -35,11 +35,17 @@ const SignIn = () => {
         compagnyID: res.data.compagnyID,
         compagny_name: res.data.compagny_name,
       };
-      localStorage.setItem("dataKey", JSON.stringify(getData));
+      
+      const setLocalStorage = async () =>{
+        await localStorage.setItem("dataKey", JSON.stringify(getData));
+      }
+      setLocalStorage()
+      
       switch (res.data.userType) {
         case "admin":
           history.push(`/admin/${res.data.userID}`);
           break;
+          
         case "user":
           history.push(`/user/${res.data.userID}`);
           break;

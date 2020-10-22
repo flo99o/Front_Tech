@@ -27,9 +27,8 @@ const AdminProfile = () => {
   const [modalIsOpen, setmodalIsOpen] = useState(false);
 
   //get what user's type and user's id to delete
-  const [idToDelete, setidToDelete] = useState("");
   const [userToDelete, setUserToDelete] = useState("");
-  const [compagnyToDelete, setCompagnyToDelete] = useState("");
+
 
   //stock results from back
   const [response, setResponse] = useState([]);
@@ -68,28 +67,16 @@ const AdminProfile = () => {
   const logo = myDetails.logo;
 
   // handle opening modal
-  const handleModale = (id, userType, compagny_name) => {
-    //store user's id, type or compagny name which has been clicked
-    setUserToDelete(userType);
-    setidToDelete(id);
-    setCompagnyToDelete(compagny_name);
-    setmodalIsOpen(true);
+  const handleModale = (userID) => {
+    setUserToDelete(userID);
+    setmodalIsOpen(true)
   };
 
   // handle deletation of user/compagny depending on is type
   const handleDelete = async () => {
-    console.log(compagnyToDelete);
     setmodalIsOpen(false);
-    if (compagnyToDelete) {
-      const url = `http://localhost:5000/compagny/deleteCompagny/${compagnyToDelete}`;
-      await axios.delete(url).then((res) => setResponse(res.data));
-    } else if (userToDelete === "user") {
-      const url = `http://localhost:5000/allpeople/deleteUserAccount/${idToDelete}`;
+      const url = `http://localhost:5000/allpeople/deleteUserAccount/${userToDelete}`;
       axios.delete(url).then((res) => setResponse(res.data));
-    } else if (userToDelete === "compagny") {
-      const url = `http://localhost:5000/compagny/deleteCompagny/${idToDelete}`;
-      axios.delete(url).then((res) => setResponse(res.data));
-    }
   };
 
   return (
@@ -105,7 +92,7 @@ const AdminProfile = () => {
                   <p>
                     {user.first_name} {user.last_name}
                   </p>
-                  <span onClick={() => handleModale(user.userID, "user")} role="img" aria-label={"supprimer"}>
+                  <span onClick={() => handleModale(user.userID)} role="img" aria-label={"supprimer"}>
                     &#x274C;
                   </span>
                 </div>
@@ -124,9 +111,7 @@ const AdminProfile = () => {
                   aria-label={"supprimer"}
                     onClick={() =>
                       handleModale(
-                        compagny.compagnyID,
-                        "compagny",
-                        compagny.compagny_name
+                        compagny.compagnyID
                       )
                     }
                   >

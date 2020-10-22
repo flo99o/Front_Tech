@@ -75,7 +75,7 @@ const App = () => {
 
   return (
     <>
-      <Router forceRefresh>
+      <Router>
         <Switch>
           <Route exact path="/home" component={Homepage} />
           <Route exact path="/signin" component={SignIn} />

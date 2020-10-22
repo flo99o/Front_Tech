@@ -57,7 +57,7 @@ const NavBar = () => {
           </li>
         ) : (
           <li onClick={() => getLogout()} className="navigation__items">
-            <Link to="/">
+            <Link to="/home">
               <IcomoonReact
                 iconSet={iconSet}
                 color="#444"
