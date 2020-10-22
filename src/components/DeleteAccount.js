@@ -6,8 +6,6 @@ import Modal from "react-modal";
 import Button from "./Button";
 import { getLogout } from "../services/services";
 
-
-
 Modal.setAppElement("#root");
 
 const DeleteAccount = () => {
@@ -30,10 +28,9 @@ const DeleteAccount = () => {
     setmodalIsOpen(false);
     const url = `http://localhost:5000/allpeople/deleteUserAccount/${userID}`;
     await axios.delete(url).then((res) => console.log("data: ", res));
-    getLogout("Votre compte a été supprimé")
-    // alert("Votre compte a été supprimé");
-    // localStorage.clear();
-    // history.push("/home");
+    alert("votre compte à été supprimé");
+    localStorage.clear();
+    history.push("/home");
   };
 
   return (

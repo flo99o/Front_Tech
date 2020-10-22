@@ -12,7 +12,7 @@ export const getUserDetails = async (userID) => {
 // process to get log out
 export const getLogout = (message) => {
   localStorage.clear();
-  window.history.go("/home");
+  
   alert(message);
 }
 

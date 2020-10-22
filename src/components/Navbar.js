@@ -24,6 +24,12 @@ const NavBar = () => {
     });
   }, [userID]);
 
+  const getLogout = () => {
+        alert("vous êtes déconnecté");
+        localStorage.clear();
+        history.go("/home");
+      }
+
   return (
     <nav className="navigation">
       <ul className="navigation__list">
@@ -53,7 +59,7 @@ const NavBar = () => {
             </Link>
           </li>
         ) : (
-          <li onClick={() => getLogout("vous êtes déconnecté")} className="navigation__items">
+          <li onClick={() => getLogout()} className="navigation__items">
             <Link to="/home">
               <IcomoonReact
                 iconSet={iconSet}
