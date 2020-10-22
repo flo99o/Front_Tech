@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 //components
 import Category from "../components/Category";
-import HeroProfile from "../components/HeroProfile";
+import Hero from "../components/Hero";
 import DescriptionJob from "../components/DescriptionJob";
 import UpdateUserProfile from "../components/UpdateProfileForm/UpdateUserProfile";
 import DeleteAccount from "../components/DeleteAccount";
-import { UserContext } from "../App"
 const getUserDetails = require("../services/services");
 
 const UserProfile = (props) => {
@@ -41,7 +40,7 @@ const UserProfile = (props) => {
 
   return (
     <>
-      <HeroProfile logo={logo} nameUser={nameUser} />
+      <Hero logo={logo} nameUser={nameUser} />
       <div className="container">
         <div className="inner--profilePage">
           <div className="application">

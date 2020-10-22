@@ -9,7 +9,7 @@ const Homepage = () => {
   return (
     <div className="global_container global_container--homepage">
       <NavBar />
-      <Hero />
+      <Hero title={"Find your next job"} subtitle={"Des offres spécialisées dans la tech."}/>
       <FilterBar />
       <LatestJob />
       <Comment />

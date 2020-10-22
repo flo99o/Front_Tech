@@ -92,6 +92,7 @@ const ApplicationForm = (props) => {
                     label="Prénom"
                     name="first_name"
                     placeholder="Anne"
+                    value={myDetails.first_name}
                   />
                   <FormikControl
                     control="input"
@@ -99,6 +100,7 @@ const ApplicationForm = (props) => {
                     label="Nom"
                     name="last_name"
                     placeholder="Dupont"
+                    value={myDetails.last_name}
                   />
                   <FormikControl
                     control="input"

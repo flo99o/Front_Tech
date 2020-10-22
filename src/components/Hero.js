@@ -5,7 +5,7 @@ import Header from "./Header";
 import { useEffect } from "react";
 import NavBar from "./Navbar";
 
-const Hero = ({ title, subtitle }) => {
+const Hero = ({ title, subtitle, logo, nameUser }) => {
   useEffect(() => {
     $("#logo-menu").on("click", () => {
       $(".navigation").toggle();
@@ -21,17 +21,22 @@ const Hero = ({ title, subtitle }) => {
       />
       <NavBar />
       <Header />
+      {title ?    
       <div className="heading-primary">
         <h1 className="heading-primary--main">{title}</h1>
         <p className="heading-primary--sub">{subtitle}</p>
       </div>
+      :null}
+      {logo ?
+      <div className="heading-primary heading-primary--down">
+      <img className="profilePhoto" src={logo} alt="" />
+      <h1 className="heading-primary--main">{nameUser}</h1>
+    </div> 
+      : null}
+      
     </section>
   );
 };
 
-Hero.defaultProps = {
-  title: "Find your next job",
-  subtitle: "Des offres spécialisées dans la tech.",
-};
 
 export default Hero;

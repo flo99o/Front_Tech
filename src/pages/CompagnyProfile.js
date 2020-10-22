@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 //components
-import HeroProfile from "../components/HeroProfile";
+import Hero from "../components/Hero";
 import Category from "../components/Category";
 import DescriptionJob from "../components/DescriptionJob";
 
@@ -44,7 +44,7 @@ const CompagnyProfile = (props) => {
 
   return (
     <>
-      <HeroProfile logo={logo} nameUser={nameUser} />
+      <Hero logo={logo} nameUser={nameUser} />
       <div className="container">
         <div className="inner--profilePage">
           <div className="ad">

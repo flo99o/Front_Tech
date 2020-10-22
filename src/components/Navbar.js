@@ -6,6 +6,9 @@ import IcomoonReact from "icomoon-react";
 //icons
 import briefcase from "../assets/logo_nav/mallette.svg";
 import registration from "../assets/logo_nav/registration.svg";
+import { getLogout } from "../services/services";
+
+
 
 const NavBar = () => {
   let history = useHistory();
@@ -20,12 +23,6 @@ const NavBar = () => {
       $(".navigation").hide();
     });
   }, [userID]);
-
-  const getLogout = () => {
-    localStorage.clear();
-    alert("vous avez étez déconnecté");
-    history.push("/home");
-  };
 
   return (
     <nav className="navigation">
@@ -56,7 +53,7 @@ const NavBar = () => {
             </Link>
           </li>
         ) : (
-          <li onClick={() => getLogout()} className="navigation__items">
+          <li onClick={() => getLogout("vous êtes déconnecté")} className="navigation__items">
             <Link to="/home">
               <IcomoonReact
                 iconSet={iconSet}

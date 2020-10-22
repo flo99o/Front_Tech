@@ -4,7 +4,7 @@ import Modal from "react-modal";
 // components
 import Category from "../components/Category";
 import DescriptionJob from "../components/DescriptionJob";
-import HeroProfile from "../components/HeroProfile";
+import Hero from "../components/Hero";
 import UpdateAdminProfile from "../components/UpdateProfileForm/UpdateAdminProfile";
 import DeleteAccount from "../components/DeleteAccount";
 
@@ -81,7 +81,7 @@ const AdminProfile = () => {
 
   return (
     <>
-      <HeroProfile logo={logo} nameUser={"Yo les admins"} />
+      <Hero logo={logo} nameUser={"Yo les admins"} />
       <div className="container">
         <div className="inner--profilePage">
           <div className="user">
