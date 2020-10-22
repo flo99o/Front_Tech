@@ -6,7 +6,7 @@ import HeroProfile from "../components/HeroProfile";
 import DescriptionJob from "../components/DescriptionJob";
 import UpdateUserProfile from "../components/UpdateProfileForm/UpdateUserProfile";
 import DeleteAccount from "../components/DeleteAccount";
-
+import { UserContext } from "../App"
 const getUserDetails = require("../services/services");
 
 const UserProfile = (props) => {
@@ -68,7 +68,6 @@ const UserProfile = (props) => {
             <Category name={"Mon Profil"} />
             <UpdateUserProfile userDetails={myDetails} />
           </div>
-
         </div>
         <DeleteAccount />
       </div>

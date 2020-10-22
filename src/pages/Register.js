@@ -68,33 +68,30 @@ const Register = () => {
     );
 
     const url = "http://localhost:5000/allpeople/register";
-    await axios.post(url, values).then((res) => {
-      setResponse(res.data);
-      const getData = {
-        userID: res.data.userID,
-        isLogged: res.data.isLogged,
-        userType: res.data.userType,
-        compagnyID: res.data.compagnyID,
-        compagny_name: res.data.compagny_name,
-      };
+    const response = await axios.post(url, values);
+    let data = await response.data;
+    const getData = {
+      userID: data.userID,
+      isLogged: data.isLogged,
+      userType: data.userType,
+      compagnyID: data.compagnyID,
+      compagny_name: data.compagny_name,
+    };
+    localStorage.setItem("dataKey", JSON.stringify(getData));
 
-      localStorage.setItem("dataKey", JSON.stringify(getData));
-
-      console.log("res.data.userType:", res.data.userType);
-      switch (res.data.userType) {
-        case "admin":
-          history.push("/admin");
-          break;
-        case "user":
-          history.push(`/user/${res.data.userID}`);
-          break;
-        case "compagny":
-          history.push(`/compagny/${res.data.userID}`);
-          break;
-        default:
-          return <Redirect to={"/home"} />;
-      }
-    });
+    switch (data.userType) {
+      case "admin":
+        history.push("/admin");
+        break;
+      case "user":
+        history.push(`/user/${data.userID}`);
+        break;
+      case "compagny":
+        history.push(`/compagny/${data.userID}`);
+        break;
+      default:
+        return <Redirect to={"/home"} />;
+    }
   };
 
   return (
@@ -180,23 +177,22 @@ const Register = () => {
                   label="Photo"
                   placeholder="Insérer l'url de votre logo"
                 />
-                {formik.values.userType === "compagny" ? (
-                  <>
-                    <FormikControl
-                      control="input"
-                      type="text"
-                      name="compagny_name"
-                      label="Nom de l'entreprise"
-                      placeholder="Microsoft"
-                    />
-                    <FormikControl
-                      control="textarea"
-                      name="description_compagny"
-                      label="Description de votre entreprise"
-                      placeholder="Courte description de votre entreprise"
-                    />
-                  </>
-                ) : null}
+
+                <>
+                  <FormikControl
+                    control="input"
+                    type="text"
+                    name="compagny_name"
+                    label="Nom de l'entreprise"
+                    placeholder="Microsoft"
+                  />
+                  <FormikControl
+                    control="textarea"
+                    name="description_compagny"
+                    label="Description de votre entreprise"
+                    placeholder="Courte description de votre entreprise"
+                  />
+                </>
 
                 <Button
                   type="submit"

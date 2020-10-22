@@ -22,6 +22,8 @@ import Unauthorized from "./components/Unauthorized";
 import ErrorPage from "./pages/ErrorPage";
 import Application from "./pages/Application";
 
+export const UserContext = React.createContext()
+
 const App = () => {
   const getIsLogged = JSON.parse(localStorage.getItem("dataKey")) || false;
   const isLogged = getIsLogged.isLogged || false;
@@ -73,7 +75,7 @@ const App = () => {
 
   return (
     <>
-      <Router>
+      <Router forceRefresh>
         <Switch>
           <Route exact path="/home" component={Homepage} />
           <Route exact path="/signin" component={SignIn} />
@@ -82,6 +84,7 @@ const App = () => {
           <Route exact path="/apply/:offer_id/:compagny_id" component={ApplicationForm} />
 
           <CompagnyRoute
+          forceRefresh
             exact
             path="/compagny/:id"
             component={CompagnyProfile}

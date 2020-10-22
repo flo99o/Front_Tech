@@ -13,7 +13,7 @@ $breakpoint arguement choices:
 
 ORDER: Base + typography > general layout + grid > page layout > components
 
-1em = 16px
+1em = 16px 
 */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap");
 :root {
@@ -29,13 +29,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 html {
   font-size: 62.5%; }
-  @media only screen and (max-width: 75em) {
+  @media only screen and (min-width: 62em) {
     html {
-      font-size: 56.25%; } }
-  @media only screen and (max-width: 56.25em) {
+      font-size: 65%; } }
+  @media only screen and (min-width: 43em) {
     html {
-      font-size: 50%; } }
-  @media only screen and (min-width: 75.5em) {
+      font-size: 65%; } }
+  @media only screen and (min-width: 75em) {
     html {
       font-size: 70%; } }
 
@@ -203,15 +203,15 @@ th {
   -o-border-radius: 50%;
   border: 4px solid white;
   box-sizing: content-box; }
-  @media only screen and (min-width: 75.5em) {
+  @media only screen and (min-width: 75em) {
     .profilePhoto {
       height: 16rem;
       width: 16rem; } }
-  @media only screen and (max-width: 56.25em) {
+  @media only screen and (min-width: 43em) {
     .profilePhoto {
       height: 16rem;
       width: 16rem; } }
-  @media only screen and (max-width: 75em) {
+  @media only screen and (min-width: 62em) {
     .profilePhoto {
       height: 16rem;
       width: 16rem; } }
@@ -240,7 +240,7 @@ h6 {
   .heading-primary--main {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
-    font-size: 2.4rem;
+    font-size: 2rem;
     text-align: center;
     line-height: 1.75;
     text-transform: uppercase; }
@@ -325,7 +325,7 @@ h6 {
   left: 50%;
   transform: translateX(-50%);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.15); }
-  @media only screen and (min-width: 75.5em) {
+  @media only screen and (min-width: 75em) {
     .job-search__filter {
       width: 70%; } }
 
@@ -338,13 +338,13 @@ h6 {
   background-repeat: no-repeat;
   background-position: right;
   background-size: cover; }
-  @media only screen and (min-width: 75.5em) {
+  @media only screen and (min-width: 75em) {
     .hero {
       padding-top: 24%; } }
-  @media only screen and (max-width: 56.25em) {
+  @media only screen and (min-width: 43em) {
     .hero {
       padding-top: 50%; } }
-  @media only screen and (max-width: 75em) {
+  @media only screen and (min-width: 62em) {
     .hero {
       padding-top: 50%; } }
   .hero::before {
@@ -634,14 +634,14 @@ li.navigation__items:hover {
   text-transform: uppercase;
   font-size: 2.2rem; }
 
-@media only screen and (min-width: 75.5em) {
+@media only screen and (min-width: 75em) {
   .container-signUp {
     display: flex;
     height: 100vh; } }
 
 .create-account {
   padding: 3rem 2.5rem; }
-  @media only screen and (min-width: 75.5em) {
+  @media only screen and (min-width: 75em) {
     .create-account {
       flex: 2;
       overflow: scroll; } }
@@ -650,7 +650,7 @@ li.navigation__items:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center; }
-  @media only screen and (min-width: 75.5em) {
+  @media only screen and (min-width: 75em) {
     .create-account {
       display: flex;
       flex-direction: column;
@@ -667,7 +667,7 @@ li.navigation__items:hover {
   height: 50vh;
   display: flex;
   justify-content: center; }
-  @media only screen and (min-width: 75.5em) {
+  @media only screen and (min-width: 75em) {
     .welcome-back {
       height: unset;
       flex: 1; } }
@@ -677,7 +677,7 @@ li.navigation__items:hover {
   .welcome-back h1 {
     color: inherit; }
 
-@media only screen and (min-width: 75.5em) {
+@media only screen and (min-width: 75em) {
   .isShowInput {
     width: 100%; } }
 
@@ -703,7 +703,7 @@ li.navigation__items:hover {
   color: red;
   display: block; }
 
-@media only screen and (min-width: 75.5em) {
+@media only screen and (min-width: 75em) {
   .container-signIn {
     display: flex;
     height: 100vh; } }
@@ -716,14 +716,14 @@ li.navigation__items:hover {
   height: 50vh;
   display: flex;
   justify-content: center; }
-  @media only screen and (min-width: 75.5em) {
+  @media only screen and (min-width: 75em) {
     .signIn,
     .hello-friend {
       height: unset; } }
 
 .signIn {
   padding: 0 2.5rem; }
-  @media only screen and (min-width: 75.5em) {
+  @media only screen and (min-width: 75em) {
     .signIn {
       flex: 1; } }
   .signIn__form {
@@ -731,10 +731,10 @@ li.navigation__items:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center; }
-    @media only screen and (min-width: 75.5em) {
+    @media only screen and (min-width: 75em) {
       .signIn__form {
         width: 100%; } }
-  @media only screen and (min-width: 75.5em) {
+  @media only screen and (min-width: 75em) {
     .signIn {
       display: flex;
       flex-direction: column;
@@ -754,7 +754,7 @@ li.navigation__items:hover {
     margin: 2rem 0 3rem; }
   .hello-friend h1 {
     color: inherit; }
-  @media only screen and (min-width: 75.5em) {
+  @media only screen and (min-width: 75em) {
     .hello-friend {
       flex: 1; } }
 
@@ -766,7 +766,7 @@ li.navigation__items:hover {
   .inner-box--blue {
     padding: 0 5rem;
     text-align: center; }
-  @media only screen and (min-width: 75.5em) {
+  @media only screen and (min-width: 75em) {
     .inner-box {
       width: 60%; } }
 

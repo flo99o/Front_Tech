@@ -5,6 +5,7 @@ import Modal from "react-modal";
 //components
 import Button from "./Button";
 
+
 Modal.setAppElement("#root");
 
 const DeleteAccount = () => {
