@@ -34,7 +34,7 @@ const JobContent = (props) => {
         axios.delete(urlAdmin).then((res) => setResponse(res.data));
         break;
       case "user":
-        console.log("user deleted his apllication");
+        console.log("user deleted his application");
         const urlUser = `http://localhost:5000/users/deleteApplication/${userID}/${idJob}`;
         axios.delete(urlUser).then((res) => setResponse(res.data));
         break;
@@ -49,7 +49,7 @@ const JobContent = (props) => {
 
   return (
     <>
-      <div className="jobpage__content">
+      <div className="jobPage__content">
         <div className="jobPage__description">
           <h6>Description de l'entreprise</h6>
           <p>{description_compagny}</p>

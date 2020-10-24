@@ -104,7 +104,7 @@ const UpdateAdminProfile = (props) => {
 
               <Button
                 type="submit"
-                disabled={!formik.isValid}
+                disabled={!(formik.dirty && formik.isValid)}
                 className={"btn btn--round"}
                 value={"Modifier mon profil"}
               />

@@ -31,6 +31,7 @@ const CreatedAd = () => {
     { key: "Développeur frontend", value: "Développeur frontend" },
     { key: "Développeur backend", value: "Développeur backend" },
     { key: "Designer", value: "Designer" },
+    {key: "Intégrateur web", value: "Intégrateur web"}
   ];
   // for contract select element
   const dropdownOptionsContract = [

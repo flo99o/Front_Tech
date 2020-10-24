@@ -29,7 +29,6 @@ const App = () => {
   const isLogged = getIsLogged.isLogged || false;
   const getUserType = JSON.parse(localStorage.getItem("dataKey")) || false;
   const userType = getUserType.userType || false;
-  console.log(userType);
 
   //Give access to the routes only for user & admin
   const UserRoute = ({ component: Component, ...rest }) => (

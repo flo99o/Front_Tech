@@ -18,7 +18,7 @@ const DescriptionJob = (props) => {
     userType,
   } = props;
   
-  console.log('userType:', userType)
+  
   // stock details of ad
   const [furtherDetails, setFurtherDetails] = useState([]);
   const [toggleDetails, setToggleDetails] = useState(false);

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useHistory} from "react-router-dom"
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 //components
@@ -9,13 +10,11 @@ import DescriptionJob from "../components/DescriptionJob";
 import Hero from "../components/Hero";
 
 const UpdateAd = (props) => {
+  let history = useHistory()
   const offerID = props.match.params.id;
-  console.log("props: ", props);
 
   const [adDetails, setadDetails] = useState([]);
   const [response, setResponse] = useState([]);
-
-  
 
   useEffect(() => {
     const getAdDetails = async () => {
@@ -42,6 +41,7 @@ const UpdateAd = (props) => {
         { key: "Développeur frontend", value: "Développeur frontend" },
         { key: "Développeur backend", value: "Développeur backend" },
         { key: "Designer", value: "Designer" },
+        {key: "Intégrateur web", value: "Intégrateur web"}
       ];
 
         const dropdownOptionsContract = [
@@ -77,10 +77,10 @@ const UpdateAd = (props) => {
   });
 
   const onSubmit = async (values) => {
-    console.log("values:", values);
     const url = `http://localhost:5000/compagny/updatead/${offerID}`;
     const results = await axios.put(url, values);
-    setResponse(results.data) 
+    setResponse(results.data)
+    history.goBack() 
   };
 
   console.log("adDetails: ", adDetails.job_name);
@@ -133,13 +133,9 @@ const UpdateAd = (props) => {
                 />
              <FormikControl
                   control="input"
-                  type="range"
                   label="Salaire (par mois)"
                   name="wage"
-                  min="500"
-                  max="8000"
-                  step="100"
-                  placeholder="Count"
+                  placeholder="ex:1200"
                 />
              <FormikControl
                   control="input"
@@ -149,7 +145,7 @@ const UpdateAd = (props) => {
                 />
               <Button
                   type="submit"
-                  disabled={!formik.isValid}
+                  disabled={!(formik.dirty && formik.isValid)}
                   className={"btn"}
                   value={"Modifier l'offre"}
                 />

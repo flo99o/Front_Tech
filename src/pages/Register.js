@@ -77,21 +77,24 @@ const Register = () => {
     localStorage.setItem("dataKey", JSON.stringify(getData));
 
     if (localStorage.getItem("dataKey")) {
-      switch (data.userType) {
+      const getUserDetails = JSON.parse(localStorage.getItem("dataKey"));
+      const userID = getUserDetails.userID;
+      const userType = getUserDetails.userType;
+      switch (userType) {
         case "admin":
-          history.push(`/admin/${data.userID}`);
+          history.push(`/admin/${userID}`);
           break;
         case "user":
-          history.push(`/user/${data.userID}`);
+          history.push(`/user/${userID}`);
           break;
         case "compagny":
-          history.push(`/compagny/${data.userID}`);
+          history.push(`/compagny/${userID}`);
           break;
         default:
           return <Redirect to={"/home"} />;
       }
     } else {
-      alert("Error : Votre inscription n'a pas pu aboutir");
+      alert("Error : Impossible de vous connecter");
       return <Redirect to={"/home"} />;
     }
   };

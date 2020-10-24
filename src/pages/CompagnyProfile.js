@@ -23,7 +23,6 @@ const CompagnyProfile = (props) => {
   
   useEffect(() => {
     const getMyOffers = async () => {
-      console.log("userID:", userID);
       const url = `http://localhost:5000/compagny/getMyoffers/${userID}`;
       const result = await axios.get(url);
       setMyOffers(result.data);
@@ -42,6 +41,7 @@ const CompagnyProfile = (props) => {
   const logo = myDetails.logo;
   const nameUser = myDetails.first_name;
 
+
   return (
     <>
       <Hero logo={logo} nameUser={nameUser} />
@@ -50,7 +50,7 @@ const CompagnyProfile = (props) => {
           <div className="ad">
             <Category name={"Mes offres"} />
             <div className="list">
-              {myOffers === undefined ? <p>Vous avez posté aucune offre</p> : 
+              {myOffers.length === 0 ? <p>Vous avez posté aucune offre</p> : 
                 myOffers.map((offer) => (
                   <DescriptionJob
                     key={offer.offerID}
