@@ -9,13 +9,6 @@ export const getUserDetails = async (userID) => {
   return details;
 };
 
-// process to get log out
-export const getLogout = (message) => {
-  localStorage.clear();
-  
-  alert(message);
-}
-
 // module.exports = {
 //   getUserDetails: async (userID) => {
 //     const url = `http://localhost:5000/allpeople/userDetails/${userID}`;

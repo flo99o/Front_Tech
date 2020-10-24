@@ -30,6 +30,8 @@ const Application = () => {
     fetchData();
   }, [userID, compagny_name]);
 
+  console.log(myApplications);
+
   return (
     <div className="application">
       <Hero title={"Les candidatures"} subtitle={""} />
