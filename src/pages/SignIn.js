@@ -27,35 +27,37 @@ const SignIn = () => {
 
   const onSubmit = async (values) => {
     const url = "http://localhost:5000/signin/signin";
-    await axios.post(url, values).then((res) => {
+    const response = await axios.post(url, values)
+    const data = await response.data
       const getData = {
-        userID: res.data.userID,
-        isLogged: res.data.isLogged,
-        userType: res.data.userType,
-        compagnyID: res.data.compagnyID,
-        compagny_name: res.data.compagny_name,
+        userID: data.userID,
+        isLogged: data.isLogged,
+        userType: data.userType,
+        compagnyID: data.compagnyID,
+        compagny_name: data.compagny_name,
       };
-      
-      const setLocalStorage = async () =>{
-        await localStorage.setItem("dataKey", JSON.stringify(getData));
+
+      localStorage.setItem("dataKey", JSON.stringify(getData));
+
+      if (localStorage.getItem("dataKey")) {
+        switch (data.userType) {
+          case "admin":
+            history.push(`/admin/${data.userID}`);
+            break;
+          case "user":
+            history.push(`/user/${data.userID}`);
+            break;
+          case "compagny":
+            history.push(`/compagny/${data.userID}`);
+            break;
+          default:
+            return <Redirect to={"/home"} />;
+        }
+      } else {
+        alert("Error : Votre inscription n'a pas pu aboutir");
+        return <Redirect to={"/home"} />;
       }
-      setLocalStorage()
-      
-      switch (res.data.userType) {
-        case "admin":
-          history.push(`/admin/${res.data.userID}`);
-          break;
-          
-        case "user":
-          history.push(`/user/${res.data.userID}`);
-          break;
-        case "compagny":
-          history.push(`/compagny/${res.data.userID}`);
-          break;
-        default:
-          return <Redirect to={"/home"} />;
-      }
-    });
+    ;
   };
 
   return (
@@ -70,32 +72,33 @@ const SignIn = () => {
                 onSubmit={onSubmit}
                 validateOnMount
               >
-                {formik => {
-                  console.log('formik:', formik)
-                  return(
-                  <Form className="signIn__form">
-                    <h1 className="heading-primary--main">Se connecter</h1>
-                    <FormikControl
-                      control="input"
-                      type="email"
-                      name="email"
-                      placeholder="email"
-                    />
-                    <FormikControl
-                      control="input"
-                      type="password"
-                      name="password"
-                      placeholder="password"
-                    />
+                {(formik) => {
+                  console.log("formik:", formik);
+                  return (
+                    <Form className="signIn__form">
+                      <h1 className="heading-primary--main">Se connecter</h1>
+                      <FormikControl
+                        control="input"
+                        type="email"
+                        name="email"
+                        placeholder="email"
+                      />
+                      <FormikControl
+                        control="input"
+                        type="password"
+                        name="password"
+                        placeholder="password"
+                      />
 
-                    <Button
-                      type="submit"
-                      disabled={!formik.isValid}
-                      className={"btn btn--round"}
-                      value={"Sign In"}
-                    />
-                  </Form>
-                   )}}
+                      <Button
+                        type="submit"
+                        disabled={!formik.isValid}
+                        className={"btn btn--round"}
+                        value={"Sign In"}
+                      />
+                    </Form>
+                  );
+                }}
               </Formik>
             </div>
           </div>

@@ -10,10 +10,6 @@ import Button from "../components/Button";
 const Register = () => {
   let history = useHistory();
   const errormsg = "Obligatoire !"; //mettre dans state contexte
-  const [response, setResponse] = useState([]);
-  useEffect(() => {
-    localStorage.getItem("userID", response.userID);
-  }, [response]);
 
   const radioOptions = [
     {
@@ -51,11 +47,11 @@ const Register = () => {
       )
       .required(errormsg),
     phone: Yup.string().required(errormsg),
-    compagny_name: Yup.string().when("type", {
+    compagny_name: Yup.string().when("userType", {
       is: "compagny",
       then: Yup.string().required(errormsg),
     }),
-    description_compagny: Yup.string().when("type", {
+    description_compagny: Yup.string().when("userType", {
       is: "compagny",
       then: Yup.string().required(errormsg),
     }),
@@ -69,7 +65,7 @@ const Register = () => {
 
     const url = "http://localhost:5000/allpeople/register";
     const response = await axios.post(url, values);
-    let data = await response.data;
+    const data = await response.data;
     const getData = {
       userID: data.userID,
       isLogged: data.isLogged,
@@ -77,20 +73,26 @@ const Register = () => {
       compagnyID: data.compagnyID,
       compagny_name: data.compagny_name,
     };
+
     localStorage.setItem("dataKey", JSON.stringify(getData));
 
-    switch (data.userType) {
-      case "admin":
-        history.push("/admin");
-        break;
-      case "user":
-        history.push(`/user/${data.userID}`);
-        break;
-      case "compagny":
-        history.push(`/compagny/${data.userID}`);
-        break;
-      default:
-        return <Redirect to={"/home"} />;
+    if (localStorage.getItem("dataKey")) {
+      switch (data.userType) {
+        case "admin":
+          history.push(`/admin/${data.userID}`);
+          break;
+        case "user":
+          history.push(`/user/${data.userID}`);
+          break;
+        case "compagny":
+          history.push(`/compagny/${data.userID}`);
+          break;
+        default:
+          return <Redirect to={"/home"} />;
+      }
+    } else {
+      alert("Error : Votre inscription n'a pas pu aboutir");
+      return <Redirect to={"/home"} />;
     }
   };
 
@@ -117,91 +119,95 @@ const Register = () => {
             onSubmit={onSubmit}
             validateOnMount
           >
-            {(formik) => (
-              <Form className="signIn__form">
-                <h1 className="heading-primary--main">Créer un compte</h1>
-                <FormikControl
-                  options={radioOptions}
-                  control="radio"
-                  label="Je suis"
-                  name="userType"
-                  className="test"
-                />
-                <FormikControl
-                  control="input"
-                  type="text"
-                  name="first_name"
-                  label="Prénom"
-                  placeholder="Anne"
-                />
-                <FormikControl
-                  control="input"
-                  type="text"
-                  name="last_name"
-                  label="Nom"
-                  placeholder="Dupont"
-                />
-
-                <FormikControl
-                  control="input"
-                  type="email"
-                  name="email"
-                  label="E-mail"
-                  placeholder="annedupont@gmail.com"
-                />
-                <FormikControl
-                  control="input"
-                  type="password"
-                  name="password"
-                  label="mot de passe"
-                  placeholder="********"
-                />
-                <FormikControl
-                  control="input"
-                  type="password"
-                  name="repeat_password"
-                  label="répétez votre mot de passe"
-                  placeholder="********"
-                />
-                <FormikControl
-                  control="input"
-                  type="tel"
-                  name="phone"
-                  label="Téléphone"
-                  placeholder="06 00 00 00 00"
-                />
-                <FormikControl
-                  control="input"
-                  type="text"
-                  name="logo"
-                  label="Photo"
-                  placeholder="Insérer l'url de votre logo"
-                />
-
-                <>
+            {(formik) => {
+              console.log("formik:", formik);
+              return (
+                <Form className="signIn__form">
+                  <h1 className="heading-primary--main">Créer un compte</h1>
+                  <FormikControl
+                    options={radioOptions}
+                    control="radio"
+                    label="Je suis"
+                    name="userType"
+                  />
                   <FormikControl
                     control="input"
                     type="text"
-                    name="compagny_name"
-                    label="Nom de l'entreprise"
-                    placeholder="Microsoft"
+                    name="first_name"
+                    label="Prénom"
+                    placeholder="Anne"
                   />
                   <FormikControl
-                    control="textarea"
-                    name="description_compagny"
-                    label="Description de votre entreprise"
-                    placeholder="Courte description de votre entreprise"
+                    control="input"
+                    type="text"
+                    name="last_name"
+                    label="Nom"
+                    placeholder="Dupont"
                   />
-                </>
 
-                <Button
-                  type="submit"
-                  disabled={!formik.isValid}
-                  className={"btn btn--round"}
-                  value={"Sign up"}
-                />
-              </Form>
-            )}
+                  <FormikControl
+                    control="input"
+                    type="email"
+                    name="email"
+                    label="E-mail"
+                    placeholder="annedupont@gmail.com"
+                  />
+                  <FormikControl
+                    control="input"
+                    type="password"
+                    name="password"
+                    label="mot de passe"
+                    placeholder="********"
+                  />
+                  <FormikControl
+                    control="input"
+                    type="password"
+                    name="repeat_password"
+                    label="répétez votre mot de passe"
+                    placeholder="********"
+                  />
+                  <FormikControl
+                    control="input"
+                    type="tel"
+                    name="phone"
+                    label="Téléphone"
+                    placeholder="06 00 00 00 00"
+                  />
+                  <FormikControl
+                    control="input"
+                    type="text"
+                    name="logo"
+                    label="Photo"
+                    placeholder="Insérer l'url de votre logo"
+                  />
+
+                  {formik.values.userType === "compagny" ? (
+                    <>
+                      <FormikControl
+                        control="input"
+                        type="text"
+                        name="compagny_name"
+                        label="Nom de l'entreprise"
+                        placeholder="Microsoft"
+                      />
+                      <FormikControl
+                        control="textarea"
+                        name="description_compagny"
+                        label="Description de votre entreprise"
+                        placeholder="Courte description de votre entreprise"
+                      />
+                    </>
+                  ) : null}
+
+                  <Button
+                    type="submit"
+                    disabled={!formik.isValid}
+                    className={"btn btn--round"}
+                    value={"Sign up"}
+                  />
+                </Form>
+              );
+            }}
           </Formik>
         </div>
       </div>
