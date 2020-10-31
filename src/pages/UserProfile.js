@@ -18,7 +18,7 @@ const UserProfile = (props) => {
 
   useEffect(() => {
     const geyMyApplications = async () => {
-      const url = `http://localhost:5000/users/offerApplied/${userID}`;
+      const url = `http://localhost:5001/users/offerApplied/${userID}`;
       const result = await axios.get(url);
       setMyApplications(result.data);
     };

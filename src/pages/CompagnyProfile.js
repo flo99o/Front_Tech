@@ -23,7 +23,7 @@ const CompagnyProfile = (props) => {
   
   useEffect(() => {
     const getMyOffers = async () => {
-      const url = `http://localhost:5000/compagny/getMyoffers/${userID}`;
+      const url = `http://localhost:5001/compagny/getMyoffers/${userID}`;
       const result = await axios.get(url);
       setMyOffers(result.data);
     };

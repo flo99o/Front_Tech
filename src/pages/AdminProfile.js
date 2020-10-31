@@ -35,21 +35,21 @@ const AdminProfile = () => {
 
   useEffect(() => {
     const getUsers = async () => {
-      const url = "http://localhost:5000/admin/users";
+      const url = "http://localhost:5001/admin/users";
       const result = await axios.get(url);
       setUsers(result.data);
     };
     getUsers();
 
     const getOffers = async () => {
-      const url = "http://localhost:5000/allpeople/getoffers";
+      const url = "http://localhost:5001/allpeople/getoffers";
       const result = await axios.get(url);
       setOffers(result.data);
     };
     getOffers();
 
     const getCompagnies = async () => {
-      const url = "http://localhost:5000/admin/compagnies";
+      const url = "http://localhost:5001/admin/compagnies";
       const result = await axios.get(url);
       setCompagnies(result.data);
     };
@@ -75,7 +75,7 @@ const AdminProfile = () => {
   // handle deletation of user/compagny depending on is type
   const handleDelete = async () => {
     setmodalIsOpen(false);
-      const url = `http://localhost:5000/allpeople/deleteUserAccount/${userToDelete}`;
+      const url = `http://localhost:5001/allpeople/deleteUserAccount/${userToDelete}`;
       axios.delete(url).then((res) => setResponse(res.data));
   };
 

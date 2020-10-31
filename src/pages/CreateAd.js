@@ -62,7 +62,7 @@ const CreatedAd = () => {
     contract: Yup.string().required("Obligatoire !"),
   });
   const onSubmit = async (values, onSubmitProps) => {
-    const url = "http://localhost:5000/compagny/createad";
+    const url = "http://localhost:5001/compagny/createad";
     await axios.post(url, { ...values, userID, compagny_name });
     onSubmitProps.resetForm();
     history.goBack();

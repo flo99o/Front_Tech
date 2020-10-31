@@ -18,7 +18,7 @@ const UpdateAd = (props) => {
 
   useEffect(() => {
     const getAdDetails = async () => {
-      const url = `http://localhost:5000/allpeople/getOffer/${offerID}`;
+      const url = `http://localhost:5001/allpeople/getOffer/${offerID}`;
       const results = await axios.get(url);
       setadDetails(results.data[0]);
     };
@@ -77,7 +77,7 @@ const UpdateAd = (props) => {
   });
 
   const onSubmit = async (values) => {
-    const url = `http://localhost:5000/compagny/updatead/${offerID}`;
+    const url = `http://localhost:5001/compagny/updatead/${offerID}`;
     const results = await axios.put(url, values)
     setResponse(results.data)
     history.goBack()

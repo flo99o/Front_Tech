@@ -16,7 +16,7 @@ const Application = () => {
   useEffect(() => {
     const getMyApplications = async () => {
       console.log("userID:", userID);
-      const url = `http://localhost:5000/compagny/application/${compagny_name}`;
+      const url = `http://localhost:5001/compagny/application/${compagny_name}`;
       const result = await axios.get(url);
       setMyApplications(result.data);
     };

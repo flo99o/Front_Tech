@@ -14,7 +14,7 @@ const JobPage = (props) => {
 
   useEffect(() => {
     const getDescriptionJob = async () => {
-      const url = `http://localhost:5000/users/getOffer/${id}`;
+      const url = `http://localhost:5001/users/getOffer/${id}`;
       const result = await axios.get(url);
       setDescriptionJob(result.data);
     };
