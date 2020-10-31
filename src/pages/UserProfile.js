@@ -9,10 +9,8 @@ import DeleteAccount from "../components/DeleteAccount";
 const getUserDetails = require("../services/services");
 
 const UserProfile = (props) => {
-   //get the user's id form localstorage
-  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
-  const userID = getUserID.userID;
-  
+  //get the user's id form localstorage
+  const userID = props.match.params.id
 
   //store details of the user and his application
   const [myDetails, setMyDetails] = useState([]);
@@ -47,21 +45,25 @@ const UserProfile = (props) => {
             <Category name={"Mes candidatures"} />
           </div>
           <div className="list">
-            {myApplications.map((offer) => (
-              <DescriptionJob
-                key={offer.offerID}
-                idJob={offer.offerID}
-                userID={userID}
-                logo={offer.logo}
-                wage={offer.wage}
-                contract={offer.contract}
-                job_name={offer.job_name}
-                compagny_name={offer.compagny_name}
-                location={offer.location}
-                toggle={true}
-                userType={"user"}
-              />
-            ))}
+            {myApplications.length === 0 ? (
+              <div>Vous avez postulé à aucune offre.</div>
+            ) : (
+              myApplications.map((offer) => (
+                <DescriptionJob
+                  key={offer.offerID}
+                  idJob={offer.offerID}
+                  userID={userID}
+                  logo={offer.logo}
+                  wage={offer.wage}
+                  contract={offer.contract}
+                  job_name={offer.job_name}
+                  compagny_name={offer.compagny_name}
+                  location={offer.location}
+                  toggle={true}
+                  userType={"user"}
+                />
+              ))
+            )}
           </div>
           <div className="details">
             <Category name={"Mon Profil"} />

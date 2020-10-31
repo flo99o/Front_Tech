@@ -172,8 +172,8 @@ const Application = () => {
     <div className="application">
       <Hero title={"Les candidatures"} subtitle={""} />
 
-      {myApplications === undefined ? (
-        <div>Aucune candidatures</div>
+      {myApplications.length < 1 ? (
+        <div>Aucune candidature</div>
       ) : (
         // : Object.keys(groupedOffer).map((keyname, i) =>
         myApplications.map(application => (

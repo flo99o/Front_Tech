@@ -44,6 +44,7 @@ const SignIn = () => {
         const getUserDetails = JSON.parse(localStorage.getItem("dataKey"));
         const userID = getUserDetails.userID;
         const userType = getUserDetails.userType
+        console.log('userType:', userType)
         switch (userType) {
           case "admin":
             history.push(`/admin/${userID}`);
@@ -55,11 +56,11 @@ const SignIn = () => {
             history.push(`/compagny/${userID}`);
             break;
           default:
-            return <Redirect to={"/home"} />;
+            return <Redirect to={"/"} />;
         }
       } else {
         alert("Error : Impossible de vous connecter");
-        return <Redirect to={"/home"} />;
+        return <Redirect to={"/"} />;
       }
     ;
   };

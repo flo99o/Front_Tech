@@ -344,9 +344,9 @@ h6 {
   @media only screen and (min-width: 62em) {
     .hero {
       padding-top: 50%; } }
-      @media only screen and (min-width: 75em) {
-        .hero {
-          padding-top: 24%; } }
+  @media only screen and (min-width: 75em) {
+    .hero {
+      padding-top: 24%; } }
   .hero::before {
     z-index: -1;
     content: "";
@@ -482,9 +482,10 @@ h6 {
 .otherOptions {
   display: flex;
   flex-direction: column;
-  width: max-content;
+  width: 100%;
   justify-content: center;
-  align-self: center; }
+  align-self: center;
+  margin-top: 2rem; }
 
 .createAd-form__inner, .updateAd-form__inner {
   display: flex;

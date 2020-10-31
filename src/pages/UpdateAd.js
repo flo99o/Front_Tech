@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useHistory} from "react-router-dom"
+import { Redirect, useHistory} from "react-router-dom"
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 //components
@@ -78,9 +78,9 @@ const UpdateAd = (props) => {
 
   const onSubmit = async (values) => {
     const url = `http://localhost:5000/compagny/updatead/${offerID}`;
-    const results = await axios.put(url, values);
+    const results = await axios.put(url, values)
     setResponse(results.data)
-    history.goBack() 
+    history.goBack()
   };
 
   console.log("adDetails: ", adDetails.job_name);

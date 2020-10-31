@@ -30,6 +30,7 @@ const App = () => {
   const getUserType = JSON.parse(localStorage.getItem("dataKey")) || false;
   const userType = getUserType.userType || false;
 
+
   //Give access to the routes only for user & admin
   const UserRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -74,9 +75,9 @@ const App = () => {
 
   return (
     <>
-      <Router>
+      <Router forceRefresh>
         <Switch>
-          <Route exact path="/home" component={Homepage} />
+          <Route exact path="/" component={Homepage} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/job/:id" component={JobPage} />
@@ -90,9 +91,9 @@ const App = () => {
           />
           <CompagnyRoute exact path="/application" component={Application} />
           <CompagnyRoute exact path="/createad" component={CreateAd} />
-          <CompagnyRoute forceRefresh exact path="/updatead/:id" component={UpdateAd} />
-          <AdminRoute forceRefresh exact path="/admin/:id" component={AdminProfile} />
-          <UserRoute forceRefresh  exact path="/user/:id" component={UserProfile} />
+          <CompagnyRoute exact path="/updatead/:id" component={UpdateAd} />
+          <AdminRoute exact path="/admin/:id" component={AdminProfile} />
+          <UserRoute  exact path="/user/:id" component={UserProfile} />
           <Route exact path="/unauthorized" component={Unauthorized}/>
           <Route component={ErrorPage} />
         </Switch>

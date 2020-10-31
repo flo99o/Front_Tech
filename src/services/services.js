@@ -19,6 +19,6 @@ export const getUserDetails = async (userID) => {
 //   getLogout : (message) => {
 //     alert(message);
 //     localStorage.clear();
-//     window.history.go("/home");
+//     window.history.go("/");
 //   }
 // }

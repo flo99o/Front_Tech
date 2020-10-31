@@ -30,7 +30,7 @@ const DeleteAccount = () => {
     await axios.delete(url).then((res) => console.log("data: ", res));
     alert("votre compte à été supprimé");
     localStorage.clear();
-    history.push("/home");
+    history.push("/");
   };
 
   return (
