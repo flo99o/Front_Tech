@@ -26,16 +26,16 @@ const JobContent = (props) => {
     setmodalIsOpen(false);
     switch (userType) {
       case "compagny":
-        const urlCompagny = `http://localhost:5001/compagny/deleteOffer/${idJob}`;
+        const urlCompagny = `http://localhost:4040/compagny/deleteOffer/${idJob}`;
         axios.delete(urlCompagny).then((res) => setResponse(res.data));
         break;
       case "admin":
-        const urlAdmin = `http://localhost:5001/compagny/deleteOffer/${idJob}`;
+        const urlAdmin = `http://localhost:4040/compagny/deleteOffer/${idJob}`;
         axios.delete(urlAdmin).then((res) => setResponse(res.data));
         break;
       case "user":
         console.log("user deleted his application");
-        const urlUser = `http://localhost:5001/users/deleteApplication/${userID}/${idJob}`;
+        const urlUser = `http://localhost:4040/users/deleteApplication/${userID}/${idJob}`;
         axios.delete(urlUser).then((res) => setResponse(res.data));
         break;
       default:

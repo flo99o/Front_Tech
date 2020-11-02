@@ -42,7 +42,7 @@ const UpdateAdminProfile = (props) => {
     Object.keys(values).forEach(
       (key) => values[key] === "" && delete values[key]
     );
-    const url = `http://localhost:5001/allpeople/updateProfile/${userID}`;
+    const url = `http://localhost:4040/allpeople/updateProfile/${userID}`;
     await axios.put(url, values);
     //window.location.reload()
   };

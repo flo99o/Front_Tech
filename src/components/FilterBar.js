@@ -6,7 +6,7 @@ const FilterBar = () => {
 
   useEffect(() => {
     const getValuesFilter = async () => {
-      const url = `http://localhost:5001/allpeople/getValuesFilter`;
+      const url = `http://localhost:4040/allpeople/getValuesFilter`;
       const result = await axios.get(url);
       setGetValuesFilter(result.data);
     };

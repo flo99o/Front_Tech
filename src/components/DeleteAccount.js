@@ -26,7 +26,7 @@ const DeleteAccount = () => {
   //delete the account of the user
   const deleteAccount = async () => {
     setmodalIsOpen(false);
-    const url = `http://localhost:5001/allpeople/deleteUserAccount/${userID}`;
+    const url = `http://localhost:4040/allpeople/deleteUserAccount/${userID}`;
     await axios.delete(url).then((res) => console.log("data: ", res));
     alert("votre compte à été supprimé");
     localStorage.clear();

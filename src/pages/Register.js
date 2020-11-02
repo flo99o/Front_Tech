@@ -63,7 +63,7 @@ const Register = () => {
       (key) => values[key] === "" && delete values[key]
     );
 
-    const url = "http://localhost:5001/signin/register";
+    const url = "http://localhost:4040/signin/register";
     const response = await axios.post(url, values);
     const data = await response.data;
     const getData = {
@@ -89,7 +89,7 @@ const Register = () => {
           break;
         case "compagny":
           history.push(`/compagny/${userID}`);
-          break;
+          break; 
         default:
           return <Redirect to={"/"} />;
       }
@@ -118,7 +118,7 @@ const Register = () => {
         <div className="inner-box">
           <Formik
             initialValues={initialValues}
-            //validationSchema={validationSchema}
+            validationSchema={validationSchema}
             onSubmit={onSubmit}
             validateOnMount
           >
