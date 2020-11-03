@@ -25,18 +25,13 @@ import Application from "./pages/Application";
 export const UserContext = React.createContext()
 
 const App = () => {
-  const getIsLogged = JSON.parse(localStorage.getItem("dataKey")) || false;
-  const isLogged = getIsLogged.isLogged || false;
-  const getUserType = JSON.parse(localStorage.getItem("dataKey")) || false;
-  const userType = getUserType.userType || false;
-
-
+   const isToken = localStorage.getItem("token") 
   //Give access to the routes only for user & admin
   const UserRoute = ({ component: Component, ...rest }) => (
     <Route
       {...rest}
       render={(props) =>
-        isLogged && (userType === "user" || userType === "admin") ? (
+        isToken ? (
           <Component {...props} />
         ) : (
           <Redirect to={{ pathname: "/unauthorized" }} />
@@ -50,7 +45,7 @@ const App = () => {
     <Route
       {...rest}
       render={(props) =>
-        isLogged && (userType === "compagny" || userType === "admin") ? (
+       isToken ? (
           <Component {...props} />
         ) : (
           <Redirect to={{ pathname: "/unauthorized" }} />
@@ -63,15 +58,19 @@ const App = () => {
   const AdminRoute = ({ component: Component, ...rest }) => (
     <Route
       {...rest}
-      render={(props) =>
-        isLogged && userType === "admin" ? (
+      render={(props) => 
+        isToken ? (
           <Component {...props} />
         ) : (
           <Redirect to={{ pathname: "/unauthorized" }} />
         )
       }
+      
     />
   );
+
+     
+
 
   return (
     <>
@@ -92,8 +91,8 @@ const App = () => {
           <CompagnyRoute exact path="/application" component={Application} />
           <CompagnyRoute exact path="/createad" component={CreateAd} />
           <CompagnyRoute exact path="/updatead/:id" component={UpdateAd} />
-          <AdminRoute exact path="/admin/:id" component={AdminProfile} />
-          <UserRoute  exact path="/user/:id" component={UserProfile} />
+          <AdminRoute exact path="/personalAccount" component={AdminProfile} />
+          <UserRoute exact path="/user/:id" component={UserProfile} />
           <Route exact path="/unauthorized" component={Unauthorized}/>
           <Route component={ErrorPage} />
         </Switch>

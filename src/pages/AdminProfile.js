@@ -8,14 +8,16 @@ import Hero from "../components/Hero";
 import UpdateAdminProfile from "../components/UpdateProfileForm/UpdateAdminProfile";
 import DeleteAccount from "../components/DeleteAccount";
 
-const getUserDetails = require("../services/services");
+//const getUserDetails = require("../services/services");
 
+import {getUserDetails} from "../services/services"
+import decode from "jwt-decode";
 Modal.setAppElement("#root");
 
 const AdminProfile = () => {
   //get the user's id form localstorage
-  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
-  const userID = getUserID.userID;
+  const token = localStorage.getItem("token")
+  const {userID} = decode(token)
 
   //get the list of :
   const [users, setUsers] = useState([]);
@@ -57,7 +59,7 @@ const AdminProfile = () => {
 
     //get user's details form "getUserDetails" function (services component)
     async function fetchData() {
-      const userDetails = await getUserDetails.getUserDetails(userID);
+      const userDetails = await getUserDetails(userID);
       setMyDetails(userDetails);
     }
     fetchData();

@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 import Modal from "react-modal";
 //components
 import Button from "./Button";
-import { getLogout } from "../services/services";
+
+import decode from "jwt-decode";
 
 Modal.setAppElement("#root");
 
@@ -12,8 +13,8 @@ const DeleteAccount = () => {
   let history = useHistory();
 
   //get the user's id form localstorage
-  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
-  const userID = getUserID.userID;
+  const token = localStorage.getItem("token")
+  const {userID} = decode(token)
 
   //handle modal opening
   const [modalIsOpen, setmodalIsOpen] = useState(false);

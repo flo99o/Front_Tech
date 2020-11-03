@@ -6,10 +6,13 @@ import axios from "axios";
 import FormikControl from "../formik/FormikControl";
 import Button from "../Button";
 
+import decode from "jwt-decode";
+
 const UpdateAdminProfile = (props) => {
   //get the user's id form localstorage
-  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
-  const userID = getUserID.userID
+  const token = localStorage.getItem("token")
+  const {userID} = decode(token)
+  
 // get user's details from userProfile component
   const userDetails = props.userDetails
   //set the values of the form with userDetails content

@@ -16,7 +16,7 @@ const UpdateFormControl = (props) => {
        setMyDetails(UserDetails)
        }
        fetchData();
-  }, [])
+  }, [myDetails])
 
   const { userType, ...rest } = props;
   switch (userType) {
