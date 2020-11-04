@@ -25,36 +25,12 @@ import Application from "./pages/Application";
 
 import {isLogged, userDetails} from "./services/services"
 
-export const UserContext = React.createContext();
+export const UserInfoContext = React.createContext();
+
 
 const App = () => {
-  // const isLogged = () => {
-  //   // 1. stock token from localstorage
-  //   const token = localStorage.getItem("token");
-  //   // 2. verify if there is a token
-  //   if (!token) {
-  //     return false;
-  //   }
-  //   // 3. verify if the token has been expired
-  //   try {
-  //     const { exp } = decode(token);
-  //     if (exp < new Date().getTime() / 1000) {
-  //       return false;
-  //     }
-  //   } catch (e) {
-  //     return false;
-  //   }
-  //   const { userType } = decode(token);
-  //   console.log(userType);
-  //   return userType;
-  // };
 
-  isLogged()
-console.log("result userdetails" + userDetails().userID + userDetails());
-
-const userID = userDetails().userID;
-console.log('userID:', userID)
-
+const userInfo = userDetails()
 
   //Give access to the routes only for user & admin
   const UserRoute = ({ component: Component, ...rest }) => (
@@ -102,7 +78,8 @@ console.log('userID:', userID)
     <>
       <Router>
         <Switch>
-          <Route exact path="/" component={Homepage} />
+          <UserInfoContext.Provider value={userInfo}>
+          <Route   exact path="/" component={Homepage} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/job/:id" component={JobPage} />
@@ -122,6 +99,7 @@ console.log('userID:', userID)
           <AdminRoute exact path="/admin/:id" component={AdminProfile} />
           <UserRoute exact path="/user/:id" component={UserProfile} />
           <Route exact path="/unauthorized" component={Unauthorized} />
+          </UserInfoContext.Provider>
           <Route component={ErrorPage} />
         </Switch>
       </Router>

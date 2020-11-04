@@ -1,48 +1,42 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import $ from "jquery";
 import iconSet from "../assets/selection.json";
 import IcomoonReact from "icomoon-react";
-import decode from "jwt-decode";
+
+//function
+import { UserInfoContext } from "../App";
+import { isLogged } from "../services/services";
 //icons
 import briefcase from "../assets/logo_nav/mallette.svg";
 import registration from "../assets/logo_nav/registration.svg";
 
-
 const NavBar = () => {
   let history = useHistory();
-
-  const [token, setToken] = useState(null);
+  const userInfo = useContext(UserInfoContext);
   const [userID, setUserID] = useState("");
   const [userType, setUserType] = useState("");
-  
-  
+
   useEffect(() => {
     $(".cross-closed-menu, li.navigation__items").on("click", () => {
       $(".navigation").hide();
     });
-    
-    if (localStorage) {
-      setToken(localStorage.getItem("token"));
+    if (userInfo) {
+      setUserID(userInfo.userID);
+      setUserType(userInfo.userType);
     }
-    if (token) {
-      const { userID, userType } = decode(token);
-      setUserID(userID);
-      setUserType(userType);
-    }
-  }, [userID, token]);
+  }, [userInfo]);
 
   const getLogout = async () => {
+    localStorage.removeItem("token");
     alert("vous êtes déconnecté");
-    console.log("after alert");
-    localStorage.clear();
     history.push("/");
   };
 
   return (
     <nav className="navigation">
       <ul className="navigation__list">
-        {token ? (
+        {isLogged() ? (
           <li className="navigation__items">
             <Link to={`/${userType}/${userID}`}>
               <IcomoonReact
@@ -55,7 +49,7 @@ const NavBar = () => {
             </Link>
           </li>
         ) : null}
-        {!token ? (
+        {!isLogged() ? (
           <li className="navigation__items">
             <Link to="/signin">
               <IcomoonReact

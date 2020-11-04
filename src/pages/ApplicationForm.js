@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import decode from "jwt-decode";
+
+import { UserInfoContext } from "../App"
+
 //components
 import FormikControl from "../components/formik/FormikControl";
 import Hero from "../components/Hero";
@@ -14,7 +17,6 @@ const getUserDetails = require("../../src/services/services");
 const ApplicationForm = (props) => {
   let history = useHistory();
   const {offer_id, compagny_id} = props.match.params
-
 
   // get user'id from localstorage
   const token = localStorage.getItem("token")

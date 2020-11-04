@@ -3,8 +3,8 @@ import decode from "jwt-decode";
 
 // get user's details from BDD
 export const getUserDetails = async () => {
-  const token = localStorage.getItem("token") 
-  const {userID} = decode(token) 
+  const token = localStorage.getItem("token");
+  const { userID } = decode(token);
 
   const url = `http://localhost:4040/allpeople/userDetails/${userID}`;
   const results = await axios.get(url);
@@ -30,24 +30,41 @@ export const isLogged = () => {
     return false;
   }
   const { userType } = decode(token);
-  console.log(userType);
   return userType;
 };
 
+// store user's details
 export const userDetails = () => {
   try {
-    if(localStorage){
-      console.log("hello");
-      const token =localStorage.getItem("token")
-      const { userID, userType} = decode(token)
-      return {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const {
         userID,
         userType,
-      }
+        email,
+        first_name,
+        last_name,
+        logo,
+        phone,
+        description_compagny,
+        compagnyID,
+      } = decode(token);
+      return {
+        userType,
+        userID,
+        email,
+        first_name,
+        last_name,
+        phone,
+        description_compagny,
+        compagnyID,
+        logo,
+        isLogged : true
+      };
     }
-  } catch (err){
-    console.log("No user connected " + err);
+  } catch (err) {
+    console.log("No user connected: " + err);
+    const isLogged = false;
+    return isLogged;
   }
- 
-
-}
+};
