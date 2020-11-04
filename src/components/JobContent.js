@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
+import decode from "jwt-decode";
 //components
 import Button from "../components/Button";
 
@@ -9,8 +10,8 @@ const JobContent = (props) => {
   const {idJob, compagny_id, description_compagny, description_position, prerequisite, userType} = props
 
   // get user'id from localstorage
-  const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false; //(state)
-  const userID = getUserID.userID || "";
+  const token = localStorage.getItem("token")
+  const {userID} = decode(token)
 
   //handle the modal and the response from the back when deleting something
   const [modalIsOpen, setmodalIsOpen] = useState(false);

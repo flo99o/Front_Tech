@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import decode from "jwt-decode";
 
 //components
 import Hero from "../components/Hero";
@@ -14,8 +15,9 @@ const getUserDetails = require("../services/services");
 
 const CompagnyProfile = (props) => {
   //get the user's id of the compagny
-  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
-  const userID = getUserID.userID
+  const token = localStorage.getItem("token")
+  const {userID} = decode(token)
+
   //store all offers of the comapgny
   const [myOffers, setMyOffers] = useState([]);
   //store compagny's details

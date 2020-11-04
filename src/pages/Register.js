@@ -64,7 +64,8 @@ const Register = () => {
     );
 
     const url = "http://localhost:4040/signin/register";
-    const response = await axios.post(url, values);
+     const response = await axios.post(url, values);
+     
     const data = await response.data;
     const getData = {
       userID: data.userID,

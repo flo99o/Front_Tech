@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import decode from "jwt-decode";
 //components
 import FormikControl from "../components/formik/FormikControl";
 import Hero from "../components/Hero";
@@ -13,12 +14,12 @@ const getUserDetails = require("../../src/services/services");
 const ApplicationForm = (props) => {
   let history = useHistory();
   const {offer_id, compagny_id} = props.match.params
-  console.log('offer_id:', offer_id)
+
 
   // get user'id from localstorage
-  const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false; //(state)
-  const user_id = getUserID.userID || "";
-  
+  const token = localStorage.getItem("token")
+  const {userID} = decode(token)
+
   //store user's details
   const [myDetails, setMyDetails] = useState([]);
   //store visitor's id
@@ -33,14 +34,14 @@ const ApplicationForm = (props) => {
     };
     getLastUser();
 
-    if (user_id) {
+    if (userID) {
       async function fetchData() {
-        const userDetails = await getUserDetails.getUserDetails(user_id);
+        const userDetails = await getUserDetails.getUserDetails(userID);
         setMyDetails(userDetails);
       }
       fetchData();
     }
-  }, [user_id]);
+  }, [userID]);
 
 
   const initialValues = {
@@ -61,10 +62,10 @@ const ApplicationForm = (props) => {
   });
 
   const onSubmit = async (values) => {
-    if (user_id) {
-      console.log("see props: ", user_id, compagny_id,lastUserID);
+    if (userID) {
+     
       const url = "http://localhost:4040/users/postApplication";
-      await axios.post(url, { ...values, user_id, offer_id, compagny_id });
+      await axios.post(url, { ...values, user_id:userID, offer_id, compagny_id });
     } else {
       const url = "http://localhost:4040/users/postApplication";
       await axios.post(url, { ...values, offer_id, user_id: lastUserID, compagny_id });
@@ -134,7 +135,7 @@ const ApplicationForm = (props) => {
           </Formik>
         )}
 
-        {!getUserID ? (
+        {!userID ? (
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}

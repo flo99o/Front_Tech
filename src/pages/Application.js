@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import decode from "jwt-decode";
+// components
 import Hero from "../components/Hero";
 
 const getUserDetails = require("../services/services");
 
 const Application = () => {
   //get the user's id of the compagny
-  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
-  const userID = getUserID.userID;
-  const compagny_name = getUserID.compagny_name;
+  const token = localStorage.getItem("token")
+  const {userID, compagny_name} = decode(token)
+ 
   //store all offers of the comapgny
   const [myApplications, setMyApplications] = useState([]);
   //store compagny's details

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import decode from "jwt-decode";
 //components
 import FormikControl from "../components/formik/FormikControl";
 import Hero from "../components/Hero";
@@ -11,9 +12,9 @@ import Button from "../components/Button";
 const CreatedAd = () => {
   let history = useHistory();
   //(state) - get this information from back when the user is login
-  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
-  const userID = getUserID.userID;
-  const compagny_name = getUserID.compagny_name
+  const token = localStorage.getItem("token")
+  const {userID, compagny_name} = decode(token)
+
 
   /**
    * Formik propreties

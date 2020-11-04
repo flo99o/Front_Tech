@@ -2,14 +2,15 @@ import React from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import decode from "jwt-decode";
 //components
 import FormikControl from "../formik/FormikControl";
 import Button from "../Button";
 
 const UpdateCompagnyForm = (props) => {
    //get the user's id form localstorage
-  const getUserID = JSON.parse(localStorage.getItem("dataKey"));
-  const userID = getUserID.userID
+   const token = localStorage.getItem("token")
+  const {userID} = decode(token)
   // get user's details from userProfile component
   const userDetails = props.userDetails
 

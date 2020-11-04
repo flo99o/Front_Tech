@@ -59,11 +59,11 @@ const AdminProfile = () => {
 
     //get user's details form "getUserDetails" function (services component)
     async function fetchData() {
-      const userDetails = await getUserDetails(userID);
+      const userDetails = await getUserDetails();
       setMyDetails(userDetails);
     }
     fetchData();
-  }, [response, userID]);
+  }, [response]);
 
   //admin's logo
   const logo = myDetails.logo;

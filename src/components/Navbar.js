@@ -1,39 +1,48 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import $ from "jquery";
 import iconSet from "../assets/selection.json";
 import IcomoonReact from "icomoon-react";
+import decode from "jwt-decode";
 //icons
 import briefcase from "../assets/logo_nav/mallette.svg";
 import registration from "../assets/logo_nav/registration.svg";
-import { getLogout } from "../services/services";
-
 
 
 const NavBar = () => {
   let history = useHistory();
 
-  //get the user's id and type form localstorage
-  const getUserID = JSON.parse(localStorage.getItem("dataKey")) || false;
-  const userID = getUserID.userID || false;
-  const userType = getUserID.userType || false;
-
+  const [token, setToken] = useState(null);
+  const [userID, setUserID] = useState("");
+  const [userType, setUserType] = useState("");
+  
+  
   useEffect(() => {
     $(".cross-closed-menu, li.navigation__items").on("click", () => {
       $(".navigation").hide();
     });
-  }, [userID]);
+    
+    if (localStorage) {
+      setToken(localStorage.getItem("token"));
+    }
+    if (token) {
+      const { userID, userType } = decode(token);
+      setUserID(userID);
+      setUserType(userType);
+    }
+  }, [userID, token]);
 
-  const getLogout = () => {
-        alert("vous êtes déconnecté");
-        localStorage.clear();
-        history.go("/");
-      }
+  const getLogout = async () => {
+    alert("vous êtes déconnecté");
+    console.log("after alert");
+    localStorage.clear();
+    history.push("/");
+  };
 
   return (
     <nav className="navigation">
       <ul className="navigation__list">
-        {userID ? (
+        {token ? (
           <li className="navigation__items">
             <Link to={`/${userType}/${userID}`}>
               <IcomoonReact
@@ -46,7 +55,7 @@ const NavBar = () => {
             </Link>
           </li>
         ) : null}
-        {!userID ? (
+        {!token ? (
           <li className="navigation__items">
             <Link to="/signin">
               <IcomoonReact
